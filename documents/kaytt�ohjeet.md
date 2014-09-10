@@ -1,1 +1,0 @@
-Vielä tyhjä
