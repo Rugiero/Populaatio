@@ -23,18 +23,20 @@ public class Paavalikko {
 
             if (this.syote.equals("1")) {
                 this.influenssapopulaatiossa.paanakyma();
+
             } else if (this.syote.equals("2")) {
                 this.petoelainsaaliselain.paanakyma();
-                
-            } 
-            else if( this.syote.equals("5")) {
+
+            } else if (this.syote.equals("5")) {
                 break;
-            }
-                else {
+            } else {
                 System.out.println("");
                 System.out.println("Valitse vaihtoehdoista:");
-                System.out.println("1: Influenssa Populaatiossa");
-                System.out.println("2: Petoeläin- saaliseläin populaatio");
+                System.out.println("1: Luo uusi yhden lajin populaatio");
+                System.out.println("2: Luo uusi kahden lajin populaatio");
+                System.out.println("3: Selaa populaatioita");
+                System.out.println("4: Laske populaation kehitys");
+                System.out.println("5: exit");
             }
         }
 

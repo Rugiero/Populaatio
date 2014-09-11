@@ -4,11 +4,11 @@ import java.util.Scanner;
 import Tekstikayttoliittyma.Paavalikko;
 
 public class App {
-    logiikka.Paavalikko valikko = new Paavalikko();
 
-    public static void main(String[]); {
+
+    public static void main(String[] args){
         
-
+ Tekstikayttoliittyma.Paavalikko valikko = new Paavalikko();
         Scanner lukija = new Scanner(System.in);
 
         System.out.println("Avataanko ohjelma \"Populaatio\"  joo/ei");
