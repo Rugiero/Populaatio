@@ -9,14 +9,14 @@ public class SyotteidenTestaus {
     
     Scanner lukija = new Scanner(System.in);
     
-     //Metodi kokonaislukujen syöttämiseen, palauttaa 'true' onnistuessaan:
+     //Metodi kokonaislukujen syöttämiseen:
     public void KokonaisluvunSyotto(String syote, int luku) {
 
         while (true) {
 
            //Tarkistetaan onko syöte ylipäänsä numero ja että onko se oikealla välillä:
             if (TarkistaOnkoNumeroOikeallaValilla(syote)) {
-                //Kaikki ok ja asetetaan populaation syöte populaation arvoksi:
+                //Kaikki ok ja asetetaan syöte halutun luvun arvoksi:
 
                 luku = Integer.parseInt(syote);
                 break;
@@ -32,20 +32,20 @@ public class SyotteidenTestaus {
 
     }
 
-    //Metodi, jonka avulla syötetään desimaalilukuja välillä 0-1, palauttaa 'true' onnistueassaan.
+    //Metodi, jonka avulla syötetään desimaalilukuja välillä 0-1:
     public void DesimaalinSyotto(String syote, double desimaali) {
 
         while (true) {
 
             if (TarkistaOnkovalillaNollaJaYksi(syote)) {
 //Jos syöte on halutulla välillä, niin
-                //asetetaan syöte leviämistodennäköisyyden arvoksi:
+                //kaikki ok ja asetetaan syöte halutun desimaalin arvoksi
                 desimaali = Double.parseDouble(syote);
 
                 break;
 
             } else {
-                //muuten herjataan
+                //muuten herjataan. 
                 System.out.println("Anna luku desimaaliluku väliltä 0.0-1.0!");
                 syote = lukija.nextLine();
 
