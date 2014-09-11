@@ -3,6 +3,7 @@ package Populaatiot;
 
 import java.util.Scanner;
 
+//Tällä luokalla testataan syötteiden oikeellisuutta.
 
 public class SyotteidenTestaus {
     
