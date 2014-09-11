@@ -1,12 +1,12 @@
 package populaatio.populaatio;
 
 import java.util.Scanner;
-import logiikka.paavalikko;
+import Tekstikayttoliittyma.Paavalikko;
 
 public class App {
+    logiikka.Paavalikko valikko = new Paavalikko();
 
-    public static void main(String[] args) {
-        logiikka.paavalikko valikko = new paavalikko();
+    public static void main(String[]); {
         
 
         Scanner lukija = new Scanner(System.in);

@@ -1,20 +1,22 @@
-package logiikka;
+package Tekstikayttoliittyma;
 
 import java.util.Scanner;
 
-public class paavalikko {
+public class Paavalikko {
 
     private final Scanner lukija = new Scanner(System.in);
     String syote;
-    private logiikka.influenssapopulaatiossa influenssapopulaatiossa = new logiikka.influenssapopulaatiossa();
-    private logiikka.petoelainsaaliselain petoelainsaaliselain = new logiikka.petoelainsaaliselain();
+    private Tekstikayttoliittyma.Influenssapopulaatiossa influenssapopulaatiossa = new Tekstikayttoliittyma.Influenssapopulaatiossa();
+    private Tekstikayttoliittyma.petoelainsaaliselain petoelainsaaliselain = new Tekstikayttoliittyma.petoelainsaaliselain();
 
     public void alkunakyma() {
 
         System.out.println("Tervetuloa Populaatio ohjelman pariin! Valitse vaihtoehdoista:");
-        System.out.println("1: Influenssa Populaatiossa");
-        System.out.println("2: Petoeläin- saaliseläin populaatio");
-        System.out.println("3: exit");
+        System.out.println("1: Luo uusi yhden lajin populaatio");
+        System.out.println("2: Luo uusi kahden lajin populaatio");
+        System.out.println("3: Selaa populaatioita");
+        System.out.println("4: Laske populaation kehitys");
+        System.out.println("5: exit");
 
         while (true) {
             this.syote = lukija.nextLine();
@@ -25,7 +27,7 @@ public class paavalikko {
                 this.petoelainsaaliselain.paanakyma();
                 
             } 
-            else if( this.syote.equals("3")) {
+            else if( this.syote.equals("5")) {
                 break;
             }
                 else {
