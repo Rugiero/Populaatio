@@ -1,14 +1,14 @@
 package populaatio.populaatio;
 
 import java.util.Scanner;
-import logiikka.paavalikko;
+import Tekstikayttoliittyma.Paavalikko;
 
 public class App {
 
-    public static void main(String[] args) {
-        logiikka.paavalikko valikko = new paavalikko();
-        
 
+    public static void main(String[] args){
+        
+ Tekstikayttoliittyma.Paavalikko valikko = new Paavalikko();
         Scanner lukija = new Scanner(System.in);
 
         System.out.println("Avataanko ohjelma \"Populaatio\"  joo/ei");
