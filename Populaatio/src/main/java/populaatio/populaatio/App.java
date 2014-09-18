@@ -7,7 +7,7 @@ public class App {
 
 
     public static void main(String[] args){
-        
+      
  Tekstikayttoliittyma.Paavalikko valikko = new Paavalikko();
         Scanner lukija = new Scanner(System.in);
 

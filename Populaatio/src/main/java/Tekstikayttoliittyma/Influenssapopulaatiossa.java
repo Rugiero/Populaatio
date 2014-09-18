@@ -5,34 +5,74 @@ import java.util.Scanner;
 public class Influenssapopulaatiossa {
 
     private final Scanner lukija = new Scanner(System.in);
-
-    private int koko = 0;
-    private double lisaantymistahti = 0;
-    private double tarttuvuus = 0;
-    private double tiheys = 0;
+//    N:Populaation koko, I: Sairastuneita populaatiossa aluksi, B=tarttumisintesiteetti, a=parantumistodennakoisyys
+    private String syote;
+    private int N;
+    private int I;
+    private double B;
+    private double a;
     private Populaatiot.PopulaatioYksiLaji Populaatio;
     private Populaatiot.SyotteidenTestaus Syotteidentestaus = new Populaatiot.SyotteidenTestaus();
-    
 
     public void paanakyma() {
         //Luodaan ensin populaatiollemme olio:
-        this.Populaatio = new Populaatiot.PopulaatioYksiLaji(koko, lisaantymistahti, tarttuvuus, tiheys);
+
         //Ensin kysytään populaation kokoa:
-        System.out.println("Anna populaation koko (2-1000)");
-        Syotteidentestaus.KokonaisluvunSyotto(lukija.nextLine(), this.koko);
+        System.out.println("Anna populaation koko:");
+        syote = lukija.nextLine();
+        while (true) {
+            if (Syotteidentestaus.KokonaisluvunSyotto(syote) == true) {
+                this.N = Integer.parseInt(syote);
+                break;
+            } else {
+                System.out.println("Anna populaation koko:");
+                syote = lukija.nextLine();
+            }
+        }
 
         //Sitten kysytään leviämistodennäköisyyttä:
-        System.out.println("Anna tarttuvuus desimaalina väliltä 0.0-1.0");
-        Syotteidentestaus.DesimaalinSyotto(lukija.nextLine(), this.tarttuvuus);
+        System.out.println("Anna sairastuneiden määrä aluksi");
+        syote = lukija.nextLine();
+        while (true) {
+            if (Syotteidentestaus.KokonaisluvunSyotto(syote) == true) {
+                this.I = Integer.parseInt(syote);
+                break;
+            } else {
+                System.out.println("Anna airastuneiden määrä aluksi:");
+                syote = lukija.nextLine();
+            }
+        }
         //Lisääntymistahtia:
-        System.out.println("Anna lisääntymistahti desimaalina väliltä 0.0-1.0");
-        Syotteidentestaus.DesimaalinSyotto(lukija.nextLine(), this.lisaantymistahti);
-        //Tiheyttä:
-        System.out.println("Anna tiheys desimaalina väliltä 0.0-1.0");
-        Syotteidentestaus.DesimaalinSyotto(lukija.nextLine(), this.tiheys);
+        System.out.println("Anna tarttumisintesiteetti");
+        syote = lukija.nextLine();
+        while (true) {
+            if (Syotteidentestaus.DesimaalinSyotto(syote) == true) {
+                this.B = Double.parseDouble(syote);
+                break;
+            } else {
+                System.out.println("Anna tarttumisintesiteetti:");
+                syote = lukija.nextLine();
+            }
+        }
+        //Parantumistodennakoisyytta:
+        System.out.println("Anna parantumistodennakoisyys (per aikayksikko):");
+        syote = lukija.nextLine();
+        while (true) {
+            if (Syotteidentestaus.DesimaalinSyotto(syote) == true) {
+                this.a = Double.parseDouble(syote);
+                break;
+            } else {
+                System.out.println("Anna parantumistodennakoisyys (per aikayksikko):");
+                syote = lukija.nextLine();
+            }
+        }
 
-      
+        this.Populaatio = new Populaatiot.PopulaatioYksiLaji(N, I, B, a);
+
+        System.out.println("Lasketaan arvot:");
+
+        this.Populaatio.laskeKehitys();
+
     }
-
 
 }

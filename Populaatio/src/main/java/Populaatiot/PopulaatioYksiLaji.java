@@ -1,64 +1,61 @@
-
-
-
 //Luokalla konstruoidaan olio, mikä sisältää tiedot yhden lajin populaatiossa. Tarkoitettu 'Influenssapop-
 //ulaatiossa tilanteeseen.
 package Populaatiot;
 
-  
 public class PopulaatioYksiLaji {
-    
-    
-    private int populaatio;
-    private double lisaantymistahti;
+
+    private int populaationkoko;
+    private int sairastuneitaalussa;
+
     private double tarttuvuus;
     private double tiheys;
+    private double todennakoisyystoipua;
+    
+    private matematiikka.influenssapopulaatiossa math = new matematiikka.influenssapopulaatiossa();
+    
+    
     
 
+    public PopulaatioYksiLaji(int N, int I, double B, double a) {
+      
 
+          this.populaationkoko = N;
+        this.sairastuneitaalussa = I;
+             
+        this.tarttuvuus = B;
+        this.todennakoisyystoipua = a;
+
+    }
     
- public PopulaatioYksiLaji(int koko1,double lisaantymistahti1, double tarttuvuus1, double tiheys1 ) {
-       this.populaatio=koko1;
-       this.lisaantymistahti = lisaantymistahti1;
-       this.tarttuvuus = tarttuvuus1;
-       this.tiheys = tiheys1;
+    public void laskeKehitys() {
+        
+        System.out.println(this.populaationkoko +" " + this.sairastuneitaalussa +" " + this.tarttuvuus +" " + this.todennakoisyystoipua);
+        
+        
+        math.laske(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
+        
+        
         
     }
- 
- 
-    public void AsetaPopulaatio(int a) {
-        this.populaatio= a;
 
-    }
-
-    public void AsetaTarttuvuus(double a) {
-        this.tarttuvuus = a;
-
-    }
-
-    public void AsetaLisaantymistahti(double a) {
-        this.lisaantymistahti = a;
-
-    }
-
-    public void Asetatiheys(double a) {
-        this.tiheys = a;
-
-    }
-
-    
-    
-    
-    
-    
-    
-    
-
-   
-     @Override
-    public String toString() {
-        return "Koko: "+ populaatio + "Lisääntymistahti: " + lisaantymistahti + "Tarttuvuus: " + tarttuvuus +  "Tiheys: " + tiheys;
-    }
+//    public void AsetaPopulaatio(int a) {
+//        this.populaationkoko = a;
+//
+//    }
+//
+//    public void AsetaTarttuvuus(double a) {
+//        this.tarttuvuus = a;
+//
+//    }
+//
+//
+//    public void Asetatiheys(double a) {
+//        this.tiheys = a;
+//
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Koko: " + populaatio + "Lisääntymistahti: " + lisaantymistahti + "Tarttuvuus: " + tarttuvuus + "Tiheys: " + tiheys;
+//    }
 }
-
-
