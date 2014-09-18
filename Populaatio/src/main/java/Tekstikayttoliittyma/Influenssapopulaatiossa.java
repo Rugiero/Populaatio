@@ -18,44 +18,44 @@ public class Influenssapopulaatiossa {
         //Luodaan ensin populaatiollemme olio:
 
         //Ensin kysytään populaation kokoa:
-        System.out.println("Anna populaation koko:");
+        System.out.println("Populaation koko:");
         syote = lukija.nextLine();
         while (true) {
             if (Syotteidentestaus.KokonaisluvunSyotto(syote) == true) {
                 this.N = Integer.parseInt(syote);
                 break;
             } else {
-                System.out.println("Anna populaation koko:");
+                System.out.println("Populaation koko:");
                 syote = lukija.nextLine();
             }
         }
 
         //Sitten kysytään leviämistodennäköisyyttä:
-        System.out.println("Anna sairastuneiden määrä aluksi");
+        System.out.println("Sairastuneiden määrä aluksi");
         syote = lukija.nextLine();
         while (true) {
             if (Syotteidentestaus.KokonaisluvunSyotto(syote) == true) {
                 this.I = Integer.parseInt(syote);
                 break;
             } else {
-                System.out.println("Anna airastuneiden määrä aluksi:");
+                System.out.println("Sairastuneiden määrä aluksi:");
                 syote = lukija.nextLine();
             }
         }
         //Lisääntymistahtia:
-        System.out.println("Anna tarttumisintesiteetti");
+        System.out.println("Tarttumisintesiteetti välillä 0-1 (Arvolle on tietty biologinen määritelmä. Saa olla hyvin pieni varsinkin isoilla populaatioilla");
         syote = lukija.nextLine();
         while (true) {
             if (Syotteidentestaus.DesimaalinSyotto(syote) == true) {
                 this.B = Double.parseDouble(syote);
                 break;
             } else {
-                System.out.println("Anna tarttumisintesiteetti:");
+                System.out.println("Tarttumisintesiteetti:");
                 syote = lukija.nextLine();
             }
         }
         //Parantumistodennakoisyytta:
-        System.out.println("Anna parantumistodennakoisyys (per aikayksikko):");
+        System.out.println("Parantumistodennakoisyys (per aikayksikko):");
         syote = lukija.nextLine();
         while (true) {
             if (Syotteidentestaus.DesimaalinSyotto(syote) == true) {

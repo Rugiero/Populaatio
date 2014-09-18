@@ -1,14 +1,12 @@
 -------------------------------------------------------------------------------
-Test set: PopulaatioTest
+Test set: matematiikkatest.influenssapopulaatiossaTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.236 sec <<< FAILURE!
-TestataanVirheellisisaKokonaislukusyotteita(PopulaatioTest)  Time elapsed: 0.055 sec  <<< FAILURE!
-java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:92)
-	at org.junit.Assert.assertTrue(Assert.java:43)
-	at org.junit.Assert.assertFalse(Assert.java:68)
-	at org.junit.Assert.assertFalse(Assert.java:79)
-	at PopulaatioTest.TestataanVirheellisisaKokonaislukusyotteita(PopulaatioTest.java:34)
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.343 sec <<< FAILURE!
+KokeillaanLaskeaEriArvoilla(matematiikkatest.influenssapopulaatiossaTest)  Time elapsed: 0.341 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<...ntyy epidemia). I-->[5]0> but was:<...ntyy epidemia). I-->[2]0>
+	at org.junit.Assert.assertEquals(Assert.java:125)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at matematiikkatest.influenssapopulaatiossaTest.KokeillaanLaskeaEriArvoilla(influenssapopulaatiossaTest.java:35)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

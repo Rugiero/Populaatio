@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.184" errors="0" skipped="0" tests="6" name="PopulaatioTest">
+<testsuite failures="1" time="0.342" errors="0" skipped="0" tests="1" name="matematiikkatest.influenssapopulaatiossaTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -59,13 +59,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.056" classname="PopulaatioTest" name="TestataanVirheellisisaKokonaislukusyotteita">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:92)
-	at org.junit.Assert.assertTrue(Assert.java:43)
-	at org.junit.Assert.assertFalse(Assert.java:68)
-	at org.junit.Assert.assertFalse(Assert.java:79)
-	at PopulaatioTest.TestataanVirheellisisaKokonaislukusyotteita(PopulaatioTest.java:34)
+  <testcase time="0.341" classname="matematiikkatest.influenssapopulaatiossaTest" name="KokeillaanLaskeaEriArvoilla">
+    <failure message="expected:&lt;...ntyy epidemia). I--&gt;[5]0&gt; but was:&lt;...ntyy epidemia). I--&gt;[2]0&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;...ntyy epidemia). I--&gt;[5]0&gt; but was:&lt;...ntyy epidemia). I--&gt;[2]0&gt;
+	at org.junit.Assert.assertEquals(Assert.java:125)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at matematiikkatest.influenssapopulaatiossaTest.KokeillaanLaskeaEriArvoilla(influenssapopulaatiossaTest.java:35)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -100,10 +98,8 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </failure>
+    <system-out>5 5 5 5 6 6 6 6 6 6 7 7 7 7 7 8 8 8 8 8 9 9 9 9 9 10 10 10 10 10 11 11 11 11 11 12 12 12 12 12 13 13 13 13 13 13 14 14 14 14 14 14 15 15 15 15 15 15 16 16 16 16 16 16 16 16 17 17 17 17 17 17 17 17 17 17 18 18 18 18 18 18 18 18 18 18 18 18 18 18 19 19 19 19 19 19 19 19 19 19 
+5 5 5 5 6 6 6 6 6 6 7 7 7 7 7 8 8 8 8 8 9 9 9 9 9 10 10 10 10 10 11 11 11 11 11 12 12 12 12 12 13 13 13 13 13 13 14 14 14 14 14 14 15 15 15 15 15 15 16 16 16 16 16 16 16 16 17 17 17 17 17 17 17 17 17 17 18 18 18 18 18 18 18 18 18 18 18 18 18 18 19 19 19 19 19 19 19 19 19 19 \Tauti on endeeminen (syntyy epidemia). I--&gt;20
+</system-out>
   </testcase>
-  <testcase time="0" classname="PopulaatioTest" name="TestataanSyotteitaKirjaimillaJaErikoismerkeilla"/>
-  <testcase time="0.001" classname="PopulaatioTest" name="TestataanVirheellisillaDesimaaleilla"/>
-  <testcase time="0" classname="PopulaatioTest" name="TestataanDesimaalisyotettaKirjaimillajaErikoismerkeilla"/>
-  <testcase time="0" classname="PopulaatioTest" name="TestataanHyvaksyttaviaKokonaislukusyotteita"/>
-  <testcase time="0" classname="PopulaatioTest" name="TestataanHyvaksyttavillaDesimaaleilla"/>
 </testsuite>
