@@ -25,7 +25,12 @@ public class Paavalikko {
                 this.influenssapopulaatiossa.paanakyma();
 
             } else if (this.syote.equals("2")) {
-                this.petoelainsaaliselain.paanakyma();
+                matematiikka.petoelainsaaliselain laskin = new matematiikka.petoelainsaaliselain();
+                
+                laskin.laske(5000, 0, 100, 0.4, 0.37, 0.3, 0.05);
+                
+                
+              //  this.petoelainsaaliselain.paanakyma();
 
             } else if (this.syote.equals("5")) {
                 break;

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: matematiikkatest.influenssapopulaatiossaTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.343 sec <<< FAILURE!
-KokeillaanLaskeaEriArvoilla(matematiikkatest.influenssapopulaatiossaTest)  Time elapsed: 0.341 sec  <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.397 sec <<< FAILURE!
+KokeillaanLaskeaEriArvoilla(matematiikkatest.influenssapopulaatiossaTest)  Time elapsed: 0.352 sec  <<< FAILURE!
 org.junit.ComparisonFailure: expected:<...ntyy epidemia). I-->[5]0> but was:<...ntyy epidemia). I-->[2]0>
 	at org.junit.Assert.assertEquals(Assert.java:125)
 	at org.junit.Assert.assertEquals(Assert.java:147)
