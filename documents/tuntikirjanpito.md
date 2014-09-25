@@ -10,3 +10,10 @@ Säätöä JavaOctave- kirjaston kanssa. Sain lopulta toimimaan pintapuolisesti yhde
 
 18.9.2014 3h
 Lisäsin testejä ja ominaisuuksia matematiikkaluokkaan.
+
+22.9.2014 6h
+Matematiikkaluokkaa muokattu.
+
+25.9. 7h
+Lisää matematiikkaluokkaa. Javadocceja lisätty, uusi luokkakaavio. Ongelmia numeerisen laskennan kanssa.
+

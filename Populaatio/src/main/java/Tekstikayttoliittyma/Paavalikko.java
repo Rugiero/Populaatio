@@ -7,7 +7,7 @@ public class Paavalikko {
     private final Scanner lukija = new Scanner(System.in);
     String syote;
     private Tekstikayttoliittyma.Influenssapopulaatiossa influenssapopulaatiossa = new Tekstikayttoliittyma.Influenssapopulaatiossa();
-    private Tekstikayttoliittyma.petoelainsaaliselain petoelainsaaliselain = new Tekstikayttoliittyma.petoelainsaaliselain();
+    private Tekstikayttoliittyma.Petoelainsaaliselain petoelainsaaliselain = new Tekstikayttoliittyma.Petoelainsaaliselain();
 
     public void alkunakyma() {
 
@@ -23,7 +23,7 @@ public class Paavalikko {
                 this.influenssapopulaatiossa.paanakyma();
             } else if (this.syote.equals("2")) {
                 //TEST!:
-                matematiikka.petoelainsaaliselain laskin = new matematiikka.petoelainsaaliselain();
+                matematiikka.Petoelainsaaliselain laskin = new matematiikka.Petoelainsaaliselain();
                 laskin.laske(5000, 0, 100, 0.4, 0.37, 0.3, 0.05);
 
             } else if (this.syote.equals("5")) {

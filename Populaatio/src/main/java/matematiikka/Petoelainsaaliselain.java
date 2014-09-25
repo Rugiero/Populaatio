@@ -5,7 +5,7 @@ import dk.ange.octave.OctaveEngineFactory;
 import dk.ange.octave.type.OctaveDouble;
 import dk.ange.octave.type.OctaveString;
 
-public class petoelainsaaliselain {
+public class Petoelainsaaliselain {
 
     OctaveEngine octave = new OctaveEngineFactory().getScriptEngine();
     private int N;

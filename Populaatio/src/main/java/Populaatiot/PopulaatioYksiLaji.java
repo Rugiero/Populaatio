@@ -1,5 +1,7 @@
-//Luokalla konstruoidaan olio, mikä sisältää tiedot yhden lajin populaatiossa. Tarkoitettu 'Influenssapop-
-//ulaatiossa tilanteeseen.
+/**
+ * Luokalla konstruoidaan olio, mikä sisältää tiedot yhden lajin populaatiossa.
+ * Tarkoitettu 'Influenssapopulaatiossa' tilanteeseen.
+ */
 package Populaatiot;
 
 public class PopulaatioYksiLaji {
@@ -11,8 +13,11 @@ public class PopulaatioYksiLaji {
     private double tiheys;
     private double todennakoisyystoipua;
 
-    private matematiikka.influenssapopulaatiossa math = new matematiikka.influenssapopulaatiossa();
+    private matematiikka.Influenssapopulaatiossa math = new matematiikka.Influenssapopulaatiossa();
 
+    /**
+     * Luokkaan listataan yhden lajin populaation ominaisuuksia.
+     */
     public PopulaatioYksiLaji(int N, int I, double B, double a) {
 
         this.populaationkoko = N;
@@ -22,21 +27,23 @@ public class PopulaatioYksiLaji {
 
     }
 
-    //Lasketaan kehitys ilman immuniteettia:
-
+    /**
+     * Lasketaan kehitys ilman immuniteettia:
+     */
     public void laskeKehitysSISmalli() {
 
         System.out.println(this.populaationkoko + " " + this.sairastuneitaalussa + " " + this.tarttuvuus + " " + this.todennakoisyystoipua);
 
-        math.laske(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
+        math.laskeSIS(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
 
     }
 
-    //Lasketaan kehitys immuniteetilla:
-
+    /**
+     * Lasketaan kehitys immuniteetilla
+     */
     public void laskeKehitysSIRmalli() {
 
-        math.laskeImmuniteetilla(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
+        math.laskeSIR(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
     }
 
 //    public void AsetaPopulaatio(int a) {

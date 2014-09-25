@@ -31,13 +31,13 @@ public class PopulaatioTest {
     @Test
     public void TestataanVirheellisisaKokonaislukusyotteita() {
         Populaatiot.SyotteidenTestaus test = new Populaatiot.SyotteidenTestaus();
-        assertFalse(test.KokonaisluvunSyotto("0"));
-        assertFalse(test.KokonaisluvunSyotto("124124"));
+
         assertFalse(test.KokonaisluvunSyotto("-2300"));
-        assertFalse(test.KokonaisluvunSyotto("100000"));
+
         assertFalse(test.KokonaisluvunSyotto("-1"));
-        assertFalse(test.KokonaisluvunSyotto("0"));
-        assertFalse(test.KokonaisluvunSyotto("1"));
+        assertFalse(test.KokonaisluvunSyotto("4.5"));
+        assertFalse(test.KokonaisluvunSyotto("-1.8"));
+        assertFalse(test.KokonaisluvunSyotto("-0.1"));
         assertFalse(test.KokonaisluvunSyotto("-1234"));
 
     }
@@ -87,6 +87,7 @@ public class PopulaatioTest {
     @Test
     public void TestataanHyvaksyttaviaKokonaislukusyotteita() {
         Populaatiot.SyotteidenTestaus test = new Populaatiot.SyotteidenTestaus();
+        assertTrue(test.KokonaisluvunSyotto("0"));
         assertTrue(test.KokonaisluvunSyotto("14"));
         assertTrue(test.KokonaisluvunSyotto("2"));
         assertTrue(test.KokonaisluvunSyotto("1000"));
