@@ -10,32 +10,33 @@ public class PopulaatioYksiLaji {
     private double tarttuvuus;
     private double tiheys;
     private double todennakoisyystoipua;
-    
+
     private matematiikka.influenssapopulaatiossa math = new matematiikka.influenssapopulaatiossa();
-    
-    
-    
 
     public PopulaatioYksiLaji(int N, int I, double B, double a) {
-      
 
-          this.populaationkoko = N;
+        this.populaationkoko = N;
         this.sairastuneitaalussa = I;
-             
         this.tarttuvuus = B;
         this.todennakoisyystoipua = a;
 
     }
-    
-    public void laskeKehitys() {
-        
-        System.out.println(this.populaationkoko +" " + this.sairastuneitaalussa +" " + this.tarttuvuus +" " + this.todennakoisyystoipua);
-        
-        
+
+    //Lasketaan kehitys ilman immuniteettia:
+
+    public void laskeKehitysSISmalli() {
+
+        System.out.println(this.populaationkoko + " " + this.sairastuneitaalussa + " " + this.tarttuvuus + " " + this.todennakoisyystoipua);
+
         math.laske(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
-        
-        
-        
+
+    }
+
+    //Lasketaan kehitys immuniteetilla:
+
+    public void laskeKehitysSIRmalli() {
+
+        math.laskeImmuniteetilla(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
     }
 
 //    public void AsetaPopulaatio(int a) {
