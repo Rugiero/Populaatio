@@ -39,7 +39,12 @@ public class PopulaatioTest {
         assertFalse(test.KokonaisluvunSyotto("-1.8"));
         assertFalse(test.KokonaisluvunSyotto("-0.1"));
         assertFalse(test.KokonaisluvunSyotto("-1234"));
-
+        assertFalse(test.KokonaisluvunSyotto("-gg"));
+        assertFalse(test.KokonaisluvunSyotto("-%%"));
+        assertFalse(test.KokonaisluvunSyotto("-/"));
+        assertFalse(test.KokonaisluvunSyotto("-abc"));
+        assertFalse(test.KokonaisluvunSyotto("-a"));
+        assertFalse(test.KokonaisluvunSyotto("?"));
     }
 
     @Test
@@ -67,6 +72,11 @@ public class PopulaatioTest {
         assertFalse(test.DesimaalinSyotto("1.1"));
         assertFalse(test.DesimaalinSyotto("-0.9"));
         assertFalse(test.DesimaalinSyotto("-32"));
+        assertFalse(test.DesimaalinSyotto("-1000000"));
+        assertFalse(test.DesimaalinSyotto("-f.ff.ggr.f332"));
+        assertFalse(test.DesimaalinSyotto("-\\"));
+        assertFalse(test.DesimaalinSyotto("-=)"));
+        assertFalse(test.DesimaalinSyotto("-.0"));
 
     }
 
@@ -81,7 +91,12 @@ public class PopulaatioTest {
         assertFalse(test.DesimaalinSyotto(""));
         assertFalse(test.DesimaalinSyotto("O."));
         assertFalse(test.DesimaalinSyotto("f"));
-
+        assertFalse(test.DesimaalinSyotto("fatraafaf"));
+        assertFalse(test.DesimaalinSyotto("-1421"));
+        assertFalse(test.DesimaalinSyotto("-333232"));
+        assertFalse(test.DesimaalinSyotto("€€¥¥$£"));
+        assertFalse(test.DesimaalinSyotto("æœ"));
+        assertFalse(test.DesimaalinSyotto("f"));
     }
 
     @Test
@@ -110,7 +125,16 @@ public class PopulaatioTest {
         assertTrue(test.DesimaalinSyotto("0.000001"));
         assertTrue(test.DesimaalinSyotto("0.74"));
         assertTrue(test.DesimaalinSyotto("0.3"));
+        assertTrue(test.DesimaalinSyotto("0.999999"));
 
+    }
+    
+    @Test
+    public void TestataanAlkunakumaa() {
+        
+        
+        
+        
     }
 
 }
