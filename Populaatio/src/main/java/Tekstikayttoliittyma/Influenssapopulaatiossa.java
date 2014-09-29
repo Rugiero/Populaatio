@@ -1,5 +1,7 @@
 package Tekstikayttoliittyma;
 
+import Graafinenkayttoliittyma.PiirraKayra;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Influenssapopulaatiossa {
@@ -11,6 +13,7 @@ public class Influenssapopulaatiossa {
      */
     private final Scanner lukija = new Scanner(System.in);
 
+    private double[] namatulokset;
     private String syote;
     private int N;
     private int I;
@@ -41,7 +44,9 @@ public class Influenssapopulaatiossa {
          * Tarttumisintesiteettiä:
          */
         this.B = ArvojenKyselyDesimaalit("Tarttumisintesiteetti välillä 0-1 (Arvolle on tietty biologinen määritelmä. Saa olla hyvin pieni varsinkin isoilla populaatioilla");
-        //Parantumistodennakoisyytta:
+        /**
+         * Parantumistodennakoisyytta:
+         */
         this.a = ArvojenKyselyDesimaalit("Parantumistodennakoisyys (per aikayksikko): ");
 
         this.Populaatio = new Populaatiot.PopulaatioYksiLaji(N, I, B, a);
@@ -57,14 +62,21 @@ public class Influenssapopulaatiossa {
             switch (syote) {
                 case "SIR":
 
-                    this.Populaatio.laskeKehitysSIRmalli();
+                
                     break OUTER;
                 case "SIS":
 
-                    this.Populaatio.laskeKehitysSISmalli();
+          
+            this.namatulokset = this.Populaatio.laskeKehitysSISmalli();
                     break OUTER;
             }
         }
+        
+        //Listataan tulokset arraylistiin:
+        
+        ArrayList<double[]> tulokset = new ArrayList<>();
+        tulokset.add(namatulokset);
+        new PiirraKayra("a", "b", "c", tulokset).setVisible(true);
 
     }
 

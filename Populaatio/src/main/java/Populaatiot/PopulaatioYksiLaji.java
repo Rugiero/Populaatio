@@ -17,6 +17,10 @@ public class PopulaatioYksiLaji {
 
     /**
      * Luokkaan listataan yhden lajin populaation ominaisuuksia.
+     * @param N
+     * @param I
+     * @param B
+     * @param a
      */
     public PopulaatioYksiLaji(int N, int I, double B, double a) {
 
@@ -29,12 +33,11 @@ public class PopulaatioYksiLaji {
 
     /**
      * Lasketaan kehitys ilman immuniteettia:
+     * @return 
      */
-    public void laskeKehitysSISmalli() {
+    public double[] laskeKehitysSISmalli() {
 
-        System.out.println(this.populaationkoko + " " + this.sairastuneitaalussa + " " + this.tarttuvuus + " " + this.todennakoisyystoipua);
-
-        math.laskeSIS(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
+       return math.laskeSIS(this.populaationkoko, this.sairastuneitaalussa, this.tarttuvuus, this.todennakoisyystoipua);
 
     }
 

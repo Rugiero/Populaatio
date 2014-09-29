@@ -1,5 +1,6 @@
 package matematiikka;
 
+import Graafinenkayttoliittyma.PiirraKayra;
 import dk.ange.octave.OctaveEngine;
 import dk.ange.octave.OctaveEngineFactory;
 import dk.ange.octave.type.OctaveDouble;
@@ -7,6 +8,7 @@ import dk.ange.octave.type.OctaveInt;
 import dk.ange.octave.type.OctaveObject;
 import dk.ange.octave.type.OctaveString;
 import java.util.Arrays;
+import javax.swing.SwingUtilities;
 
 public class Influenssapopulaatiossa {
 
@@ -17,7 +19,7 @@ public class Influenssapopulaatiossa {
     private double B;
     private double a;
 
-    public void laskeSIS(int N, int I, double B, double a) {
+    public double[] laskeSIS(int N, int I, double B, double a) {
 
         this.N = N;
         this.I = I;
@@ -32,20 +34,23 @@ public class Influenssapopulaatiossa {
         octave.eval("t=linspace(0,200,1000);");
         octave.eval("y = lsode(@(x, t) " + f + ", x_0,t);");
 
-        OctaveDouble h = octave.get(OctaveDouble.class, "y");
+        OctaveDouble I1 = octave.get(OctaveDouble.class, "y");
+        OctaveDouble t = octave.get(OctaveDouble.class, "t");
+
         octave.close();
+        double[] y = I1.getData();
 
         //Listataan ratkaisut:
-        this.tulokset = h.getData();
-
         //Tulostetaan ratkaisuja:
-        System.out.println("");
-        System.out.println(Tulostatulokset());
-        System.out.println(TulostaRajaArvoSIS());
+//        System.out.println("");
+//        System.out.println(Tulostatulokset());
+//        System.out.println(TulostaRajaArvoSIS());
+
+        return y;
 
     }
 
-    public void laskeSIR(int N, int I, double B, double a) {
+    public int[][] laskeSIR(int N, int I, double B, double a) {
         this.N = N;
         this.I = I;
         this.B = B;
@@ -87,10 +92,9 @@ public class Influenssapopulaatiossa {
         this.tulokset = sairastuneita.getData();
         System.out.println(Tulostatulokset());
 
-        
         //Metodi kaipaa viela rukkausta:
 //        System.out.println(TulostaRajaArvoSIR());
-
+        return null;
     }
 
     public String Tulostatulokset() {
@@ -162,9 +166,9 @@ public class Influenssapopulaatiossa {
             double s = this.tulokset[1000] / this.N;
             octave.eval("function y = f(x) y =(1-x)+(1/" + R0 + ")*log(x); endfunction; ");
             octave.eval("sairaat =" + N + "- (fsolve (\"f\"," + s + "))*" + N + ";");
-            
-              octave.eval("sairaat = int8(sairaat);");
-             
+
+            octave.eval("sairaat = int8(sairaat);");
+
             OctaveInt S = octave.get(OctaveInt.class, "sairaat");
             octave.close();
             int[] sairastuneet = S.getData();
