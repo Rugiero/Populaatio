@@ -6,11 +6,12 @@ public class Paavalikko {
 
     private final Scanner lukija = new Scanner(System.in);
     String syote;
-    private Tekstikayttoliittyma.Influenssapopulaatiossa influenssapopulaatiossa = new Tekstikayttoliittyma.Influenssapopulaatiossa();
-    private Tekstikayttoliittyma.petoelainsaaliselain petoelainsaaliselain = new Tekstikayttoliittyma.petoelainsaaliselain();
+    private Tekstikayttoliittyma.InfluenssaPopulaatiossa influenssapopulaatiossa = new Tekstikayttoliittyma.InfluenssaPopulaatiossa();
+    private Tekstikayttoliittyma.PetoelainSaaliselain petoelainsaaliselain = new Tekstikayttoliittyma.PetoelainSaaliselain();
 
     public void alkunakyma() {
 
+       
         System.out.println("Tervetuloa Populaatio ohjelman pariin! Valitse vaihtoehdoista:");
         System.out.println("1: Luo uusi yhden lajin populaatio");
         System.out.println("2: Luo uusi kahden lajin populaatio");
@@ -22,9 +23,7 @@ public class Paavalikko {
             if (this.syote.equals("1")) {
                 this.influenssapopulaatiossa.paanakyma();
             } else if (this.syote.equals("2")) {
-                //TEST!:
-                matematiikka.petoelainsaaliselain laskin = new matematiikka.petoelainsaaliselain();
-                laskin.laske(5000, 0, 100, 0.4, 0.37, 0.3, 0.05);
+                this.petoelainsaaliselain.paanakyma();
 
             } else if (this.syote.equals("5")) {
                 break;
@@ -38,5 +37,6 @@ public class Paavalikko {
         }
 
     }
+
 
 }
