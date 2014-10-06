@@ -1,21 +1,20 @@
 package populaatio.populaatio;
 
-import Graafinenkayttoliittyma.PiirraKayra;
-import Tekstikayttoliittyma.Paavalikko;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import Matematiikka.Influenssapopulaatiossa;
-import org.jfree.chart.JFreeChart;
+
+import Graafinenkayttoliittyma.Influenssa;
+import Graafinenkayttoliittyma.PaaValikko;
 
 public class App {
 
     public static void main(String[] args) {
 
-        Paavalikko valikko = new Paavalikko();
-        valikko.alkunakyma();
+//        Paavalikko valikko = new Paavalikko();
+//        valikko.alkunakyma();
+//        Graafinenkayttoliittyma.PaaValikko p = new PaaValikko();
+        Influenssa p = new Influenssa();
+        
+        
+        
+
     }
 }
