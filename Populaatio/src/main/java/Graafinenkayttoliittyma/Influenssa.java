@@ -3,6 +3,8 @@ package Graafinenkayttoliittyma;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +23,7 @@ public class Influenssa implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(8, 2);
+        GridLayout layout = new GridLayout(9, 2);
         container.setLayout(layout);
 
         JLabel N = new JLabel("Populaation koko: ");
@@ -46,7 +48,8 @@ public class Influenssa implements Runnable {
         JButton lisaaNappi1 = new JButton("Laske R");
         JButton lisaaNappi2 = new JButton("Laske raja-arvo");
         JButton lisaaNappi3 = new JButton("Laske sairastuneita enimillään");
-        // tapahtumankuuntelija
+          JButton lisaaNappi4 = new JButton("Näytä Faasi");
+        JButton Pnkma = new JButton("Paanäkymä");
 
         container.add(N);
         container.add(Nkentta);
@@ -64,7 +67,19 @@ public class Influenssa implements Runnable {
         container.add(lisaaNappi1);
         container.add(lisaaNappi);
         container.add(lisaaNappi2);
-                container.add(lisaaNappi3);
+        container.add(lisaaNappi3);
+                container.add(lisaaNappi4);
+        container.add(Pnkma);
+
+        Pnkma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              new PaaValikko();
+                 frame.setVisible(false);
+
+            }
+        });
+ 
     }
 
     @Override

@@ -10,8 +10,8 @@ public class App {
 
 //        Paavalikko valikko = new Paavalikko();
 //        valikko.alkunakyma();
-//        Graafinenkayttoliittyma.PaaValikko p = new PaaValikko();
-        Influenssa p = new Influenssa();
+        Graafinenkayttoliittyma.PaaValikko p = new PaaValikko();
+//        Influenssa p = new Influenssa();
         
         
         
