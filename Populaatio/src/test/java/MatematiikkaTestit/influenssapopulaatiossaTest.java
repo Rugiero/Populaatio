@@ -32,45 +32,28 @@ public class influenssapopulaatiossaTest {
     @After
     public void tearDown() {
     }
+//Haluamme pituutta 2 olevan arraylistin
 
     @Test
     public void KokeillaanLaskeaEriArvoillaSIS() {
+        assertEquals(2, test.laskeSIS(50, 5, 0.007, 0.1).size());
+        assertEquals(2, test.laskeSIS(50, 5, 0.007, 0.1).size());
+        assertEquals(2, test.laskeSIS(1, 0, 0.01, 0).size());
+        assertEquals(2, test.laskeSIS(1, 0, 0.99, 0.99).size());
+        assertEquals(2, test.laskeSIS(5000, 4999, 0.5, 0.5).size());
 
-        test.laskeSIS(50, 5, 0.01, 0.3);
-        assertEquals("Tauti on endeeminen (syntyy epidemia). I-->20", test.TulostaRajaArvoSIS());
-
-        test.laskeSIS(10000, 1, 0.004, 0.7);
-        assertEquals("Tauti on endeeminen (syntyy epidemia). I-->9825", test.TulostaRajaArvoSIS());
-
-        test.laskeSIS(1, 1, 0.004, 0.7);
-        assertEquals("I-->0, Tauti on ohimenevä", test.TulostaRajaArvoSIS());
-
-        test.laskeSIS(5000, 1, 0.004, 0.7);
-        assertEquals("Tauti on endeeminen (syntyy epidemia). I-->4825", test.TulostaRajaArvoSIS());
-
-        test.laskeSIS(2, 1, 0.001, 0.7);
-        assertEquals("I-->0, Tauti on ohimenevä", test.TulostaRajaArvoSIS());
-
-        test.laskeSIS(0, 0, 0.004, 0.7);
-
-        assertEquals("Ei sairastuneita alussa, tauti ei puhkea.", test.TulostaRajaArvoSIS());
-
-        test.laskeSIS(1000, 0, 0.004, 0.7);
-        assertEquals("Ei sairastuneita alussa, tauti ei puhkea.", test.TulostaRajaArvoSIS());
-
-         test.laskeSIS(4, 4, 0.2, 0.2);
-         assertEquals("Tauti on endeeminen (syntyy epidemia). I-->3", test.TulostaRajaArvoSIS());
-        
     }
+//Halueamme palautukseen pituutta 3 olevan arraylistin:
 
-//    @Test
-//
-//    public void KokeillaanLaskeaEriArvoillaSIR() {
-//
-//        test.laskeSIR(50, 5, 0.007, 0.1);
-//        assertEquals("Epidemiaa ei synny. ", test.TulostaRajaArvoSIR());
-//
-////           test.laskeSIS(1000, 1, 0.004, 0.7);
-//    }
+    @Test
+    public void KokeillaanLaskeaEriArvoillaSIR() {
+
+        assertEquals(3, test.laskeSIR(50, 5, 0.007, 0.1).size());
+        assertEquals(3, test.laskeSIR(50, 5, 0.007, 0.1).size());
+        assertEquals(3, test.laskeSIR(1, 0, 0.01, 0).size());
+        assertEquals(3, test.laskeSIR(1, 0, 0.99, 0.99).size());
+        assertEquals(3, test.laskeSIR(5000, 4999, 0.5, 0.5).size());
+
+    }
 
 }

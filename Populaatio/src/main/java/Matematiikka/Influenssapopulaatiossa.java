@@ -13,6 +13,18 @@ import javax.swing.SwingUtilities;
 
 public class Influenssapopulaatiossa {
 
+    /**
+     *N= Populaation koko
+     *I= Sairastuneita alussa
+     *B = tarttumisintesiteetti
+     *a = tod.näk parantua/ aikayksikkö
+     * T = aikataulukko
+     * TuloksetI = taulukko I:lle lasketuista tuloksista
+     * TuloksetS = vastaava S:lle
+     * 
+     * Esimerkkiarvot: N=50, I = 1, B=0.003, a = 0.1.
+     *
+     */
     OctaveEngine octave = new OctaveEngineFactory().getScriptEngine();
     private double[] tuloksetI;
     private double[] tuloksetS;
@@ -24,13 +36,24 @@ public class Influenssapopulaatiossa {
     private ArrayList<double[]> tulokset = new ArrayList<>();
 
     public ArrayList<double[]> laskeSIS(int N, int I, double B, double a) {
+        /**
+         * luodaan ensin yhtälö stirngiin. Käytetään octavea hyväksi tavallisen
+         * differentiaaliyhtälömme ratkaisuun. Jos N tai I = 0, hypätään
+         * laskeminen yli ja palautetaan kyseinen triviaaliratkaisu suoraan.
+         */
 
         this.N = N;
         this.I = I;
         this.B = B;
         this.a = a;
 
-        //**luodaan ensin yhtälö stirngiin. Käytetään octavea hyväksi tavallisen differentiaaliyhtälömme ratkaisuun:*/
+        /**
+         * luodaan ensin yhtälö stirngiin. Käytetään octavea hyväksi tavallisen
+         * differentiaaliyhtälömme ratkaisuun. 
+         * i
+         */
+      
+        
         String f = B + "*x*(" + (N - (a / B)) + "-x)";
 
         octave.eval("function x_prime = f(x,t) x_prime = " + B + "*x*(" + (N - (a / B)) + "-x)" + "; endfunction;");
@@ -57,7 +80,6 @@ public class Influenssapopulaatiossa {
         this.I = I;
         this.B = B;
         this.a = a;
-   
 
         /**
          * Metodissa laskemme taudin kehityksen kun sairastuneet saavat
@@ -88,7 +110,7 @@ public class Influenssapopulaatiossa {
         octave.eval("a= " + a);
 
         octave.eval("for i = 1:999    S(i+1) = (-B*S(i)*I(i))*0.2+S(i); I(i+1) = (B*S(i)*I(i)-a*I(i))*0.2+I(i); endfor;");
-         octave.eval("T=linspace(0,200,1000);");
+        octave.eval("T=linspace(0,200,1000);");
 
         OctaveDouble arvot = octave.get(OctaveDouble.class, "T");
         this.T = arvot.getData();
@@ -184,8 +206,5 @@ public class Influenssapopulaatiossa {
 //            return "Epidemiassa sairastuneiden määrä: " + sairastuneet[0];
 //
 //        }
-//
 //        return null;
-//
-//    }
 }

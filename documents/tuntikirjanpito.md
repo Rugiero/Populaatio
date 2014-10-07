@@ -17,3 +17,6 @@ Matematiikkaluokkaa muokattu.
 25.9. 7h
 Lis‰‰ matematiikkaluokkaa. Javadocceja lis‰tty, uusi luokkakaavio. Ongelmia numeerisen laskennan kanssa.
 
+29.9. & 30.9 18h
+Graafinen esitys lis‰tty. Kaikki ominaisuudet toimivaksi.
+

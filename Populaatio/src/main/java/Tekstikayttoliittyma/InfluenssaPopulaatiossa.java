@@ -27,13 +27,17 @@ public class InfluenssaPopulaatiossa {
     public void paanakyma() {
 
         /**
-         * Ensin kysytään populaation kokoa:
+         * Ensin kysytään populaation kokoa. Tarkistetaan myös N != 0
          */
-        this.N = arvojenkysely.ArvojenKyselyKokonaisluvut("Populaation koko: ");
-
+        while (true) {
+            this.N = arvojenkysely.ArvojenKyselyKokonaisluvut("Populaation koko: ");
+            if (this.N != 0) {
+                break;
+            }
+        }
         /**
          * Sitten kysytään sairastuneiden määrää aluksi. Tarkistetaan myös että
-         * N>=I:
+         * N>=I ja N!= 0.
          */
         while (true) {
             this.I = arvojenkysely.ArvojenKyselyKokonaisluvut("Sairastuneiden määrä aluksi");
@@ -47,10 +51,18 @@ public class InfluenssaPopulaatiossa {
          */
         this.B = arvojenkysely.ArvojenKyselyDesimaalitValilla0Ja1("Tarttumisintesiteetti välillä 0-1 (Arvolle on tietty biologinen määritelmä. Saa olla hyvin pieni varsinkin isoilla populaatioilla");
         /**
-         * Parantumistodennakoisyytta:
+         * Parantumistodennakoisyytta. Tämäkään ei saa olla 0, nimittäin
+         * numeerinen laskumenetelmä ei toimi kyseisessä tilanteessa. Muutenkin
+         * tapaus on epämielenkiintoinen (tauti leviää räjähdysmäisesti).
          */
-        this.a = arvojenkysely.ArvojenKyselyDesimaalitValilla0Ja1("Parantumistodennakoisyys (per aikayksikko): ");
 
+        while (true) {
+
+            this.a = arvojenkysely.ArvojenKyselyDesimaalitValilla0Ja1("Parantumistodennakoisyys (per aikayksikko): ");
+            if (this.a != 0) {
+                break;
+            }
+        }
         this.Populaatio = new Populaatiot.PopulaatioYksiLaji(N, I, B, a);
 
         /**

@@ -43,7 +43,7 @@ public class PiirraFaasikayra extends JFrame {
         add(chartPanel, BorderLayout.CENTER);
 
         setSize(640, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
 
     }
