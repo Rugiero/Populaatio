@@ -26,13 +26,7 @@ public class PiirraKayra extends JFrame {
     private String y;
     private ArrayList<double[]> tulokset;
 
-    public PiirraKayra() {
-        otsikko = "";
-        x = "";
-        y = "";
-        tulokset = null;
-
-    }
+  
 
     public PiirraKayra(String otsikko, String x, String y, ArrayList<double[]> tulokset) {
         super("Populaatio");

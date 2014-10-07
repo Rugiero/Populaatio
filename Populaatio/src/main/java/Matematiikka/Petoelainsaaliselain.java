@@ -30,7 +30,7 @@ public class Petoelainsaaliselain {
 
     /**
      * Palautetaan ArrayList, joka sisältää vastaukset taulukoituna (t, R, F)
-     * 
+     *
      *
      * @param R1
      * @param F1
@@ -44,14 +44,12 @@ public class Petoelainsaaliselain {
      */
     public ArrayList<double[]> laske(double R1, double F1, double a, double b, double c, double d) {
 
-
         this.F1 = F1;
         this.R1 = R1;
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
-
 
         double h = 0.01;
         octave.eval("function ret = f(X,t) ret = [" + this.a + "*X(1)-" + this.b + "*X(1)*X(2)," + this.c + "*X(1)*X(2)-" + this.d + "*X(2)]; end");
@@ -72,7 +70,7 @@ public class Petoelainsaaliselain {
         this.tuloksetF = arvot.getData();
         this.tulokset.add(this.tuloksetF);
 
-        octave.close();
+        octave.eval("clear all");
 
         return this.tulokset;
     }

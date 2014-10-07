@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.503" errors="1" skipped="0" tests="1" name="MatematiikkaTestit.PetoElainSaalisElainTest">
+<testsuite failures="1" time="0.668" errors="0" skipped="0" tests="1" name="MatematiikkaTestit.PetoElainSaalisElainTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -61,17 +61,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.459" classname="MatematiikkaTestit.PetoElainSaalisElainTest" name="hello">
-    <error message="Task java.util.concurrent.FutureTask@36101828 rejected from java.util.concurrent.ThreadPoolExecutor@5aa205d2[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 52]" type="java.util.concurrent.RejectedExecutionException">java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@36101828 rejected from java.util.concurrent.ThreadPoolExecutor@5aa205d2[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 52]
-	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2048)
-	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:821)
-	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1372)
-	at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:132)
-	at dk.ange.octave.exec.OctaveExec.eval(OctaveExec.java:130)
-	at dk.ange.octave.io.OctaveIO.set(OctaveIO.java:56)
-	at dk.ange.octave.OctaveEngine.put(OctaveEngine.java:141)
-	at dk.ange.octave.OctaveEngine.eval(OctaveEngine.java:122)
-	at Matematiikka.Petoelainsaaliselain.laske(Petoelainsaaliselain.java:57)
+  <testcase time="0.628" classname="MatematiikkaTestit.PetoElainSaalisElainTest" name="hello">
+    <failure message="expected:&lt;3&gt; but was:&lt;6&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;3&gt; but was:&lt;6&gt;
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:472)
+	at org.junit.Assert.assertEquals(Assert.java:456)
 	at MatematiikkaTestit.PetoElainSaalisElainTest.hello(PetoElainSaalisElainTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -106,6 +102,6 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-</error>
+</failure>
   </testcase>
 </testsuite>

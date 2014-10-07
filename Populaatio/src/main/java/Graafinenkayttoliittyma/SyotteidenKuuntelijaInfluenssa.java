@@ -8,6 +8,8 @@ package Graafinenkayttoliittyma;
 import Matematiikka.Influenssapopulaatiossa;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -34,8 +36,6 @@ public class SyotteidenKuuntelijaInfluenssa implements ActionListener {
         this.akentta = akentta;
         this.SIS = SIS;
         this.SIR = SIR;
-        
-        
 
     }
 
@@ -48,6 +48,8 @@ public class SyotteidenKuuntelijaInfluenssa implements ActionListener {
                 PiirraKayra kayra = new PiirraKayra("", "lkm", "t", laskuri.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
                 kayra.Piirretaankayra();
                 kayra.setVisible(true);
+
+                ExecutorService threadPool = Executors.newFixedThreadPool(4);
 
             } else if (SIR.isSelected()) {
                 PiirraKayra kayra = new PiirraKayra("", "lkm", "t", laskuri.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));

@@ -64,7 +64,7 @@ public class Influenssapopulaatiossa {
         this.tuloksetI = arvot.getData();
         this.tulokset.add(this.tuloksetI);
 
-        octave.close();
+        octave.eval("clear all");
 
         return this.tulokset;
 
@@ -122,7 +122,7 @@ public class Influenssapopulaatiossa {
         this.tuloksetS = arvot.getData();
         this.tulokset.add(this.tuloksetS);
 
-        octave.close();
+       octave.eval("clear all");
         return this.tulokset;
     }
 
