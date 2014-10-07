@@ -37,8 +37,7 @@ public class influenssapopulaatiossaTest {
     @Test
     public void KokeillaanLaskeaEriArvoillaSIS() {
         assertEquals(2, test.laskeSIS(50, 5, 0.007, 0.1).size());
-        assertEquals(2, test.laskeSIS(50, 5, 0.007, 0.1).size());
-        assertEquals(2, test.laskeSIS(1, 0, 0.01, 0).size());
+        assertEquals(2, test.laskeSIS(1, 0, 0.01, 0.01).size());
         assertEquals(2, test.laskeSIS(1, 0, 0.99, 0.99).size());
         assertEquals(2, test.laskeSIS(5000, 4999, 0.5, 0.5).size());
 
@@ -50,7 +49,7 @@ public class influenssapopulaatiossaTest {
 
         assertEquals(3, test.laskeSIR(50, 5, 0.007, 0.1).size());
         assertEquals(3, test.laskeSIR(50, 5, 0.007, 0.1).size());
-        assertEquals(3, test.laskeSIR(1, 0, 0.01, 0).size());
+        assertEquals(3, test.laskeSIR(1, 0, 0.01, 0.001).size());
         assertEquals(3, test.laskeSIR(1, 0, 0.99, 0.99).size());
         assertEquals(3, test.laskeSIR(5000, 4999, 0.5, 0.5).size());
 

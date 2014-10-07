@@ -1,4 +1,4 @@
-package Tekstikayttoliittyma;
+package Graafinenkayttoliittyma;
 
 import java.util.Scanner;
 

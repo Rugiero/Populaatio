@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: MatematiikkaTestit.influenssapopulaatiossaTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 65.164 sec <<< FAILURE!
-KokeillaanLaskeaEriArvoillaSIS(MatematiikkaTestit.influenssapopulaatiossaTest)  Time elapsed: 28.581 sec  <<< ERROR!
-java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@4d1b6341 rejected from java.util.concurrent.ThreadPoolExecutor@411167f3[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 40]
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.6 sec <<< FAILURE!
+KokeillaanLaskeaEriArvoillaSIS(MatematiikkaTestit.influenssapopulaatiossaTest)  Time elapsed: 0.28 sec  <<< ERROR!
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@435d671a rejected from java.util.concurrent.ThreadPoolExecutor@291bfe83[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 40]
 	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2048)
 	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:821)
 	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1372)
@@ -12,7 +12,7 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Futur
 	at dk.ange.octave.io.OctaveIO.set(OctaveIO.java:56)
 	at dk.ange.octave.OctaveEngine.put(OctaveEngine.java:141)
 	at dk.ange.octave.OctaveEngine.eval(OctaveEngine.java:122)
-	at Matematiikka.Influenssapopulaatiossa.laskeSIS(Influenssapopulaatiossa.java:57)
+	at Matematiikka.Influenssapopulaatiossa.laskeSIS(Influenssapopulaatiossa.java:54)
 	at MatematiikkaTestit.influenssapopulaatiossaTest.KokeillaanLaskeaEriArvoillaSIS(influenssapopulaatiossaTest.java:40)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -47,8 +47,8 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Futur
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-KokeillaanLaskeaEriArvoillaSIR(MatematiikkaTestit.influenssapopulaatiossaTest)  Time elapsed: 36.506 sec  <<< ERROR!
-java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@64ca8735 rejected from java.util.concurrent.ThreadPoolExecutor@2c72dc45[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60]
+KokeillaanLaskeaEriArvoillaSIR(MatematiikkaTestit.influenssapopulaatiossaTest)  Time elapsed: 0.314 sec  <<< ERROR!
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@4349816e rejected from java.util.concurrent.ThreadPoolExecutor@ed07f45[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60]
 	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2048)
 	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:821)
 	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1372)
@@ -58,7 +58,7 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Futur
 	at dk.ange.octave.OctaveEngine.put(OctaveEngine.java:141)
 	at dk.ange.octave.OctaveEngine.eval(OctaveEngine.java:122)
 	at Matematiikka.Influenssapopulaatiossa.laskeSIR(Influenssapopulaatiossa.java:105)
-	at MatematiikkaTestit.influenssapopulaatiossaTest.KokeillaanLaskeaEriArvoillaSIR(influenssapopulaatiossaTest.java:52)
+	at MatematiikkaTestit.influenssapopulaatiossaTest.KokeillaanLaskeaEriArvoillaSIR(influenssapopulaatiossaTest.java:51)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

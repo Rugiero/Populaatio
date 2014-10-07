@@ -21,7 +21,7 @@ public class InfluenssaPopulaatiossa {
     private double B;
     private double a;
     private Populaatiot.PopulaatioYksiLaji Populaatio;
-    private final Tekstikayttoliittyma.SyotteidenTestaus Syotteidentestaus = new Tekstikayttoliittyma.SyotteidenTestaus();
+    private final Graafinenkayttoliittyma.SyotteidenTestaus Syotteidentestaus = new Graafinenkayttoliittyma.SyotteidenTestaus();
     private final ArvojenKyselyt arvojenkysely = new ArvojenKyselyt();
 
     public void paanakyma() {

@@ -33,7 +33,7 @@ public class PetoelainSaaliselain {
     private double d = 4;
     private Matematiikka.Petoelainsaaliselain laskin = new Matematiikka.Petoelainsaaliselain();
     private Populaatiot.PopulaatioKaksiLajia Populaatio;
-    private Tekstikayttoliittyma.SyotteidenTestaus Syotteidentestaus = new Tekstikayttoliittyma.SyotteidenTestaus();
+    private Graafinenkayttoliittyma.SyotteidenTestaus Syotteidentestaus = new Graafinenkayttoliittyma.SyotteidenTestaus();
     private final ArvojenKyselyt arvojenkysely = new ArvojenKyselyt();
     
 

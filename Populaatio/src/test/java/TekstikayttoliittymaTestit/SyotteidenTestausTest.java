@@ -39,7 +39,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanVirheellisisaKokonaislukusyotteita() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
 
         assertFalse(test.KokonaisluvunSyotto("-2300"));
 
@@ -58,7 +58,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanSyotteitaKirjaimillaJaErikoismerkeilla() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertFalse(test.KokonaisluvunSyotto("-"));
         assertFalse(test.KokonaisluvunSyotto("a"));
         assertFalse(test.KokonaisluvunSyotto("b"));
@@ -72,7 +72,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanVirheellisillaDesimaaleillaValillaNollaJaYksi() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertFalse(test.DesimaalinSyottoValilla0Ja1("2")); 
         assertFalse(test.DesimaalinSyottoValilla0Ja1("3234.3"));
         assertFalse(test.DesimaalinSyottoValilla0Ja1("2.334"));
@@ -95,7 +95,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanDesimaalisyotettaKirjaimillajaErikoismerkeilla() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertFalse(test.DesimaalinSyottoValilla0Ja1("-"));
         assertFalse(test.DesimaalinSyottoValilla0Ja1("d"));
         assertFalse(test.DesimaalinSyottoValilla0Ja1("ff.dd"));
@@ -114,7 +114,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanHyvaksyttaviaKokonaislukusyotteita() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertTrue(test.KokonaisluvunSyotto("0"));
         assertTrue(test.KokonaisluvunSyotto("14"));
         assertTrue(test.KokonaisluvunSyotto("2"));
@@ -131,7 +131,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanHyvaksyttavillaDesimaaleillaValillaNollaJaYksi() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertTrue(test.DesimaalinSyottoValilla0Ja1("0.01"));
         assertTrue(test.DesimaalinSyottoValilla0Ja1("0.999"));
         assertTrue(test.DesimaalinSyottoValilla0Ja1("0.5"));
@@ -146,7 +146,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanVirheellisillaDesimaaleilla() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertFalse(test.DesimaalinSyotto("2.5.75"));
         assertFalse(test.DesimaalinSyotto("3234..3"));
         assertFalse(test.DesimaalinSyotto("2334."));
@@ -167,7 +167,7 @@ public class SyotteidenTestausTest {
 
     @Test
     public void TestataanHyvaksyttavillaDesimaaleilla() {
-        Tekstikayttoliittyma.SyotteidenTestaus test = new Tekstikayttoliittyma.SyotteidenTestaus();
+        Graafinenkayttoliittyma.SyotteidenTestaus test = new Graafinenkayttoliittyma.SyotteidenTestaus();
         assertTrue(test.DesimaalinSyotto("0.01"));
         assertTrue(test.DesimaalinSyotto("2.999"));
         assertTrue(test.DesimaalinSyotto("46.5"));

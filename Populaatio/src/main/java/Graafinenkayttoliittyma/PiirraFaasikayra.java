@@ -27,6 +27,8 @@ public class PiirraFaasikayra extends JFrame {
     private String x;
     private String y;
     private ArrayList<double[]> tulokset;
+    
+
 
     public PiirraFaasikayra(String otsikko, String x, String y, ArrayList<double[]> tulokset) {
         super("Populaatio");

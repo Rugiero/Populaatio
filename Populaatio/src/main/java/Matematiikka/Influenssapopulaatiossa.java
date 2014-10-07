@@ -11,49 +11,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.SwingUtilities;
 
+/**
+ * N= Populaation koko I= Sairastuneita alussa B = tarttumisintesiteetti a =
+ * tod.näk parantua/ aikayksikkö T = aikataulukko TuloksetI = taulukko I:lle
+ * lasketuista tuloksista TuloksetS = vastaava S:lle
+ *
+ * Esimerkkiarvot: N=50, I = 1, B=0.003, a = 0.1.
+ *
+ */
 public class Influenssapopulaatiossa {
 
-    /**
-     *N= Populaation koko
-     *I= Sairastuneita alussa
-     *B = tarttumisintesiteetti
-     *a = tod.näk parantua/ aikayksikkö
-     * T = aikataulukko
-     * TuloksetI = taulukko I:lle lasketuista tuloksista
-     * TuloksetS = vastaava S:lle
-     * 
-     * Esimerkkiarvot: N=50, I = 1, B=0.003, a = 0.1.
-     *
-     */
     OctaveEngine octave = new OctaveEngineFactory().getScriptEngine();
     private double[] tuloksetI;
     private double[] tuloksetS;
-    private int N;
-    private int I;
+    private double N;
+    private double I;
     private double B;
     private double a;
     private double[] T;
     private ArrayList<double[]> tulokset = new ArrayList<>();
 
-    public ArrayList<double[]> laskeSIS(int N, int I, double B, double a) {
-        /**
-         * luodaan ensin yhtälö stirngiin. Käytetään octavea hyväksi tavallisen
-         * differentiaaliyhtälömme ratkaisuun. Jos N tai I = 0, hypätään
-         * laskeminen yli ja palautetaan kyseinen triviaaliratkaisu suoraan.
-         */
+    /**
+     * Lasketaan taudin kehitys populaatiossa differentiaaliyhtälöstä f =
+     * B*x*((N-(a/B))-x). Käytetään hyväksi octaven 'lsode' scriptiä-
+     *
+     *
+     * @param N - populaation koko
+     * @param I - sairastuneita alussa
+     * @param B - tarttumisintesiteetti
+     * @param a - tod.näk tervehty' per aikayksikkö
+     * @return 
+     */
+    public ArrayList<double[]> laskeSIS(double N, double I, double B, double a) {
 
         this.N = N;
         this.I = I;
         this.B = B;
         this.a = a;
 
-        /**
-         * luodaan ensin yhtälö stirngiin. Käytetään octavea hyväksi tavallisen
-         * differentiaaliyhtälömme ratkaisuun. 
-         * i
-         */
-      
-        
         String f = B + "*x*(" + (N - (a / B)) + "-x)";
 
         octave.eval("function x_prime = f(x,t) x_prime = " + B + "*x*(" + (N - (a / B)) + "-x)" + "; endfunction;");
@@ -75,33 +70,36 @@ public class Influenssapopulaatiossa {
 
     }
 
-    public ArrayList<double[]> laskeSIR(int N, int I, double B, double a) {
+    /**
+     * Metodissa laskemme taudin kehityksen kun sairastuneet saavat
+     * sairastettuaan pysyvän immuniteetin.Approksimoimme diff.yhtälöparia dS/dt
+     * = -BSI, dI/dt = -BSI - aI nk. Eulerin menetelmällä. Muotoa y' = F(x,t)
+     * olevaa diff. yhtälöä voi approksimoida diskreetisti y(i+1) = F(i,t)*h +
+     * y(i), missä h on valittu väli. Mallissamme siis populaation jäsenet
+     * siirtyvät sairastuneiden luokasta I immuniteetin saaneideen luokkaan 'R':
+     * S --> I --> R, missä S on sairaudelle alttiiden määrä. R voidaan tässä
+     * jättää huomioimatta yhtälöissämme. Luodaan ensin yhtälöt. Asetetaan
+     * h=0.2.
+     *
+     * Sairaudelle alttiiden määrä alussa:
+     *
+     * @param N - Populaation koko
+     * @param I - Sairastuneita alussa
+     * @param B - Tarttumisintesiteetti
+     * @param a - Tod.näk. tervehtyä per aikayksikkö.
+     * @return
+     */
+    public ArrayList<double[]> laskeSIR(double N, double I, double B, double a) {
         this.N = N;
         this.I = I;
         this.B = B;
         this.a = a;
-
-        /**
-         * Metodissa laskemme taudin kehityksen kun sairastuneet saavat
-         * sairastettuaan pysyvän immuniteetin. Approksimoimme diff.yhtälöparia
-         * dS/dt = -BSI, dI/dt = -BSI - aI nk. Eulerin menetelmällä. Muotoa y' =
-         * F(x,t) olevaa diff. yhtälöä voi approksimoida diskreetisti y(i+1) =
-         * F(i,t)*h + y(i), missä h on valittu väli. Mallissamme siis
-         * populaation jäsenet siirtyvät sairastuneiden luokasta I immuniteetin
-         * saaneideen luokkaan 'R': S --> I --> R, missä S on sairaudelle
-         * alttiiden määrä. R voidaan tässä jättää huomioimatta yhtälöissämme.
-         * Luodaan ensin yhtälöt. Asetetaan h=0.2.
-         *
-         * Sairaudelle alttiiden määrä alussa:
-         */
-        int S = N - I;
-        /**
-         * Sairaudelle alttiita alussa:
-         */
+        double S = N - I;
+  
+      //Syötetään octavelle arvot:
+         
         String S0 = "S(1) = " + S;
-        /**
-         * Sairaita alussa:
-         */
+        
         String I0 = "I(1) = " + I;
 
         octave.eval(S0);
@@ -128,23 +126,7 @@ public class Influenssapopulaatiossa {
         return this.tulokset;
     }
 
-//    public String Tulostatulokset() {
-//
-//        String tulostring = "";
-//        /**
-//         * Käydään ratkaisut läpi ja lisätään palautettavaan stringiin:
-//         */
-//        for (int i = 0; i < 200; i++) {
-//
-//            /**
-//             * Tulostetaan ratkaisut t arvoilla 1,20 (väli jaettu sataan osaan)
-//             * Ratkaisu kuvaa siis sairaiden määrää populaatiossa:
-//             */
-//            tulostring = tulostring + (this.tulokset[i] + " ");
-//        }
-//        return tulostring;
-//
-//    }
+
     public String TulostaRajaArvoSIS() {
 
         double v = N - (a / B);

@@ -1,7 +1,8 @@
 /**
- * Luokalla piirretää käyrä muotoa y=x(t) ArrayListassa olevien taulukoiden datasta. Luokalle odotetaan parametriksi ArrayList joka sisältää vähintään kaksi
- * taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi.
- * 
+ * Luokalla piirretää käyrä muotoa y=x(t) ArrayListassa olevien taulukoiden
+ * datasta. Luokalle odotetaan parametriksi ArrayList joka sisältää vähintään
+ * kaksi taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi.
+ *
  */
 package Graafinenkayttoliittyma;
 
@@ -9,6 +10,7 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -24,6 +26,14 @@ public class PiirraKayra extends JFrame {
     private String y;
     private ArrayList<double[]> tulokset;
 
+    public PiirraKayra() {
+        otsikko = "";
+        x = "";
+        y = "";
+        tulokset = null;
+
+    }
+
     public PiirraKayra(String otsikko, String x, String y, ArrayList<double[]> tulokset) {
         super("Populaatio");
         this.tulokset = tulokset;
@@ -31,20 +41,19 @@ public class PiirraKayra extends JFrame {
         this.y = y;
         this.otsikko = otsikko;
 
-       
     }
+
     public void Piirretaankayra() {
-        
-         JPanel chartPanel = createChartPanel();
+
+        JPanel chartPanel = createChartPanel();
         add(chartPanel, BorderLayout.CENTER);
 
         setSize(640, 480);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
-        
+
     }
 
- 
     public JPanel createChartPanel() {
         boolean showLegend = true;
         boolean createURL = true;
@@ -63,7 +72,8 @@ public class PiirraKayra extends JFrame {
     }
 
     /**
-     * Metodilla luodaan diagrammi (x,t) jokaisesta annetusta taulukosta. Huom! Arraylistin esimmäinen taulukko tulkitaan olevan aika t.
+     * Metodilla luodaan diagrammi (x,t) jokaisesta annetusta taulukosta. Huom!
+     * Arraylistin esimmäinen taulukko tulkitaan olevan aika t.
      */
     private XYDataset createDataset() {
 
@@ -71,9 +81,8 @@ public class PiirraKayra extends JFrame {
 
         XYSeriesCollection dataset = new XYSeriesCollection();
         int j = 0;
-       
-        
-        for (int k= 1; k < tulokset.size(); k++) {
+
+        for (int k = 1; k < tulokset.size(); k++) {
             XYSeries series = new XYSeries(j, autoSort);
             for (int i = 0; i < tulokset.get(k).length; i++) {
                 series.add(tulokset.get(k)[i], tulokset.get(0)[i]);
@@ -86,6 +95,4 @@ public class PiirraKayra extends JFrame {
         return dataset;
     }
 
-    
-  
 }

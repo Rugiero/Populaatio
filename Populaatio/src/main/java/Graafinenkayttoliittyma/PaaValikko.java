@@ -26,6 +26,9 @@ import javax.swing.WindowConstants;
 public class PaaValikko implements Runnable {
 
     private JFrame frame;
+    
+    
+    
 
     public PaaValikko() {
         run();

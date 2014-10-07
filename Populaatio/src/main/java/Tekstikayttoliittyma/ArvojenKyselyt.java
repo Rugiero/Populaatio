@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ArvojenKyselyt {
 
-    private final Tekstikayttoliittyma.SyotteidenTestaus Syotteidentestaus = new Tekstikayttoliittyma.SyotteidenTestaus();
+    private final Graafinenkayttoliittyma.SyotteidenTestaus Syotteidentestaus = new Graafinenkayttoliittyma.SyotteidenTestaus();
     private String syote;
     private final Scanner lukija = new Scanner(System.in);
 

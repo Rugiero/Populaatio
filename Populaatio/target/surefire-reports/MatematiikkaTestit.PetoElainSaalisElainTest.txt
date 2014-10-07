@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: MatematiikkaTestit.PetoElainSaalisElainTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.353 sec <<< FAILURE!
-hello(MatematiikkaTestit.PetoElainSaalisElainTest)  Time elapsed: 6.129 sec  <<< ERROR!
-java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@11ec4639 rejected from java.util.concurrent.ThreadPoolExecutor@2ef65160[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 36]
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.513 sec <<< FAILURE!
+hello(MatematiikkaTestit.PetoElainSaalisElainTest)  Time elapsed: 0.459 sec  <<< ERROR!
+java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@36101828 rejected from java.util.concurrent.ThreadPoolExecutor@5aa205d2[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 52]
 	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2048)
 	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:821)
 	at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1372)
@@ -12,7 +12,7 @@ java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.Futur
 	at dk.ange.octave.io.OctaveIO.set(OctaveIO.java:56)
 	at dk.ange.octave.OctaveEngine.put(OctaveEngine.java:141)
 	at dk.ange.octave.OctaveEngine.eval(OctaveEngine.java:122)
-	at Matematiikka.Petoelainsaaliselain.laske(Petoelainsaaliselain.java:48)
+	at Matematiikka.Petoelainsaaliselain.laske(Petoelainsaaliselain.java:57)
 	at MatematiikkaTestit.PetoElainSaalisElainTest.hello(PetoElainSaalisElainTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
