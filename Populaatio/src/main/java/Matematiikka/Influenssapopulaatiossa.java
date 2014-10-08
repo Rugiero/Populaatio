@@ -1,12 +1,7 @@
 package Matematiikka;
 
 import Graafinenkayttoliittyma.PiirraKayra;
-import dk.ange.octave.OctaveEngine;
-import dk.ange.octave.OctaveEngineFactory;
-import dk.ange.octave.type.OctaveDouble;
-import dk.ange.octave.type.OctaveInt;
-import dk.ange.octave.type.OctaveObject;
-import dk.ange.octave.type.OctaveString;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.SwingUtilities;

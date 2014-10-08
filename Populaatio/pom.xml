@@ -18,16 +18,28 @@
             <scope>test</scope>
         </dependency> 
         <dependency> 
-        <groupId>dk.ange</groupId>
-        <artifactId>javaoctave</artifactId>
-        <version>0.6.4</version>
-        <type>jar</type>    
+            <groupId>dk.ange</groupId>
+            <artifactId>javaoctave</artifactId>
+            <version>0.6.4</version>
+            <type>jar</type>    
         </dependency>
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.0.15</version>
         </dependency>      
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.cobertura</groupId>
+            <artifactId>cobertura</artifactId>
+            <version>1.9.4.1</version>
+            <scope>test</scope>
+        </dependency>  
     </dependencies>
 
     <build>
@@ -54,16 +66,17 @@
     </build>
 
     <repositories>
-        <repository>
-            <id>javaoctave</id>
-            <url>https://svn.kenai.com/svn/javaoctave~maven-repository </url>
-        </repository>
         <repository>  
             <id>central</id>
             <url>http://repo1.maven.org/maven2/</url>
+        </repository>      
+        <repository>
+            <id>maven-repository.javaoctave.kenai.com</id>
+            <name>JavaOctave Maven Repository</name>
+            <url>svn:https://svn.kenai.com/svn/javaoctave~maven-repository </url>
         </repository>
-    </repositories>
-
-
+       
+        
+    </repositories>  
 
 </project>

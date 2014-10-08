@@ -82,7 +82,7 @@ public class PiirraFaasikayra extends JFrame {
         JFreeChart chart = ChartFactory.createXYLineChart(chartTitle,
                 xAxisLabel, yAxisLabel, dataset,
                 PlotOrientation.HORIZONTAL, showLegend, createTooltip, createURL);
-
+      
         return new ChartPanel(chart);
 
     }
