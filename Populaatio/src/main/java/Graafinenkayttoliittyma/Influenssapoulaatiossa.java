@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
 /**
  * Graafinen liittymä influenssa populaatiossa tilanteeseen.
  */
-public class Influenssa implements Runnable, ActionListener {
+public class Influenssapoulaatiossa implements Runnable, ActionListener {
 
     private JFrame frame;
     private JTextField Nkentta;
@@ -39,7 +39,7 @@ public class Influenssa implements Runnable, ActionListener {
     private JRadioButton SIS;
     private JRadioButton SIR;
 
-    public Influenssa() {
+    public Influenssapoulaatiossa() {
 
         run();
     }

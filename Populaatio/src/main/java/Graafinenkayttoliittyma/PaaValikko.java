@@ -68,7 +68,7 @@ public class PaaValikko implements Runnable {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Influenssa();
+                new Influenssapoulaatiossa();
                 frame.setVisible(false);
             }
         });
@@ -82,7 +82,7 @@ public class PaaValikko implements Runnable {
         d.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Influenssa();
+                new Influenssapoulaatiossa();
                 frame.setVisible(false);
             }
         });
