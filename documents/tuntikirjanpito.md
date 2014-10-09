@@ -20,3 +20,13 @@ Lisää matematiikkaluokkaa. Javadocceja lisätty, uusi luokkakaavio. Ongelmia nume
 29.9. & 30.9 18h
 Graafinen esitys lisätty. Kaikki ominaisuudet toimivaksi.
 
+5.10 5h
+Aloitin graafisen kayttöliittymän tekemisen
+
+6.10 5h
+Graafinen käyttöliittymä toimimaan päällisin puolin.
+
+9.10
+Graafisen käyttöliittymän ominaisuudet toimivaksi.
+
+
