@@ -3,6 +3,9 @@ Populaatio
 Version  0.7
 Counts development of population from given values.
 
+Esimerkkiavoja: SIR/SIS N=50 I0=1 B=0.015 a=0.1
+Peto- saalis  F0=3.5 R0=1.8 a=0.3 b=0.1 c=0.1 d=0.2
+
 HUOM tärkeää!:
 Ennen ohjelman suoritusta:
 
