@@ -12,6 +12,7 @@ Ennen ohjelman suoritusta:
 
 1. Varmista, että octave on asennettu koneeseesi. Octave on matlabin kaltainen ilmainen avoimen lähdekoodin numeeriseen laskemiseen tarkoitettu ohjelma. Ubuntussa 
 >sudo apt-get install octave
+
 Lisätietoja <https://www.gnu.org/software/octave/download.html>
 
 2. Javaoctaven tietolähde tulee lisätä paikallisiin maven tietolähteisiin. Javaoctave toimii octaven ja javan välisenä siltana. Siirrä siis paketista löytyvä kansio 'JavaOctave' haluamaasi paikkaan ja suorita:
