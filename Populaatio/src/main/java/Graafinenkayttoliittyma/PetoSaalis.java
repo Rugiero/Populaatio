@@ -9,6 +9,7 @@ package Graafinenkayttoliittyma;
  *
  * @author iangervu
  */
+import Matematiikka.Influenssapopulaatiossa;
 import Matematiikka.Petoelainsaaliselain;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -33,11 +34,11 @@ public class PetoSaalis implements Runnable, ActionListener {
     private JTextField ckentta;
     private JTextField dkentta;
     private JTextField infokentta;
-//    private Petoelainsaaliselain laskuri = new Petoelainsaaliselain();
     private JButton Nappi;
     private JButton Nappi1;
     private JButton Nappi2;
     private JButton Nappi3;
+    private JButton Nappi4;
     private JButton Pnkma;
 
     public PetoSaalis() {
@@ -46,7 +47,7 @@ public class PetoSaalis implements Runnable, ActionListener {
     }
 
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(10, 2);
+        GridLayout layout = new GridLayout(11, 2);
         container.setLayout(layout);
 
         JLabel F0 = new JLabel("Petojen tiheys: ");
@@ -66,13 +67,16 @@ public class PetoSaalis implements Runnable, ActionListener {
 
         Nappi = new JButton("Nayta kehitys");
         Nappi1 = new JButton("Laske tasapainopiste");
-        Nappi2 = new JButton("Laske Min/max");
+        Nappi2 = new JButton("Laske Min/max pedot");
+        Nappi4 = new JButton("Laske Min/max saaliit");
         Nappi3 = new JButton("Näytä Faasi");
+
         Pnkma = new JButton("Paanäkymä");
         Nappi.addActionListener(this);
         Nappi1.addActionListener(this);
         Nappi2.addActionListener(this);
         Nappi3.addActionListener(this);
+        Nappi4.addActionListener(this);
         Pnkma.addActionListener(this);
 
         container.add(F0);
@@ -93,6 +97,7 @@ public class PetoSaalis implements Runnable, ActionListener {
         container.add(Nappi);
         container.add(Nappi2);
         container.add(Nappi3);
+        container.add(Nappi4);
         container.add(Pnkma);
 
     }
@@ -136,9 +141,27 @@ public class PetoSaalis implements Runnable, ActionListener {
             }
 
         } else if (e.getSource() == Nappi1) {
+            //Palauttaa syysteemin tasapainopisteen. Osoittautuu että se on (d/c, a/b).
 
+            if (Testaakentat()) {
+                infokentta.replaceSelection("");
+                infokentta.replaceSelection(Double.parseDouble(dkentta.getText()) / Double.parseDouble(ckentta.getText()) + "," + Double.parseDouble(akentta.getText()) / Double.parseDouble(bkentta.getText()));
+            }
         } else if (e.getSource() == Nappi2) {
+            if (Testaakentat()) {
+                Petoelainsaaliselain laskin = new Petoelainsaaliselain();
+                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()));
+                infokentta.replaceSelection("");
+                infokentta.replaceSelection("Max: " + laskin.PalautaMaxPetoja() + "Min:" + laskin.PalautaMinpetoja());
+            }
+        } else if (e.getSource() == Nappi4) {
 
+            if (Testaakentat()) {
+                Petoelainsaaliselain laskin = new Petoelainsaaliselain();
+                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()));
+                infokentta.replaceSelection("");
+                infokentta.replaceSelection("Max: " + laskin.PalautaMaxsaaliita() + "Min:" + laskin.PalautaMinsaaliita());
+            }
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {
 

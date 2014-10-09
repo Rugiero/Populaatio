@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>populaatio</groupId>
+    <groupId>Populaatio</groupId>
     <artifactId>Populaatio</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -73,10 +73,13 @@
         <repository>
             <id>maven-repository.javaoctave.kenai.com</id>
             <name>JavaOctave Maven Repository</name>
-            <url>svn:https://svn.kenai.com/svn/javaoctave~maven-repository </url>
+            <url>https://svn.kenai.com/svn/javaoctave~maven-repository</url>
         </repository>
-       
-        
+        <repository>
+            <id>maven-repository.javaoctave.kenai.com -source</id>
+            <name>JavaOctave Maven Repository -source</name>
+            <url>https://hg.kenai.com/hg/javaoctave~source-code-repository</url>
+        </repository>
     </repositories>  
 
 </project>

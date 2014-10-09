@@ -28,7 +28,7 @@ public class Influenssa implements Runnable, ActionListener {
     private JTextField Ikentta;
     private JTextField Bkentta;
     private JTextField akentta;
-    private JTextField Rkentta;
+    private JTextField infokentta;
     private ButtonGroup buttonGroup;
     private JButton Nappi;
     private JButton Nappi1;
@@ -59,8 +59,8 @@ public class Influenssa implements Runnable, ActionListener {
         Bkentta = new JTextField();
         JLabel a = new JLabel("Parantumistodennakoisyys/ aikayksikko ");
         akentta = new JTextField();
-        JLabel R = new JLabel("R");
-        Rkentta = new JTextField();
+        JLabel R = new JLabel("info");
+        infokentta = new JTextField();
 
         SIS = new JRadioButton("SIS");
         SIR = new JRadioButton("SIR");
@@ -85,7 +85,7 @@ public class Influenssa implements Runnable, ActionListener {
         container.add(a);
         container.add(akentta);
         container.add(R);
-        container.add(Rkentta);
+        container.add(infokentta);
         container.add(SIR);
         container.add(SIS);
 
@@ -145,12 +145,12 @@ public class Influenssa implements Runnable, ActionListener {
             if (Testaakentat()) {
 //Testataan kumpi malli:
                 if (SIS.isSelected()) {
-                    PiirraKayra kayra = new PiirraKayra("Saalikset ja pedot", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
                     kayra.Piirretaankayra();
                     kayra.setVisible(true);
 
                 } else if (SIR.isSelected()) {
-                    PiirraKayra kayra = new PiirraKayra("Saalikset ja pedot", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
                     kayra.Piirretaankayra();
                     kayra.setVisible(true);
 
@@ -159,16 +159,53 @@ public class Influenssa implements Runnable, ActionListener {
             }
 
         } else if (e.getSource() == Nappi1) {
+            if (Testaakentat()) {
+                double R = (Double.parseDouble(Bkentta.getText()) / Double.parseDouble(akentta.getText())) * Double.parseDouble(Nkentta.getText());
+                infokentta.replaceSelection("");
+                infokentta.replaceSelection(R + "");
 
+            }
         } else if (e.getSource() == Nappi2) {
+            if (Testaakentat()) {
+                {
+                    if (SIS.isSelected()) {
+                        Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+                        laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
+                        infokentta.replaceSelection("");
+                        infokentta.replaceSelection("Pysyvästi sairastuneita: " + laskin.TulostaRajaArvoSIS());
+                    }
+                }
+                if (SIR.isSelected()) {
 
+                    Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+                    laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
+                    infokentta.replaceSelection("");
+                    infokentta.replaceSelection("Epidemian koko kun I0=1: " + laskin.TulostaRajaArvoSIR());
+                }
+            }
         } else if (e.getSource() == Nappi3) {
+            if (Testaakentat()) {
+
+                if (SIR.isSelected()) {
+                    Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+                    laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
+                    infokentta.replaceSelection("");
+                    infokentta.replaceSelection(laskin.PalautaSairaitaMax() + "");
+                } else if (SIS.isSelected()) {
+                    Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+                    laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
+                    infokentta.replaceSelection("");
+                    infokentta.replaceSelection(laskin.PalautaSairaitaMax() + "");
+
+                }
+
+            }
 
         } else if (e.getSource() == Nappi4) {
             if (Testaakentat()) {
 //Testataan että SIR-malli on valittu, muuten ei piirretä:
                 if (SIR.isSelected()) {
-                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saalikset ja pedot faasidiagrammi", "Jänöt", "Ketut", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
                     kayra1.PiirretaankayraFaasi();
                     kayra1.setVisible(true);
 
@@ -181,5 +218,4 @@ public class Influenssa implements Runnable, ActionListener {
         }
 
     }
-
 }

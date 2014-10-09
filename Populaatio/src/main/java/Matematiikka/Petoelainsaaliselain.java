@@ -4,6 +4,9 @@ import dk.ange.octave.OctaveEngine;
 import dk.ange.octave.OctaveEngineFactory;
 import dk.ange.octave.type.OctaveDouble;
 import java.util.ArrayList;
+import dk.ange.octave.OctaveEngine;
+import dk.ange.octave.OctaveEngineFactory;
+import dk.ange.octave.type.OctaveDouble;
 
 /**
  * Luokka laskee Volteran peto saalis- mallin mukaan numeerisesti octaven
@@ -74,5 +77,57 @@ public class Petoelainsaaliselain {
 
         return this.tulokset;
     }
+  public double PalautaMaxPetoja() {
+   
+        double suurin = 0;
+        for(double l : tuloksetF) {
+            if(l > suurin) {
+                suurin = l;
+            }
+        }
+        return suurin;
+
+    }
+    public double PalautaMaxsaaliita() {
+        
+        double suurin = 0;
+        for(double l : tuloksetR) {
+            if(l > suurin) {
+                suurin = l;
+            }
+  
+        }
+        return suurin;
+
+    }
+    
+     public double PalautaMinsaaliita() {
+        
+        double pienin = tuloksetR[0];
+        for(double l : tuloksetR) {
+            if( l< pienin) {
+                pienin = l;
+            }
+  
+        }
+        return pienin;
+
+    }
+     public double PalautaMinpetoja() {
+        
+        double pienin = tuloksetF[0];
+        for(double l : tuloksetF) {
+            if( l< pienin) {
+                pienin = l;
+            }
+  
+        }
+        return pienin;
+
+    }
+
+    
+
+    
 
 }
