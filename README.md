@@ -18,6 +18,6 @@ Lisätietoja <https://www.gnu.org/software/octave/download.html>
 
 2. Javaoctaven tietolähde tulee lisätä paikallisiin maven tietolähteisiin. Javaoctave toimii octaven ja javan välisenä siltana. Siirrä siis paketista löytyvä kansio 'JavaOctave' haluamaasi paikkaan ja suorita:
 
->mvn install:install-file -Dfile=<oma polku>/JavaOctave/javaoctave-0.6.4.jar -DpomFile=<oma polku>/JavaOctave/pom.xml
+>mvn install:install-file -Dfile=~/JavaOctave/javaoctave-0.6.4.jar -DpomFile=~/JavaOctave/pom.xml
 
 Lisätietoja <https://kenai.com/projects/javaoctave/pages/Home>
