@@ -100,10 +100,10 @@ public class Influenssapopulaatiossa {
 
         String I0 = "I(1) = " + I;
 
-        octave.eval(S0);
-        octave.eval(I0);
-        octave.eval("B = " + B);
-        octave.eval("a= " + a);
+        octave.eval(S0 + ";");
+        octave.eval(I0 + ";");
+        octave.eval("B = " + B + ";");
+        octave.eval("a= " + a + ";");
 
         octave.eval("for i = 1:999    S(i+1) = (-B*S(i)*I(i))*0.2+S(i); I(i+1) = (B*S(i)*I(i)-a*I(i))*0.2+I(i); endfor;");
         octave.eval("T=linspace(0,200,1000);");

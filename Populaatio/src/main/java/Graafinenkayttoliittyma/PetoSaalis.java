@@ -79,10 +79,11 @@ public class PetoSaalis implements Runnable, ActionListener {
         Nappi4.addActionListener(this);
         Pnkma.addActionListener(this);
 
-        container.add(F0);
-        container.add(F0kentta);
+       
         container.add(R0);
         container.add(R0kentta);
+        container.add(F0);
+        container.add(F0kentta);
         container.add(a);
         container.add(akentta);
         container.add(b);

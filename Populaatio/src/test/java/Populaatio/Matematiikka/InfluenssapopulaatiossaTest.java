@@ -84,18 +84,19 @@ public class InfluenssapopulaatiossaTest {
 
         Influenssapopulaatiossa laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(50, 5, 0.007, 0.1);
-        assertEquals((int) 35.714, (int) laskin.PalautaSairaitaMax());
+        assertEquals( 35.714,  laskin.PalautaSairaitaMax(), 0.1);
 
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(1, 0, 0.01, 0.001);
-        assertEquals((int) 0, (int) laskin.PalautaSairaitaMax());
+        assertEquals( 0, laskin.PalautaSairaitaMax(), 0.1);
 
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(1, 0, 0.99, 0.99);
-        assertEquals((int) 0, (int) laskin.PalautaSairaitaMax());
+        assertEquals( 0,  laskin.PalautaSairaitaMax(), 0.1);
 
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(5000, 4999, 0.5, 0.5);
-        assertEquals((int) 4999, (int) laskin.PalautaSairaitaMax());
-        
-       
+        assertEquals( 4999,  laskin.PalautaSairaitaMax(), 0.1);
 
     }
 
@@ -103,17 +104,16 @@ public class InfluenssapopulaatiossaTest {
     public void TestataanRajaArvoaSIS() {
         Influenssapopulaatiossa laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(50, 5, 0.007, 0.1);
-        assertEquals((int) 36.0, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals( 36.0,  laskin.TulostaRajaArvoSIS(),0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(1, 0, 0.01, 0.001);
-        assertEquals((int) 0, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals( 0,  laskin.TulostaRajaArvoSIS(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(1, 0, 0.99, 0.99);
-        assertEquals((int) 0, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals( 0,  laskin.TulostaRajaArvoSIS(),0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIS(5000, 4999, 0.5, 0.5);
-        assertEquals((int) 4999, (int) laskin.PalautaSairaitaMax());
-        
+        assertEquals( 4999,  laskin.PalautaSairaitaMax(), 0.1);
 
     }
 
@@ -123,19 +123,19 @@ public class InfluenssapopulaatiossaTest {
 
         Influenssapopulaatiossa laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(50, 5, 0.007, 0.1);
-        assertEquals((int) 19.49, (int) laskin.PalautaSairaitaMax());
-
+        assertEquals( 19.49,  laskin.PalautaSairaitaMax(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(1, 0, 0.01, 0.001);
-        assertEquals((int) 0, (int) laskin.PalautaSairaitaMax());
-
+        assertEquals( 0,  laskin.PalautaSairaitaMax(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(1, 0, 0.99, 0.99);
-        assertEquals((int) 0, (int) laskin.PalautaSairaitaMax());
-
+        assertEquals( 0, laskin.PalautaSairaitaMax(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(500, 1, 0.001, 0.1);
-        assertEquals((int) 242.036, (int) laskin.PalautaSairaitaMax());
-
-        laskin.laskeSIR(50, 1, 0, 0.99);
-        assertEquals((int) 1, (int) laskin.TulostaRajaArvoSIS());
+        assertEquals( 242.036,  laskin.PalautaSairaitaMax(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
+        laskin.laskeSIR(50, 1, 0.99, 0);
+        assertEquals( 50,  laskin.TulostaRajaArvoSIS(), 0.1);
 
     }
 
@@ -143,19 +143,19 @@ public class InfluenssapopulaatiossaTest {
     public void TestataanRajaArvoaSIR() {
         Influenssapopulaatiossa laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(50, 5, 0.007, 0.1);
-        assertEquals((int) 48.29, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals( 48.29, laskin.TulostaRajaArvoSIR(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(1, 0, 0.01, 0.001);
-        assertEquals((int) 0, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals( 0, laskin.TulostaRajaArvoSIR(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(1, 0, 0.99, 0.99);
-        assertEquals((int) 0, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals( 0,  laskin.TulostaRajaArvoSIR(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(50, 1, 0, 0.99);
-        assertEquals((int) 1, (int) laskin.TulostaRajaArvoSIS());
-
+        assertEquals(1,  laskin.TulostaRajaArvoSIR(), 0.1);
+        laskin = new Matematiikka.Influenssapopulaatiossa();
         laskin.laskeSIR(500, 1, 0.001, 0.1);
-        assertEquals((int) 500, (int) laskin.PalautaSairaitaMax());
+        assertEquals( 496.5,  laskin.TulostaRajaArvoSIR(), 0.1);
 
     }
 
