@@ -80,6 +80,5 @@
             <name>JavaOctave Maven Repository -source</name>
             <url>https://hg.kenai.com/hg/javaoctave~source-code-repository</url>
         </repository>
-    </repositories>  
-
+    </repositories> 
 </project>
