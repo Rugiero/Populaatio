@@ -45,7 +45,7 @@ public class Petoelainsaaliselain {
      * @param d
      * @return
      */
-    public ArrayList<double[]> laske(double R1, double F1, double a, double b, double c, double d) {
+    public ArrayList<double[]> laske(double R1, double F1, double a, double b, double c, double d, double t1) {
 
         this.F1 = F1;
         this.R1 = R1;
@@ -56,8 +56,14 @@ public class Petoelainsaaliselain {
 
         double h = 0.01;
         octave.eval("function ret = f(X,t) ret = [" + this.a + "*X(1)-" + this.b + "*X(1)*X(2)," + this.c + "*X(1)*X(2)-" + this.d + "*X(2)]; end");
-        octave.eval("T=linspace(0,200,3000);");
-        octave.eval("X=lsode('f',[" + this.R1 + "," + this.F1 + "], T);");
+        octave.eval("T=linspace(0," + t1 + "," + t1 * 15 + ");");
+
+        //Syötteen ollessa niin suuri että lasku mahdoton octavelle, palautetaan tyhjä array:
+        try {
+            octave.eval("X=lsode('f',[" + this.R1 + "," + this.F1 + "], T);");
+        } catch (dk.ange.octave.exception.OctaveEvalException e) {
+            return laske(0,0,0,0,0,0,0);
+        }
 
         OctaveDouble arvot = octave.get(OctaveDouble.class, "T");
         this.T = arvot.getData();
@@ -77,57 +83,56 @@ public class Petoelainsaaliselain {
 
         return this.tulokset;
     }
-  public double PalautaMaxPetoja() {
-   
+
+    public double PalautaMaxPetoja() {
+
         double suurin = 0;
-        for(double l : tuloksetF) {
-            if(l > suurin) {
+        for (double l : tuloksetF) {
+            if (l > suurin) {
                 suurin = l;
             }
         }
         return suurin;
 
     }
+
     public double PalautaMaxsaaliita() {
-        
+
         double suurin = 0;
-        for(double l : tuloksetR) {
-            if(l > suurin) {
+        for (double l : tuloksetR) {
+            if (l > suurin) {
                 suurin = l;
             }
-  
+
         }
         return suurin;
 
     }
-    
-     public double PalautaMinsaaliita() {
-        
+
+    public double PalautaMinsaaliita() {
+
         double pienin = tuloksetR[0];
-        for(double l : tuloksetR) {
-            if( l< pienin) {
+        for (double l : tuloksetR) {
+            if (l < pienin) {
                 pienin = l;
             }
-  
+
         }
         return pienin;
 
     }
-     public double PalautaMinpetoja() {
-        
+
+    public double PalautaMinpetoja() {
+
         double pienin = tuloksetF[0];
-        for(double l : tuloksetF) {
-            if( l< pienin) {
+        for (double l : tuloksetF) {
+            if (l < pienin) {
                 pienin = l;
             }
-  
+
         }
         return pienin;
 
     }
-
-    
-
-    
 
 }

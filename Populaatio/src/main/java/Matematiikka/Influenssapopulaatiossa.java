@@ -42,7 +42,7 @@ public class Influenssapopulaatiossa {
      * @param a - tod.näk tervehty' per aikayksikkö
      * @return
      */
-    public ArrayList<double[]> laskeSIS(double N, double I, double B, double a) {
+    public ArrayList<double[]> laskeSIS(double N, double I, double B, double a, double t1) {
 
         this.N = N;
         this.I = I;
@@ -58,8 +58,14 @@ public class Influenssapopulaatiossa {
         octave.eval(I0 + ";");
 
         octave.eval("function ret = f(X,t) ret = [-" + this.B + "*X(1)*X(2) + " + this.a + "*X(2)," + this.B + "*X(1)*X(2)-" + this.a + "*X(2)]; end");
-        octave.eval("T=linspace(0,200,3000);");
-        octave.eval("X=lsode('f',[S0, I0], T);");
+        octave.eval("T=linspace(0," + t1 + "," + t1 * 15 + ");");
+
+        //Syötteen ollessa niin suuri että lasku mahdoton octavelle, palautetaan silloin arraylist missä on vain tyhjiä taulukoita:
+        try {
+            octave.eval("X=lsode('f',[S0, I0], T);");
+        } catch (dk.ange.octave.exception.OctaveEvalException e) {
+            return laskeSIS(0, 0, 0, 0, 0);
+        }
 
         octave.eval(" S =X(:,1)';");
         octave.eval("I = X(:,2)';");
@@ -97,7 +103,7 @@ public class Influenssapopulaatiossa {
      * @param a - Tod.näk. tervehtyä per aikayksikkö.
      * @return
      */
-    public ArrayList<double[]> laskeSIR(double N, double I, double B, double a) {
+    public ArrayList<double[]> laskeSIR(double N, double I, double B, double a, double t1) {
         this.N = N;
         this.I = I;
         this.B = B;
@@ -113,8 +119,13 @@ public class Influenssapopulaatiossa {
         octave.eval(I0 + ";");
 
         octave.eval("function ret = f(X,t) ret = [-" + this.B + "*X(1)*X(2)," + this.B + "*X(1)*X(2)-" + this.a + "*X(2)]; end");
-        octave.eval("T=linspace(0,200,3000);");
-        octave.eval("X=lsode('f',[S0, I0], T);");
+        octave.eval("T=linspace(0," + t1 + "," + t1 * 15 + ");");
+
+        try {
+            octave.eval("X=lsode('f',[S0, I0], T);");
+        } catch (dk.ange.octave.exception.OctaveEvalException e) {
+            return laskeSIR(0, 0, 0, 0, 0);
+        }
 
         octave.eval(" S =X(:,1)';");
         octave.eval("I = X(:,2)';");
@@ -135,11 +146,25 @@ public class Influenssapopulaatiossa {
         return this.tulokset;
     }
 
+    /**
+     *
+     * Palautetaan pysyvästi sairastuneiden lukumäärä SIS- mallissa. Tapaus B=0
+     * tulee käsitellä erikseen.
+     *
+     * @return raja-arvo
+     */
     public double TulostaRajaArvoSIS() {
+
+        if (B == 0) {
+            if (a == 0) {
+                return this.I;
+            } else {
+                return 0;
+            }
+        }
 
         double v = N - (a / B);
 
-        /*TriviaaliRatkaisuna kun I_0 = 0 --> I = 0 kaikilla t: */
         if (this.I == 0) {
             return 0;
         }
@@ -185,14 +210,26 @@ public class Influenssapopulaatiossa {
          */
 
         if (R0 < 1) {
-            return this.I;
+            return 1;
 
         } else if (R0 >= 1) {
 
             double s = this.tulokset.get(2)[tulokset.get(2).length - 1] / this.N;
 
             octave.eval("function y = f(x) y =(1-x)+(1/" + R0 + ")*log(x); endfunction; ");
-            octave.eval("sairaat =" + N + "- (fsolve (\"f\"," + s + "))*" + N + ";");
+
+            //Jos octave ei syystä tai toisesta kykene laskemaan nollakohtaa, palautetaan MAX_VALUE:
+            try {
+                octave.eval("sairaat =" + N + "- (fsolve (\"f\"," + s + "))*" + N + ";");
+            } catch (dk.ange.octave.exception.OctaveEvalException e) {
+                return Double.MAX_VALUE;
+            }
+            //Suurilla luvuilla voi käydä niin että octave saa nollakohdaksi kompleksilukuja, kyseessä on kuitenkin numeerinen virhe. Tällöin casti doubleksi ei toimi. Palautetaan tässä tilanteessa taas MAX_VALUE
+            try {
+                octave.get(OctaveDouble.class, "sairaat");
+            } catch (dk.ange.octave.exception.OctaveClassCastException e) {
+                return Double.MAX_VALUE;
+            }
 
             OctaveDouble S = octave.get(OctaveDouble.class, "sairaat");
             octave.close();

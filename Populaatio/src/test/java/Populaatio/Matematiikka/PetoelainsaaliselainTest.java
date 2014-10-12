@@ -43,19 +43,19 @@ public class PetoelainsaaliselainTest {
     public void TestataanPalautusOikeanMuotoinen() {
         //Testataan että palautettu arraylist sisältää kolme taulukkoa:
 
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(1, 0, 0, 0, 0, 0).size());
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1).size());
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0).size());
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3).size());
+        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(1, 0, 0, 0, 0, 0, 0).size());
+        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1, 1).size());
+        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 100).size());
+        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 50).size());
     }
 
     @Test
     public void TestataanetteiPalautusnull() {
 
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(1, 0, 0, 0, 0, 0) == null);
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1) == null);
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0) == null);
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3) == null);
+        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(1, 0, 0, 0, 0, 0, 0) == null);
+        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1, 1000) == null);
+        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 20) == null);
+        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 1) == null);
 
     }
 
@@ -63,19 +63,19 @@ public class PetoelainsaaliselainTest {
     public void TestataanMaxArvoOikeaPedot() {
 
         Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 1, 0, 0, 0, 0);
+        laskin.laske(0, 1, 0, 0, 0, 0, 200);
         assertEquals(1.0, laskin.PalautaMaxPetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(2, 1, 1, 1, 1, 1);
+        laskin.laske(2, 1, 1, 1, 1, 1, 200);
         assertEquals(2.00001, laskin.PalautaMaxPetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 0, 0, 0, 0, 0);
+        laskin.laske(0, 0, 0, 0, 0, 0, 200);
         assertEquals(0, laskin.PalautaMaxPetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3);
+        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 200);
         assertEquals(3.157, laskin.PalautaMaxPetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5);
+        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5, 200);
         assertEquals(4.019, laskin.PalautaMaxPetoja(), 0.1);
 
     }
@@ -84,19 +84,19 @@ public class PetoelainsaaliselainTest {
     public void TestataanMaxArvoOikeaSaaliit() {
 
         Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 1, 0, 0, 0, 0);
+        laskin.laske(0, 1, 0, 0, 0, 0, 200);
         assertEquals(0.0, laskin.PalautaMaxsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(2, 1, 1, 1, 1, 1);
+        laskin.laske(2, 1, 1, 1, 1, 1, 200);
         assertEquals(2.00001, laskin.PalautaMaxsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 0, 0, 0, 0, 0);
+        laskin.laske(0, 0, 0, 0, 0, 0, 200);
         assertEquals(0, laskin.PalautaMaxsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3);
+        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 200);
         assertEquals(3.15, laskin.PalautaMaxsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5);
+        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5, 200);
         assertEquals(13.447, laskin.PalautaMaxsaaliita(), 0.1);
 
     }
@@ -105,19 +105,19 @@ public class PetoelainsaaliselainTest {
     public void TestataanMinArvoOikeaPedot() {
 
         Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 1, 0, 0, 0, 0);
+        laskin.laske(0, 1, 0, 0, 0, 0, 200);
         assertEquals(1.0, laskin.PalautaMinpetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(2, 1, 1, 1, 1, 1);
+        laskin.laske(2, 1, 1, 1, 1, 1, 200);
         assertEquals(0.406, laskin.PalautaMinpetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 0, 0, 0, 0, 0);
+        laskin.laske(0, 0, 0, 0, 0, 0, 200);
         assertEquals(0, laskin.PalautaMinpetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3);
+        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 200);
         assertEquals(0.157106, laskin.PalautaMinpetoja(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5);
+        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5, 200);
         assertEquals(0.001, laskin.PalautaMinpetoja(), 0.1);
 
     }
@@ -126,19 +126,19 @@ public class PetoelainsaaliselainTest {
     public void TestataanMinArvoOikeaSaaliit() {
 
         Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 1, 0, 0, 0, 0);
+        laskin.laske(0, 1, 0, 0, 0, 0, 200);
         assertEquals(0.0, laskin.PalautaMinsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(2, 1, 1, 1, 1, 1);
+        laskin.laske(2, 1, 1, 1, 1, 1, 200);
         assertEquals(0.4063, laskin.PalautaMinsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0, 0, 0, 0, 0, 0);
+        laskin.laske(0, 0, 0, 0, 0, 0, 200);
         assertEquals(0, laskin.PalautaMinsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3);
+        laskin.laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 200);
         assertEquals(0.1571, laskin.PalautaMinsaaliita(), 0.1);
         laskin = new Petoelainsaaliselain();
-        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5);
+        laskin.laske(3, 4, 0.2, 0.5, 0.2, 0.5, 200);
         assertEquals(0.124, laskin.PalautaMinsaaliita(), 0.1);
 
     }

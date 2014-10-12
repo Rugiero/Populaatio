@@ -28,6 +28,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
     private JTextField Ikentta;
     private JTextField Bkentta;
     private JTextField akentta;
+    private JTextField t1kentta;
     private JTextField infokentta;
     private ButtonGroup buttonGroup;
     private JButton Nappi;
@@ -48,7 +49,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
      * Luodaan komponentit
      */
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(9, 2);
+        GridLayout layout = new GridLayout(11, 2);
         container.setLayout(layout);
 
         JLabel N = new JLabel("Populaation koko: ");
@@ -59,6 +60,8 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         Bkentta = new JTextField();
         JLabel a = new JLabel("Parantumistodennakoisyys/ aikayksikko ");
         akentta = new JTextField();
+        JLabel t1 = new JLabel("t1");
+        t1kentta = new JTextField();
         JLabel R = new JLabel("info");
         infokentta = new JTextField();
 
@@ -74,6 +77,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         Nappi2 = new JButton("Laske raja-arvo");
         Nappi3 = new JButton("Laske sairastuneita enimillään");
         Nappi4 = new JButton("Näytä Faasi");
+
         Pnkma = new JButton("Paanäkymä");
 
         container.add(N);
@@ -84,6 +88,8 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         container.add(Bkentta);
         container.add(a);
         container.add(akentta);
+        container.add(t1);
+        container.add(t1kentta);
         container.add(R);
         container.add(infokentta);
         container.add(SIR);
@@ -134,27 +140,27 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
      */
     private boolean Testaakentat() {
 
-        return (DesimaalinSyotto(Nkentta.getText()) && DesimaalinSyotto(Ikentta.getText()) && DesimaalinSyotto(Bkentta.getText()) && DesimaalinSyotto(akentta.getText()));
+        return (DesimaalinSyotto(Nkentta.getText()) && DesimaalinSyotto(Ikentta.getText()) && DesimaalinSyotto(Bkentta.getText()) && DesimaalinSyotto(akentta.getText()) && DesimaalinSyotto(t1kentta.getText()));
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-         String[] nimet = new String[2];
-                    nimet[0] = "sairastuneiden lkm.";
-                    nimet[1] = "sairaudelle alttiiden lkm.";
+        String[] nimet = new String[2];
+        nimet[0] = "sairastuneiden lkm.";
+        nimet[1] = "sairaudelle alttiiden lkm.";
 
         if (e.getSource() == Nappi) {
             if (Testaakentat()) {
 //Testataan kumpi malli:
                 if (SIS.isSelected()) {
-                 
-                     PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())),nimet);
+
+                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText())), nimet);
                     kayra.Piirretaankayra();
                     kayra.setVisible(true);
 
                 } else if (SIR.isSelected()) {
-                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())), nimet);
+                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText())), nimet);
                     kayra.Piirretaankayra();
                     kayra.setVisible(true);
 
@@ -165,8 +171,8 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi1) {
             if (Testaakentat()) {
                 double R = (Double.parseDouble(Bkentta.getText()) / Double.parseDouble(akentta.getText())) * Double.parseDouble(Nkentta.getText());
-                infokentta.replaceSelection("");
-                infokentta.replaceSelection(R + "");
+               
+                infokentta.setText(R + "");
 
             }
         } else if (e.getSource() == Nappi2) {
@@ -174,17 +180,27 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
                 {
                     if (SIS.isSelected()) {
                         Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
-                        laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
-                        infokentta.replaceSelection("");
-                        infokentta.replaceSelection("Pysyvästi sairastuneita: " + laskin.TulostaRajaArvoSIS());
+                        laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+
+                        double rarvo = laskin.TulostaRajaArvoSIS();
+                        infokentta.setText("");
+                        infokentta.setText("Pysyvästi sairastuneita: " + rarvo);
                     }
                 }
-                if (SIR.isSelected()) {
+            }
+            if (SIR.isSelected()) {
 
-                    Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
-                    laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
-                    infokentta.replaceSelection("");
-                    infokentta.replaceSelection("Epidemian koko kun I0=1: " + laskin.TulostaRajaArvoSIR());
+                Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+                laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                double rarvo = laskin.TulostaRajaArvoSIR();
+
+                //Käsitellään poikkeus:
+                if (rarvo == Double.MAX_VALUE) {
+                    infokentta.setText("Virhe laskiessa raja-arvoa!");
+                } else {
+                    
+                 
+                    infokentta.setText("Epidemian koko kun I0=1: " + rarvo);
                 }
             }
         } else if (e.getSource() == Nappi3) {
@@ -192,14 +208,14 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
 
                 if (SIR.isSelected()) {
                     Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
-                    laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
-                    infokentta.replaceSelection("");
-                    infokentta.replaceSelection(laskin.PalautaSairaitaMax() + "");
+                    laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                    infokentta.setText("");
+                    infokentta.setText(laskin.PalautaSairaitaMax() + "");
                 } else if (SIS.isSelected()) {
                     Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
-                    laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()));
-                    infokentta.replaceSelection("");
-                    infokentta.replaceSelection(laskin.PalautaSairaitaMax() + "");
+                    laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                    infokentta.setText("");
+                    infokentta.setText(laskin.PalautaSairaitaMax() + "");
 
                 }
 
@@ -208,12 +224,12 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi4) {
             if (Testaakentat()) {
                 if (SIR.isSelected()) {
-                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText())));
                     kayra1.PiirretaankayraFaasi();
                     kayra1.setVisible(true);
                 }
                 if (SIS.isSelected()) {
-                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText())));
                     kayra1.PiirretaankayraFaasi();
                     kayra1.setVisible(true);
 
