@@ -52,12 +52,17 @@ public class SyotteidenTestaus {
         return Double.parseDouble(syote) >= 0 && Double.parseDouble(syote) <= 1;
     }
 
+    /**
+     * Metodi testaa että annettu syöte on luku. Syöte saa sisältää tasan yhden
+     * pisteen '.'. Muuten syötteen tulee sisältää vain numeroita. Piste ei saa
+     * olla viimeinen merkki eikä ensimmäinen merkki. Tyhjä syöte palauttaa
+     * 'false'.
+     *
+     * @param syote String-muotoinen syöte
+     * @return palauttaa true/false sen perusteella onko syöte oikea luku.
+     */
     public Boolean DesimaalinSyotto(String syote) {
-        /**
-         * Syöte saa sisältää tasan yhden pisteen '.'. Muuten syötteen tulee
-         * sisältää vain numeroita. Piste ei saa olla viimeinen merkki eikä
-         * ensimmäinen merkki. Tyhjä syöte palauttaa 'false'.
-         */
+
         if (syote.isEmpty()) {
             return false;
 

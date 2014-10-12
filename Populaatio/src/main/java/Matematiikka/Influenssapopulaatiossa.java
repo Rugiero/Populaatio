@@ -72,13 +72,9 @@ public class Influenssapopulaatiossa {
     /**
      * Metodissa laskemme taudin kehityksen kun sairastuneet saavat
      * sairastettuaan pysyvän immuniteetin.Approksimoimme diff.yhtälöparia dS/dt
-     * = -BSI, dI/dt = -BSI - aI nk. Eulerin menetelmällä. Muotoa y' = F(x,t)
-     * olevaa diff. yhtälöä voi approksimoida diskreetisti y(i+1) = F(i,t)*h +
-     * y(i), missä h on valittu väli. Mallissamme siis populaation jäsenet
-     * siirtyvät sairastuneiden luokasta I immuniteetin saaneideen luokkaan 'R':
-     * S --> I --> R, missä S on sairaudelle alttiiden määrä. R voidaan tässä
-     * jättää huomioimatta yhtälöissämme. Luodaan ensin yhtälöt. Asetetaan
-     * h=0.2.
+     * = -BSI, dI/dt = -BSI - aI nk. Runge-Kutan menetelmällä octavessa lsode-
+     * nimisellä scriptillä
+     *
      *
      * Sairaudelle alttiiden määrä alussa:
      *
@@ -96,17 +92,19 @@ public class Influenssapopulaatiossa {
         double S = N - I;
 
         //Syötetään octavelle arvot:
-        String S0 = "S(1) = " + S;
+        String S0 = "S0 = " + S;
 
-        String I0 = "I(1) = " + I;
+        String I0 = "I0 = " + I;
 
         octave.eval(S0 + ";");
         octave.eval(I0 + ";");
-        octave.eval("B = " + B + ";");
-        octave.eval("a= " + a + ";");
 
-        octave.eval("for i = 1:999    S(i+1) = (-B*S(i)*I(i))*0.2+S(i); I(i+1) = (B*S(i)*I(i)-a*I(i))*0.2+I(i); endfor;");
-        octave.eval("T=linspace(0,200,1000);");
+        octave.eval("function ret = f(X,t) ret = [-" + this.B + "*X(1)*X(2)," + this.B + "*X(1)*X(2)-" + this.a + "*X(2)]; end");
+        octave.eval("T=linspace(0,200,3000);");
+        octave.eval("X=lsode('f',[S0, I0], T);");
+
+        octave.eval(" S =X(:,1)';");
+        octave.eval("I = X(:,2)';");
 
         OctaveDouble arvot = octave.get(OctaveDouble.class, "T");
         this.T = arvot.getData();
