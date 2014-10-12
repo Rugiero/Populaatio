@@ -140,17 +140,21 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+         String[] nimet = new String[2];
+                    nimet[0] = "sairastuneiden lkm.";
+                    nimet[1] = "sairaudelle alttiiden lkm.";
 
         if (e.getSource() == Nappi) {
             if (Testaakentat()) {
 //Testataan kumpi malli:
                 if (SIS.isSelected()) {
-                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                 
+                     PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())),nimet);
                     kayra.Piirretaankayra();
                     kayra.setVisible(true);
 
                 } else if (SIR.isSelected()) {
-                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    PiirraKayra kayra = new PiirraKayra("", "lkm", "t", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())), nimet);
                     kayra.Piirretaankayra();
                     kayra.setVisible(true);
 
@@ -203,13 +207,18 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
 
         } else if (e.getSource() == Nappi4) {
             if (Testaakentat()) {
-//Testataan että SIR-malli on valittu, muuten ei piirretä:
                 if (SIR.isSelected()) {
                     PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
                     kayra1.PiirretaankayraFaasi();
                     kayra1.setVisible(true);
+                }
+                if (SIS.isSelected()) {
+                    PiirraFaasikayra kayra1 = new PiirraFaasikayra("", "I", "S", new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText())));
+                    kayra1.PiirretaankayraFaasi();
+                    kayra1.setVisible(true);
 
                 }
+
             }
         } else if (e.getSource() == Pnkma) {
             new PaaValikko();

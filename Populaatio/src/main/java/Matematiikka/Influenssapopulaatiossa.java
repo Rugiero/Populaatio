@@ -31,8 +31,9 @@ public class Influenssapopulaatiossa {
     private ArrayList<double[]> tulokset = new ArrayList<>();
 
     /**
-     * Lasketaan taudin kehitys populaatiossa differentiaaliyhtälöstä f =
-     * B*x*((N-(a/B))-x). Käytetään hyväksi octaven 'lsode' scriptiä-
+     * Lasketaan taudin kehitys populaatiossa differentiaaliyhtälöstä.
+     * Approksimoimme diff.yhtälöparia dS/dt = -BSI +aI, dI/dt = -BSI - aI nk.
+     * Runge-Kutan menetelmällä octavessa lsode- nimisellä scriptillä
      *
      *
      * @param N - populaation koko
@@ -47,21 +48,33 @@ public class Influenssapopulaatiossa {
         this.I = I;
         this.B = B;
         this.a = a;
+        double S = N - I;
 
-        String f = B + "*x*(" + (N - (a / B)) + "-x)";
+        String S0 = "S0 = " + S;
 
-        octave.eval("function x_prime = f(x,t) x_prime = " + B + "*x*(" + (N - (a / B)) + "-x)" + "; endfunction;");
-        octave.eval("x_0 = " + I + ";");
-        octave.eval("t=linspace(0,200,1000);");
-        octave.eval("y = lsode(@(x, t) " + f + ", x_0,t);");
+        String I0 = "I0 = " + I;
 
-        OctaveDouble arvot = octave.get(OctaveDouble.class, "t");
+        octave.eval(S0 + ";");
+        octave.eval(I0 + ";");
+
+        octave.eval("function ret = f(X,t) ret = [-" + this.B + "*X(1)*X(2) + " + this.a + "*X(2)," + this.B + "*X(1)*X(2)-" + this.a + "*X(2)]; end");
+        octave.eval("T=linspace(0,200,3000);");
+        octave.eval("X=lsode('f',[S0, I0], T);");
+
+        octave.eval(" S =X(:,1)';");
+        octave.eval("I = X(:,2)';");
+
+        OctaveDouble arvot = octave.get(OctaveDouble.class, "T");
         this.T = arvot.getData();
         this.tulokset.add(this.T);
 
-        arvot = octave.get(OctaveDouble.class, "y");
+        arvot = octave.get(OctaveDouble.class, "I");
         this.tuloksetI = arvot.getData();
         this.tulokset.add(this.tuloksetI);
+
+        arvot = octave.get(OctaveDouble.class, "S");
+        this.tuloksetS = arvot.getData();
+        this.tulokset.add(this.tuloksetS);
 
         octave.eval("clear all");
 

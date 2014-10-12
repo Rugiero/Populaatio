@@ -27,8 +27,6 @@ public class PiirraFaasikayra extends JFrame {
     private String x;
     private String y;
     private ArrayList<double[]> tulokset;
-    
-
 
     public PiirraFaasikayra(String otsikko, String x, String y, ArrayList<double[]> tulokset) {
         super("Populaatio");
@@ -57,9 +55,8 @@ public class PiirraFaasikayra extends JFrame {
         boolean autoSort = false;
 
         XYSeriesCollection dataset = new XYSeriesCollection();
-        int j = 0;
 
-        XYSeries series = new XYSeries(j, autoSort);
+        XYSeries series = new XYSeries("faasi", autoSort);
         for (int i = 0; i < tulokset.get(1).length; i++) {
             series.add(tulokset.get(1)[i], tulokset.get(2)[i]);
 
@@ -82,7 +79,7 @@ public class PiirraFaasikayra extends JFrame {
         JFreeChart chart = ChartFactory.createXYLineChart(chartTitle,
                 xAxisLabel, yAxisLabel, dataset,
                 PlotOrientation.HORIZONTAL, showLegend, createTooltip, createURL);
-      
+
         return new ChartPanel(chart);
 
     }

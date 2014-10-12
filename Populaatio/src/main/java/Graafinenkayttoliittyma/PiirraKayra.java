@@ -1,7 +1,8 @@
 /**
  * Luokalla piirretää käyrä muotoa y=x(t) ArrayListassa olevien taulukoiden
  * datasta. Luokalle odotetaan parametriksi ArrayList joka sisältää vähintään
- * kaksi taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi.
+ * kaksi taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi. String[] taulukon
+ * oletetaan sisältävän käyrien nimet järjestyksessä.
  *
  */
 package Graafinenkayttoliittyma;
@@ -25,15 +26,15 @@ public class PiirraKayra extends JFrame {
     private String x;
     private String y;
     private ArrayList<double[]> tulokset;
+    private String[] nimet;
 
-  
-
-    public PiirraKayra(String otsikko, String x, String y, ArrayList<double[]> tulokset) {
+    public PiirraKayra(String otsikko, String x, String y, ArrayList<double[]> tulokset, String[] nimet) {
         super("Populaatio");
         this.tulokset = tulokset;
         this.x = x;
         this.y = y;
         this.otsikko = otsikko;
+        this.nimet = nimet;
 
     }
 
@@ -74,16 +75,16 @@ public class PiirraKayra extends JFrame {
         boolean autoSort = false;
 
         XYSeriesCollection dataset = new XYSeriesCollection();
-        int j = 0;
 
+        int j = 0;
         for (int k = 1; k < tulokset.size(); k++) {
-            XYSeries series = new XYSeries(j, autoSort);
+            XYSeries series = new XYSeries(nimet[j], autoSort);
             for (int i = 0; i < tulokset.get(k).length; i++) {
                 series.add(tulokset.get(k)[i], tulokset.get(0)[i]);
             }
-            j++;
-            dataset.addSeries(series);
 
+            dataset.addSeries(series);
+            j++;
         }
 
         return dataset;

@@ -52,7 +52,7 @@ public class PetoSaalis implements Runnable, ActionListener {
 
         JLabel F0 = new JLabel("Petojen tiheys: ");
         F0kentta = new JTextField();
-        JLabel R0 = new JLabel("Saalisetn tiheys:  ");
+        JLabel R0 = new JLabel("Saaliiden tiheys:  ");
         R0kentta = new JTextField();
         JLabel a = new JLabel("a ");
         akentta = new JTextField();
@@ -79,7 +79,6 @@ public class PetoSaalis implements Runnable, ActionListener {
         Nappi4.addActionListener(this);
         Pnkma.addActionListener(this);
 
-       
         container.add(R0);
         container.add(R0kentta);
         container.add(F0);
@@ -134,8 +133,11 @@ public class PetoSaalis implements Runnable, ActionListener {
 
         if (e.getSource() == Nappi) {
             if (Testaakentat()) {
+                String[] nimet = new String[2];
+                nimet[0] = "saaliiden tiheys";
+                nimet[1] = "petojen tiheys";
 
-                PiirraKayra kayra = new PiirraKayra("Saalikset ja pedot", "lkm", "t", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText())));
+                PiirraKayra kayra = new PiirraKayra("Saaliit ja pedot", "tiheys", "t", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText())), nimet);
                 kayra.Piirretaankayra();
                 kayra.setVisible(true);
 
@@ -166,7 +168,7 @@ public class PetoSaalis implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {
 
-                PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saalikset ja pedot faasidiagrammi", "Jänöt", "Ketut", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText())));
+                PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saaliit ja pedot faasidiagrammi", "Jänöt", "Ketut", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText())));
                 kayra1.PiirretaankayraFaasi();
                 kayra1.setVisible(true);
 
