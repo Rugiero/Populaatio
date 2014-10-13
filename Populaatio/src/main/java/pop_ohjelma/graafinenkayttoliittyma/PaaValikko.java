@@ -5,23 +5,31 @@
  */
 package pop_ohjelma.graafinenkayttoliittyma;
 
-
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
  *
  * @author iangervu
  */
-public class PaaValikko implements Runnable {
+public class PaaValikko extends JPanel implements Runnable {
 
     private JFrame frame;
 
@@ -42,12 +50,12 @@ public class PaaValikko implements Runnable {
         frame.setVisible(true);
     }
 
-    private void luoKomponentit(Container container) {
+    private void luoKomponentit(final Container container) {
 
         GridLayout layout = new GridLayout(5, 2);
         container.setLayout(layout);
 
-        JLabel a = new JLabel("Valitse:");
+        JLabel a = new JLabel("Tervetuloa! Valitse:");
         JLabel tyhja = new JLabel("");
         JButton b = new JButton("SIR/SIS");
         JButton c = new JButton("Peto- saaliseläin");
@@ -73,7 +81,7 @@ public class PaaValikko implements Runnable {
         b.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Influenssapoulaatiossa();
+                new Influenssapopulaatiossagraf();
                 frame.setVisible(false);
             }
         });
@@ -87,17 +95,37 @@ public class PaaValikko implements Runnable {
         d.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Influenssapoulaatiossa();
-                
-            }
-        });
-        e.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {        
-                System.exit(0);
+
+                JFrame frame1 = new JFrame("Populaatio");
+                int leveys = 600;
+                int korkeus = 700;
+                frame1.setPreferredSize(new Dimension(leveys, korkeus));
+                frame1.setResizable(false);
+                frame1.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+
+                luoKomponentitHelpille(frame1.getContentPane());
+
+                frame1.setVisible(true);
+                frame1.pack();
 
             }
         });
+
+        e.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e
+            ) {
+                System.exit(0);
+
+            }
+        }
+        );
+
+    }
+
+    private void luoKomponentitHelpille(final Container container) {
+        Help help = new Help();
+        container.add(help, BorderLayout.CENTER);
 
     }
 

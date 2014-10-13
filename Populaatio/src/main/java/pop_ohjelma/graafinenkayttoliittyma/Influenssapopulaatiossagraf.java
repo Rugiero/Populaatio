@@ -1,7 +1,5 @@
 package pop_ohjelma.graafinenkayttoliittyma;
 
-
-
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -20,7 +18,7 @@ import pop_ohjelma.matematiikka.Influenssapopulaatiossa;
 /**
  * Graafinen liittymä influenssa populaatiossa tilanteeseen.
  */
-public class Influenssapoulaatiossa implements Runnable, ActionListener {
+public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
 
     private JFrame frame;
     private JTextField Nkentta;
@@ -40,7 +38,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
     private JRadioButton SIS;
     private JRadioButton SIR;
 
-    public Influenssapoulaatiossa() {
+    public Influenssapopulaatiossagraf() {
 
         run();
     }
@@ -155,7 +153,9 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         nimet[1] = "sairaudelle alttiiden lkm.";
 
         if (e.getSource() == Nappi) {
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
 //Testataan kumpi malli:
                 if (SIS.isSelected()) {
 
@@ -188,19 +188,23 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
             }
 
         } else if (e.getSource() == Nappi1) {
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
 
                 if (Double.parseDouble(akentta.getText()) == 0) {
-                    infokentta.setText("R = inf");
-                     return;
+                    infokentta.setText("inf");
+                    return;
                 }
-                double R = (Double.parseDouble(Bkentta.getText()) / Double.parseDouble(akentta.getText())) * Double.parseDouble(Nkentta.getText());
+                 Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
 
-                infokentta.setText(R + "");
+                infokentta.setText( laskin.PalautaR(Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(Nkentta.getText())) + "");
 
             }
         } else if (e.getSource() == Nappi2) {
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
                 {
                     if (SIS.isSelected()) {
                         Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
@@ -225,7 +229,9 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
 
             }
         } else if (e.getSource() == Nappi3) {
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
 
                 if (SIR.isSelected()) {
                     Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
@@ -248,7 +254,9 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
             }
 
         } else if (e.getSource() == Nappi4) {
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
                 if (SIR.isSelected()) {
 
                     ArrayList<double[]> tulokset = new Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));

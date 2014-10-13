@@ -1,11 +1,9 @@
-
 package pop_ohjelma.graafinenkayttoliittyma;
 
 /**
  *
  * @author iangervu
  */
-
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -138,7 +136,9 @@ public class PetoSaalis implements Runnable, ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == Nappi) {
-            if (Testaakentat()) {
+             if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
                 String[] nimet = new String[2];
                 nimet[0] = "saaliiden tiheys";
                 nimet[1] = "petojen tiheys";
@@ -160,12 +160,16 @@ public class PetoSaalis implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi1) {
             //Palauttaa syysteemin tasapainopisteen. Osoittautuu että se on (d/c, a/b).
 
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
 
                 infokentta.setText(Double.parseDouble(dkentta.getText()) / Double.parseDouble(ckentta.getText()) + ", " + Double.parseDouble(akentta.getText()) / Double.parseDouble(bkentta.getText()));
             }
         } else if (e.getSource() == Nappi2) {
-            if (Testaakentat()) {
+             if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
 
                 if (laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())) == null) {
@@ -178,7 +182,9 @@ public class PetoSaalis implements Runnable, ActionListener {
             }
         } else if (e.getSource() == Nappi4) {
 
-            if (Testaakentat()) {
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
                 if (laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())) == null) {
 
@@ -188,7 +194,10 @@ public class PetoSaalis implements Runnable, ActionListener {
                 infokentta.setText("Max: " + laskin.PalautaMaxsaaliita() + " Min:" + laskin.PalautaMinsaaliita());
             }
         } else if (e.getSource() == Nappi3) {
-            if (Testaakentat()) {
+
+            if (Testaakentat() == false) {
+                infokentta.setText("Tarkista syöte!");
+            } else {
 
                 ArrayList<double[]> tulokset = new Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
 

@@ -1,6 +1,5 @@
 package pop_ohjelma.matematiikka;
 
-
 import dk.ange.octave.OctaveEngine;
 import dk.ange.octave.OctaveEngineFactory;
 import dk.ange.octave.type.OctaveDouble;
@@ -178,7 +177,6 @@ public class Influenssapopulaatiossa {
 
     }
 
-  
 //    public double PalautaR() {
 //        if (this.a == 0) {
 //            return Double.MAX_VALUE;
@@ -186,7 +184,6 @@ public class Influenssapopulaatiossa {
 //        
 //        return (this.B / this.a) * this.N;
 //    }
-
     /**
      * Laskemme S:n raja-arvon immuniteettimallissa. Tässä mallissa sairaus ei
      * pysy populaatiossa, sillä kaikki sairastaneet saavat lopulta
@@ -217,5 +214,18 @@ public class Influenssapopulaatiossa {
             }
         }
         return suurin;
+    }
+
+    /**
+     * Palauttaa arvon R
+     * @param B
+     * @param a
+     * @param N
+     * @return R
+     */
+    public double PalautaR(double B, double a, double N) {
+       
+        return (B/a)*N;
+ 
     }
 }
