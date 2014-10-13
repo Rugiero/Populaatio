@@ -9,39 +9,27 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-    </properties>
+    </properties> 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.10</version>
             <scope>test</scope>
-        </dependency> 
-        <dependency> 
-            <groupId>dk.ange</groupId>
-            <artifactId>javaoctave</artifactId>
-            <version>0.6.4</version>
-            <type>jar</type>    
         </dependency>
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
             <version>1.0.15</version>
-        </dependency>      
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-            <scope>test</scope>
+            <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>net.sourceforge.cobertura</groupId>
-            <artifactId>cobertura</artifactId>
-            <version>1.9.4.1</version>
-            <scope>test</scope>
-        </dependency>  
+            <groupId>dk.ange</groupId>
+            <artifactId>javaoctave</artifactId>
+            <version>0.6.4</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -64,21 +52,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>  
-            <id>central</id>
-            <url>http://repo1.maven.org/maven2/</url>
-        </repository>      
-        <repository>
-            <id>maven-repository.javaoctave.kenai.com</id>
-            <name>JavaOctave Maven Repository</name>
-            <url>https://svn.kenai.com/svn/javaoctave~maven-repository</url>
-        </repository>
-        <repository>
-            <id>maven-repository.javaoctave.kenai.com -source</id>
-            <name>JavaOctave Maven Repository -source</name>
-            <url>https://hg.kenai.com/hg/javaoctave~source-code-repository</url>
-        </repository>
-    </repositories> 
 </project>

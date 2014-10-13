@@ -62,7 +62,7 @@ public class Petoelainsaaliselain {
         try {
             octave.eval("X=lsode('f',[" + this.R1 + "," + this.F1 + "], T);");
         } catch (dk.ange.octave.exception.OctaveEvalException e) {
-            return laske(0,0,0,0,0,0,0);
+            return null;
         }
 
         OctaveDouble arvot = octave.get(OctaveDouble.class, "T");

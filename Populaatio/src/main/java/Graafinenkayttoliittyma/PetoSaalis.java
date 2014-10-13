@@ -16,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,25 +53,25 @@ public class PetoSaalis implements Runnable, ActionListener {
         GridLayout layout = new GridLayout(12, 2);
         container.setLayout(layout);
 
-        JLabel F0 = new JLabel("Petojen tiheys: ");
+        JLabel F0 = new JLabel("Petojen tiheys ");
         F0kentta = new JTextField();
-        JLabel R0 = new JLabel("Saaliiden tiheys:  ");
+        JLabel R0 = new JLabel("Saaliiden tiheys  ");
         R0kentta = new JTextField();
-        JLabel a = new JLabel("a ");
+        JLabel a = new JLabel("Saaliiden lisääntymistahti");
         akentta = new JTextField();
-        JLabel b = new JLabel("b ");
+        JLabel b = new JLabel("Petojen tehokkuus ");
         bkentta = new JTextField();
-        JLabel c = new JLabel("c ");
+        JLabel c = new JLabel("Petojen lisääntymistahti (tai sisäänmuuttaminen) ");
         ckentta = new JTextField();
-        JLabel d = new JLabel("d ");
+        JLabel d = new JLabel("Petojen kuolleisuus (tai poismuuttaminen) ");
         dkentta = new JTextField();
-        JLabel t1 = new JLabel("t1");
+        JLabel t1 = new JLabel("Aika");
         t1kentta = new JTextField();
         JLabel info = new JLabel("info ");
         infokentta = new JTextField();
         JLabel tyhja = new JLabel("");
 
-        Nappi = new JButton("Nayta kehitys");
+        Nappi = new JButton("Näytä kehitys");
         Nappi1 = new JButton("Laske tasapainopiste");
         Nappi2 = new JButton("Laske Min/max pedot");
         Nappi4 = new JButton("Laske Min/max saaliit");
@@ -148,7 +149,15 @@ public class PetoSaalis implements Runnable, ActionListener {
                 nimet[0] = "saaliiden tiheys";
                 nimet[1] = "petojen tiheys";
 
-                PiirraKayra kayra = new PiirraKayra("Saaliit ja pedot", "tiheys", "t", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())), nimet);
+                ArrayList<double[]> tulokset = new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
+
+                if (tulokset == null) {
+                    infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
+                    return;
+
+                }
+
+                PiirraKayra kayra = new PiirraKayra("Saaliit ja pedot", "tiheys", "t", tulokset, nimet);
                 kayra.Piirretaankayra();
                 kayra.setVisible(true);
 
@@ -164,7 +173,12 @@ public class PetoSaalis implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi2) {
             if (Testaakentat()) {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
+
+                if (laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())) == null) {
+
+                    infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
+                    return;
+                }
                 infokentta.setText("");
                 infokentta.setText("Max: " + laskin.PalautaMaxPetoja() + " Min:" + laskin.PalautaMinpetoja());
             }
@@ -172,14 +186,24 @@ public class PetoSaalis implements Runnable, ActionListener {
 
             if (Testaakentat()) {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
-                infokentta.setText("");
+                if (laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())) == null) {
+
+                    infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
+                    return;
+                }
                 infokentta.setText("Max: " + laskin.PalautaMaxsaaliita() + " Min:" + laskin.PalautaMinsaaliita());
             }
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {
 
-                PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saaliit ja pedot faasidiagrammi", "Saaliit", "Pedot", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())));
+                ArrayList<double[]> tulokset = new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
+
+                if (tulokset == null) {
+                    infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
+                    return;
+
+                }
+                PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saaliit ja pedot faasidiagrammi", "Saaliit", "Pedot", tulokset);
                 kayra1.PiirretaankayraFaasi();
                 kayra1.setVisible(true);
 

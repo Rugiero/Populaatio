@@ -64,7 +64,7 @@ public class Influenssapopulaatiossa {
         try {
             octave.eval("X=lsode('f',[S0, I0], T);");
         } catch (dk.ange.octave.exception.OctaveEvalException e) {
-            return laskeSIS(0, 0, 0, 0, 0);
+            return null;
         }
 
         octave.eval(" S =X(:,1)';");
@@ -124,7 +124,7 @@ public class Influenssapopulaatiossa {
         try {
             octave.eval("X=lsode('f',[S0, I0], T);");
         } catch (dk.ange.octave.exception.OctaveEvalException e) {
-            return laskeSIR(0, 0, 0, 0, 0);
+            return null;
         }
 
         octave.eval(" S =X(:,1)';");
@@ -173,20 +173,23 @@ public class Influenssapopulaatiossa {
 
             return 0;
 
-        }
-        if (v > 0) {
+        } else if (v > 0) {
 
-            return (int) (v + 0.5);
+            return v;
         }
 
         return 0;
 
     }
 
-    public double PalautaR() {
-
-        return (this.B / this.a) * this.N;
-    }
+  
+//    public double PalautaR() {
+//        if (this.a == 0) {
+//            return Double.MAX_VALUE;
+//        }
+//        
+//        return (this.B / this.a) * this.N;
+//    }
 
     /**
      * Laskemme S:n raja-arvon immuniteettimallissa. Tässä mallissa sairaus ei
@@ -199,8 +202,8 @@ public class Influenssapopulaatiossa {
      * @return -palauttaa double- muotoisen raja-arvon
      */
     public double TulostaRajaArvoSIR() {
-        
-       return N - tuloksetS[tuloksetS.length - 1];
+
+        return N - tuloksetS[tuloksetS.length - 1];
 
     }
 

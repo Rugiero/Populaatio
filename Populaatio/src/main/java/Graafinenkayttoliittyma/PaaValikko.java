@@ -97,7 +97,7 @@ public class PaaValikko implements Runnable {
         });
         e.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {        
                 System.exit(0);
 
             }
