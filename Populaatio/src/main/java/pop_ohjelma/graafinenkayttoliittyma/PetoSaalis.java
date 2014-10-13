@@ -1,29 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Graafinenkayttoliittyma;
+
+package pop_ohjelma.graafinenkayttoliittyma;
 
 /**
  *
  * @author iangervu
  */
-import Matematiikka.Influenssapopulaatiossa;
-import Matematiikka.Petoelainsaaliselain;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import pop_ohjelma.matematiikka.Petoelainsaaliselain;
 
 public class PetoSaalis implements Runnable, ActionListener {
 
@@ -149,7 +143,7 @@ public class PetoSaalis implements Runnable, ActionListener {
                 nimet[0] = "saaliiden tiheys";
                 nimet[1] = "petojen tiheys";
 
-                ArrayList<double[]> tulokset = new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
+                ArrayList<double[]> tulokset = new Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
 
                 if (tulokset == null) {
                     infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
@@ -196,7 +190,7 @@ public class PetoSaalis implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {
 
-                ArrayList<double[]> tulokset = new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
+                ArrayList<double[]> tulokset = new Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
 
                 if (tulokset == null) {
                     infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");

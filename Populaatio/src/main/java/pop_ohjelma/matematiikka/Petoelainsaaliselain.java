@@ -1,8 +1,5 @@
-package Matematiikka;
+package pop_ohjelma.matematiikka;
 
-import dk.ange.octave.OctaveEngine;
-import dk.ange.octave.OctaveEngineFactory;
-import dk.ange.octave.type.OctaveDouble;
 import java.util.ArrayList;
 import dk.ange.octave.OctaveEngine;
 import dk.ange.octave.OctaveEngineFactory;

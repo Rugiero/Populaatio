@@ -1,14 +1,10 @@
-package Matematiikka;
+package pop_ohjelma.matematiikka;
 
-import Graafinenkayttoliittyma.PiirraKayra;
 
 import dk.ange.octave.OctaveEngine;
 import dk.ange.octave.OctaveEngineFactory;
 import dk.ange.octave.type.OctaveDouble;
-import dk.ange.octave.type.OctaveInt;
 import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.SwingUtilities;
 
 /**
  * N= Populaation koko I= Sairastuneita alussa B = tarttumisintesiteetti a =

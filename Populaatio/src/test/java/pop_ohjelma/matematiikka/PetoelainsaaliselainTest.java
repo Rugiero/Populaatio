@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Populaatio.Matematiikka;
+package pop_ohjelma.matematiikka;
 
-import Matematiikka.Petoelainsaaliselain;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import pop_ohjelma.matematiikka.Petoelainsaaliselain;
 import static org.junit.Assert.*;
+
 
 /**
  *
@@ -42,20 +44,30 @@ public class PetoelainsaaliselainTest {
     @Test
     public void TestataanPalautusOikeanMuotoinen() {
         //Testataan että palautettu arraylist sisältää kolme taulukkoa:
+        ArrayList<double[]> tulokset = new Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 0);
+        assertEquals(3, tulokset.size());
 
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(1, 0, 0, 0, 0, 0, 0).size());
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1, 1).size());
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 100).size());
-        assertEquals(3, new Matematiikka.Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 50).size());
+        tulokset = new Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1, 1);
+        assertEquals(3, tulokset.size());
+
+        tulokset = new Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 100);
+        assertEquals(3, tulokset.size());
+
+        tulokset = new Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 50);
+        assertEquals(3, tulokset.size());
     }
 
     @Test
     public void TestataanetteiPalautusnull() {
 
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(1, 0, 0, 0, 0, 0, 0) == null);
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1, 1000) == null);
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 20) == null);
-        assertFalse(new Matematiikka.Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 1) == null);
+        ArrayList<double[]> tulokset = new Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 0);
+        assertFalse(tulokset == null);
+        tulokset = new Petoelainsaaliselain().laske(0, 0, 0, 0, 0, 0, 1000);
+        assertFalse(tulokset == null);
+        tulokset = new Petoelainsaaliselain().laske(2, 1, 1, 1, 1, 1, 1000);
+        assertFalse(tulokset == null);
+        tulokset = new Petoelainsaaliselain().laske(0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 100);
+        assertFalse(tulokset == null);
 
     }
 

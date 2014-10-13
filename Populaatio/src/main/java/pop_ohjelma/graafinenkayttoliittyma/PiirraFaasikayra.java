@@ -1,9 +1,11 @@
+package pop_ohjelma.graafinenkayttoliittyma;
+
 /*
  * Luokalla piirretään faasidiagrammi, eli graafi missä aika on redusoitu pois. Luokalle odotetaan parametriksi ArrayList joka sisältää kolme
  * taulukkoa, joista ensimmäinen jätetään (vastaa a aikaa t) huomioimatta.
  * 
  */
-package Graafinenkayttoliittyma;
+
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;

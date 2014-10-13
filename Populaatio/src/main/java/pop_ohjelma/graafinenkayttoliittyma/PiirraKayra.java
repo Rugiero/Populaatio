@@ -5,13 +5,12 @@
  * oletetaan sisältävän käyrien nimet järjestyksessä.
  *
  */
-package Graafinenkayttoliittyma;
+package pop_ohjelma.graafinenkayttoliittyma;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;

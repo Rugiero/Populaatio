@@ -1,4 +1,4 @@
-package Graafinenkayttoliittyma;
+package pop_ohjelma.graafinenkayttoliittyma;
 
 import java.util.Scanner;
 
@@ -12,45 +12,45 @@ public class SyotteidenTestaus {
     /**
      * Metodi kokonaislukujen syöttämiseen:
      */
-    public boolean KokonaisluvunSyotto(String syote) {
-
-        /**
-         * Tyhjä syöte palauttaa false:
-         */
-        if (syote.isEmpty()) {
-            return false;
-        }
-        for (int i = 0; i < syote.length(); i++) {
-            char a = syote.charAt(i);
-            if (!Character.isDigit(a)) {
-                /**
-                 * syöte sisälsi kirjaimen tai erikoismerkin,joten palautetaan
-                 * false:
-                 */
-
-                return false;
-            }
-        }
-
-        /**
-         * Tarkistetaan vielä, että numero on yli nolla:
-         */
-        return Integer.parseInt(syote) >= 0;
-    }
-
-    /**
-     * Metodi, jonka avulla syötetään desimaalilukuja välillä 0-1:
-     *
-     * @param syote
-     * @return
-     */
-    public boolean DesimaalinSyottoValilla0Ja1(String syote) {
-
-        if (DesimaalinSyotto(syote) == false) {
-            return false;
-        }
-        return Double.parseDouble(syote) >= 0 && Double.parseDouble(syote) <= 1;
-    }
+//    public boolean KokonaisluvunSyotto(String syote) {
+//
+//        /**
+//         * Tyhjä syöte palauttaa false:
+//         */
+//        if (syote.isEmpty()) {
+//            return false;
+//        }
+//        for (int i = 0; i < syote.length(); i++) {
+//            char a = syote.charAt(i);
+//            if (!Character.isDigit(a)) {
+//                /**
+//                 * syöte sisälsi kirjaimen tai erikoismerkin,joten palautetaan
+//                 * false:
+//                 */
+//
+//                return false;
+//            }
+//        }
+//
+//        /**
+//         * Tarkistetaan vielä, että numero on yli nolla:
+//         */
+//        return Integer.parseInt(syote) >= 0;
+//    }
+//
+//    /**
+//     * Metodi, jonka avulla syötetään desimaalilukuja välillä 0-1:
+//     *
+//     * @param syote
+//     * @return
+//     */
+//    public boolean DesimaalinSyottoValilla0Ja1(String syote) {
+//
+//        if (DesimaalinSyotto(syote) == false) {
+//            return false;
+//        }
+//        return Double.parseDouble(syote) >= 0 && Double.parseDouble(syote) <= 1;
+//    }
 
     /**
      * Metodi testaa että annettu syöte on luku. Syöte saa sisältää tasan yhden
@@ -62,10 +62,8 @@ public class SyotteidenTestaus {
      * @return palauttaa true/false sen perusteella onko syöte oikea luku.
      */
     public Boolean DesimaalinSyotto(String syote) {
-
         if (syote.isEmpty()) {
             return false;
-
         }
         if (syote.charAt(0) == '.' || syote.charAt(syote.length() - 1) == '.') {
             return false;

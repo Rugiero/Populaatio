@@ -1,23 +1,21 @@
-package Graafinenkayttoliittyma;
+package pop_ohjelma.graafinenkayttoliittyma;
 
-import Matematiikka.Influenssapopulaatiossa;
-import Matematiikka.Petoelainsaaliselain;
+
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import pop_ohjelma.matematiikka.Influenssapopulaatiossa;
 
 /**
  * Graafinen liittymä influenssa populaatiossa tilanteeseen.
@@ -161,7 +159,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
 //Testataan kumpi malli:
                 if (SIS.isSelected()) {
 
-                    ArrayList<double[]> tulokset = new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                    ArrayList<double[]> tulokset = new Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
                     //Käsitellään poikkeus:
                     if (tulokset == null) {
                         infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
@@ -174,7 +172,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
                     kayra.setVisible(true);
 
                 } else if (SIR.isSelected()) {
-                    ArrayList<double[]> tulokset = new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                    ArrayList<double[]> tulokset = new Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
                     //Käsitellään poikkeus:
                     if (tulokset == null) {
                         infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
@@ -253,7 +251,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
             if (Testaakentat()) {
                 if (SIR.isSelected()) {
 
-                    ArrayList<double[]> tulokset = new Matematiikka.Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                    ArrayList<double[]> tulokset = new Influenssapopulaatiossa().laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
                     //Käsitellään poikkeus:
                     if (tulokset == null) {
                         infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
@@ -264,7 +262,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
                     kayra1.setVisible(true);
                 }
                 if (SIS.isSelected()) {
-                    ArrayList<double[]> tulokset = new Matematiikka.Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
+                    ArrayList<double[]> tulokset = new Influenssapopulaatiossa().laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
                     //Käsitellään poikkeus:
                     if (tulokset == null) {
                         infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
