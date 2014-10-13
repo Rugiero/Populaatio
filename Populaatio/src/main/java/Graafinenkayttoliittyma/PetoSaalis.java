@@ -40,6 +40,7 @@ public class PetoSaalis implements Runnable, ActionListener {
     private JButton Nappi2;
     private JButton Nappi3;
     private JButton Nappi4;
+    private JButton Nappi5;
     private JButton Pnkma;
 
     public PetoSaalis() {
@@ -48,7 +49,7 @@ public class PetoSaalis implements Runnable, ActionListener {
     }
 
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(11, 2);
+        GridLayout layout = new GridLayout(12, 2);
         container.setLayout(layout);
 
         JLabel F0 = new JLabel("Petojen tiheys: ");
@@ -67,12 +68,14 @@ public class PetoSaalis implements Runnable, ActionListener {
         t1kentta = new JTextField();
         JLabel info = new JLabel("info ");
         infokentta = new JTextField();
+        JLabel tyhja = new JLabel("");
 
         Nappi = new JButton("Nayta kehitys");
         Nappi1 = new JButton("Laske tasapainopiste");
         Nappi2 = new JButton("Laske Min/max pedot");
         Nappi4 = new JButton("Laske Min/max saaliit");
         Nappi3 = new JButton("Näytä Faasi");
+        Nappi5 = new JButton("Tyhjennä kentät");
 
         Pnkma = new JButton("Paanäkymä");
         Nappi.addActionListener(this);
@@ -80,6 +83,7 @@ public class PetoSaalis implements Runnable, ActionListener {
         Nappi2.addActionListener(this);
         Nappi3.addActionListener(this);
         Nappi4.addActionListener(this);
+        Nappi5.addActionListener(this);
         Pnkma.addActionListener(this);
 
         container.add(R0);
@@ -103,6 +107,8 @@ public class PetoSaalis implements Runnable, ActionListener {
         container.add(Nappi2);
         container.add(Nappi3);
         container.add(Nappi4);
+        container.add(tyhja);
+        container.add(Nappi5);
         container.add(Pnkma);
 
     }
@@ -116,7 +122,7 @@ public class PetoSaalis implements Runnable, ActionListener {
     //Testataan että kaikki syötteet ok:
     private boolean Testaakentat() {
 
-        return (DesimaalinSyotto(F0kentta.getText()) && DesimaalinSyotto(R0kentta.getText()) && DesimaalinSyotto(akentta.getText()) && DesimaalinSyotto(bkentta.getText()) && DesimaalinSyotto(ckentta.getText()) && DesimaalinSyotto(dkentta.getText())  &&  DesimaalinSyotto(t1kentta.getText()));
+        return (DesimaalinSyotto(F0kentta.getText()) && DesimaalinSyotto(R0kentta.getText()) && DesimaalinSyotto(akentta.getText()) && DesimaalinSyotto(bkentta.getText()) && DesimaalinSyotto(ckentta.getText()) && DesimaalinSyotto(dkentta.getText()) && DesimaalinSyotto(t1kentta.getText()));
 
     }
 
@@ -142,7 +148,7 @@ public class PetoSaalis implements Runnable, ActionListener {
                 nimet[0] = "saaliiden tiheys";
                 nimet[1] = "petojen tiheys";
 
-                PiirraKayra kayra = new PiirraKayra("Saaliit ja pedot", "tiheys", "t", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()),  Double.parseDouble(t1kentta.getText()) ), nimet);
+                PiirraKayra kayra = new PiirraKayra("Saaliit ja pedot", "tiheys", "t", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())), nimet);
                 kayra.Piirretaankayra();
                 kayra.setVisible(true);
 
@@ -152,13 +158,13 @@ public class PetoSaalis implements Runnable, ActionListener {
             //Palauttaa syysteemin tasapainopisteen. Osoittautuu että se on (d/c, a/b).
 
             if (Testaakentat()) {
-               
+
                 infokentta.setText(Double.parseDouble(dkentta.getText()) / Double.parseDouble(ckentta.getText()) + ", " + Double.parseDouble(akentta.getText()) / Double.parseDouble(bkentta.getText()));
             }
         } else if (e.getSource() == Nappi2) {
             if (Testaakentat()) {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()),Double.parseDouble(t1kentta.getText()));
+                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
                 infokentta.setText("");
                 infokentta.setText("Max: " + laskin.PalautaMaxPetoja() + " Min:" + laskin.PalautaMinpetoja());
             }
@@ -166,18 +172,28 @@ public class PetoSaalis implements Runnable, ActionListener {
 
             if (Testaakentat()) {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
-                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()),Double.parseDouble(t1kentta.getText()));
+                laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText()));
                 infokentta.setText("");
                 infokentta.setText("Max: " + laskin.PalautaMaxsaaliita() + " Min:" + laskin.PalautaMinsaaliita());
             }
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {
 
-                PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saaliit ja pedot faasidiagrammi", "Saaliit", "Pedot", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()),Double.parseDouble(t1kentta.getText())));
+                PiirraFaasikayra kayra1 = new PiirraFaasikayra("Saaliit ja pedot faasidiagrammi", "Saaliit", "Pedot", new Matematiikka.Petoelainsaaliselain().laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()), Double.parseDouble(t1kentta.getText())));
                 kayra1.PiirretaankayraFaasi();
                 kayra1.setVisible(true);
 
             }
+
+        } else if (e.getSource() == Nappi5) {
+            F0kentta.setText("");
+            R0kentta.setText("");
+            akentta.setText("");
+            bkentta.setText("");
+            ckentta.setText("");
+            dkentta.setText("");
+            infokentta.setText("");
+            t1kentta.setText("");
 
         } else if (e.getSource() == Pnkma) {
             new PaaValikko();

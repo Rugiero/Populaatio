@@ -36,6 +36,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
     private JButton Nappi2;
     private JButton Nappi3;
     private JButton Nappi4;
+    private JButton Nappi5;
     private JButton Pnkma;
     private JRadioButton SIS;
     private JRadioButton SIR;
@@ -49,7 +50,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
      * Luodaan komponentit
      */
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(10, 2);
+        GridLayout layout = new GridLayout(11, 2);
         container.setLayout(layout);
 
         JLabel N = new JLabel("Populaation koko: ");
@@ -64,7 +65,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         t1kentta = new JTextField();
         JLabel R = new JLabel("info");
         infokentta = new JTextField();
-
+        JLabel tyhja = new JLabel("");
         SIS = new JRadioButton("SIS");
         SIR = new JRadioButton("SIR");
 
@@ -76,7 +77,8 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         Nappi1 = new JButton("Laske R");
         Nappi2 = new JButton("Laske raja-arvo");
         Nappi3 = new JButton("Laske sairastuneita enimillään");
-        Nappi4 = new JButton("Näytä Faasi");
+        Nappi4 = new JButton("Näytä faasidiagrammi");
+        Nappi5 = new JButton("Tyhjennä kentät");
 
         Pnkma = new JButton("Paanäkymä");
 
@@ -100,6 +102,8 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         container.add(Nappi2);
         container.add(Nappi3);
         container.add(Nappi4);
+        container.add(tyhja);
+        container.add(Nappi5);
         container.add(Pnkma);
 
         Nappi.addActionListener(this);
@@ -107,6 +111,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         Nappi2.addActionListener(this);
         Nappi3.addActionListener(this);
         Nappi4.addActionListener(this);
+        Nappi5.addActionListener(this);
         Pnkma.addActionListener(this);
     }
 
@@ -227,6 +232,14 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
                 }
 
             }
+        } else if (e.getSource() == Nappi5) {
+            Nkentta.setText("");
+            Ikentta.setText("");
+            Bkentta.setText("");
+            akentta.setText("");
+            infokentta.setText("");
+            t1kentta.setText("");
+
         } else if (e.getSource() == Pnkma) {
             new PaaValikko();
             frame.setVisible(false);
