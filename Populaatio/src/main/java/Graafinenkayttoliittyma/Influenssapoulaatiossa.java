@@ -49,7 +49,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
      * Luodaan komponentit
      */
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(11, 2);
+        GridLayout layout = new GridLayout(10, 2);
         container.setLayout(layout);
 
         JLabel N = new JLabel("Populaation koko: ");
@@ -116,7 +116,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
     @Override
     public void run() {
         frame = new JFrame("Otsikko");
-        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(750, 750));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,7 +171,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
         } else if (e.getSource() == Nappi1) {
             if (Testaakentat()) {
                 double R = (Double.parseDouble(Bkentta.getText()) / Double.parseDouble(akentta.getText())) * Double.parseDouble(Nkentta.getText());
-               
+
                 infokentta.setText(R + "");
 
             }
@@ -182,9 +182,7 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
                         Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
                         laskin.laskeSIS(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
 
-                        double rarvo = laskin.TulostaRajaArvoSIS();
-                        infokentta.setText("");
-                        infokentta.setText("Pysyvästi sairastuneita: " + rarvo);
+                        infokentta.setText("Pysyvästi sairastuneita: " + laskin.TulostaRajaArvoSIS());
                     }
                 }
             }
@@ -192,16 +190,9 @@ public class Influenssapoulaatiossa implements Runnable, ActionListener {
 
                 Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
                 laskin.laskeSIR(Double.parseDouble(Nkentta.getText()), Double.parseDouble(Ikentta.getText()), Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(t1kentta.getText()));
-                double rarvo = laskin.TulostaRajaArvoSIR();
 
-                //Käsitellään poikkeus:
-                if (rarvo == Double.MAX_VALUE) {
-                    infokentta.setText("Virhe laskiessa raja-arvoa!");
-                } else {
-                    
-                 
-                    infokentta.setText("Epidemian koko kun I0=1: " + rarvo);
-                }
+                infokentta.setText("Epidemian koko: " + laskin.TulostaRajaArvoSIR());
+
             }
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {

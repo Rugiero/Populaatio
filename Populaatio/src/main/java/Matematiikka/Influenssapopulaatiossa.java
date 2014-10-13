@@ -148,8 +148,9 @@ public class Influenssapopulaatiossa {
 
     /**
      *
-     * Palautetaan pysyvästi sairastuneiden lukumäärä SIS- mallissa. Tapaus B=0
-     * tulee käsitellä erikseen.
+     * Palautetaan pysyvästi sairastuneiden lukumäärä SIS- mallissa. On
+     * osoitettavissa että se on laskettavissa kaavasta v = N - (a / B). Tapaus
+     * B=0 käsitellään erikseen.
      *
      * @return raja-arvo
      */
@@ -191,53 +192,15 @@ public class Influenssapopulaatiossa {
      * Laskemme S:n raja-arvon immuniteettimallissa. Tässä mallissa sairaus ei
      * pysy populaatiossa, sillä kaikki sairastaneet saavat lopulta
      * immuniteetin. Lasketaan siis taudin sairastaneiden kokonaismäärä ennen
-     * kuin epidemia katoaa. On osoitettavissa, että se hoituu laskemalla
-     * yhtälön 0=(1-s)+(1/R0)*ln(s) juuret. Tässä s= S/N ja R0 = (B/a)*N
+     * kuin epidemia katoaa. Taudin sairastaneet lopussa on sama kuin
+     * immuniteettiluokassa olevat, eli N-S
+     *
      *
      * @return -palauttaa double- muotoisen raja-arvon
      */
     public double TulostaRajaArvoSIR() {
-
-        double R0 = (this.B / this.a) * this.N;
-        /**
-         * Jos R0 < 1, Tartunnan saaneet henkilöt 'eivät tartuta ketään lisää'.
-         * Siis epidemiaa ei synny ja :
-         *
-         *
-         * Muuten lasketaan juuri numeerisesti octavessa. Otetaan juurea lähellä
-         * olevaksi "arvaukseksi" S:n vii*meinen arvo ja muutetaan se
-         * suhteelliseksi osuudeksi s=S/N.
-         */
-
-        if (R0 < 1) {
-            return 1;
-
-        } else if (R0 >= 1) {
-
-            double s = this.tulokset.get(2)[tulokset.get(2).length - 1] / this.N;
-
-            octave.eval("function y = f(x) y =(1-x)+(1/" + R0 + ")*log(x); endfunction; ");
-
-            //Jos octave ei syystä tai toisesta kykene laskemaan nollakohtaa, palautetaan MAX_VALUE:
-            try {
-                octave.eval("sairaat =" + N + "- (fsolve (\"f\"," + s + "))*" + N + ";");
-            } catch (dk.ange.octave.exception.OctaveEvalException e) {
-                return Double.MAX_VALUE;
-            }
-            //Suurilla luvuilla voi käydä niin että octave saa nollakohdaksi kompleksilukuja, kyseessä on kuitenkin numeerinen virhe. Tällöin casti doubleksi ei toimi. Palautetaan tässä tilanteessa taas MAX_VALUE
-            try {
-                octave.get(OctaveDouble.class, "sairaat");
-            } catch (dk.ange.octave.exception.OctaveClassCastException e) {
-                return Double.MAX_VALUE;
-            }
-
-            OctaveDouble S = octave.get(OctaveDouble.class, "sairaat");
-            octave.close();
-            double[] sairastuneet = S.getData();
-
-            return sairastuneet[0];
-        }
-        return 0;
+        
+       return N - tuloksetS[tuloksetS.length - 1];
 
     }
 

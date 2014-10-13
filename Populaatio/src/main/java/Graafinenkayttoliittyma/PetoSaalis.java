@@ -48,7 +48,7 @@ public class PetoSaalis implements Runnable, ActionListener {
     }
 
     private void luoKomponentit(Container container) {
-        GridLayout layout = new GridLayout(12, 2);
+        GridLayout layout = new GridLayout(11, 2);
         container.setLayout(layout);
 
         JLabel F0 = new JLabel("Petojen tiheys: ");
@@ -123,7 +123,7 @@ public class PetoSaalis implements Runnable, ActionListener {
     @Override
     public void run() {
         frame = new JFrame("Otsikko");
-        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(750, 750));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,15 +152,15 @@ public class PetoSaalis implements Runnable, ActionListener {
             //Palauttaa syysteemin tasapainopisteen. Osoittautuu että se on (d/c, a/b).
 
             if (Testaakentat()) {
-                infokentta.setText("");
-                infokentta.setText(Double.parseDouble(dkentta.getText()) / Double.parseDouble(ckentta.getText()) + "," + Double.parseDouble(akentta.getText()) / Double.parseDouble(bkentta.getText()));
+               
+                infokentta.setText(Double.parseDouble(dkentta.getText()) / Double.parseDouble(ckentta.getText()) + ", " + Double.parseDouble(akentta.getText()) / Double.parseDouble(bkentta.getText()));
             }
         } else if (e.getSource() == Nappi2) {
             if (Testaakentat()) {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
                 laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()),Double.parseDouble(t1kentta.getText()));
                 infokentta.setText("");
-                infokentta.setText("Max: " + laskin.PalautaMaxPetoja() + "Min:" + laskin.PalautaMinpetoja());
+                infokentta.setText("Max: " + laskin.PalautaMaxPetoja() + " Min:" + laskin.PalautaMinpetoja());
             }
         } else if (e.getSource() == Nappi4) {
 
@@ -168,7 +168,7 @@ public class PetoSaalis implements Runnable, ActionListener {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();
                 laskin.laske(Double.parseDouble(R0kentta.getText()), Double.parseDouble(F0kentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(bkentta.getText()), Double.parseDouble(ckentta.getText()), Double.parseDouble(dkentta.getText()),Double.parseDouble(t1kentta.getText()));
                 infokentta.setText("");
-                infokentta.setText("Max: " + laskin.PalautaMaxsaaliita() + "Min:" + laskin.PalautaMinsaaliita());
+                infokentta.setText("Max: " + laskin.PalautaMaxsaaliita() + " Min:" + laskin.PalautaMinsaaliita());
             }
         } else if (e.getSource() == Nappi3) {
             if (Testaakentat()) {
