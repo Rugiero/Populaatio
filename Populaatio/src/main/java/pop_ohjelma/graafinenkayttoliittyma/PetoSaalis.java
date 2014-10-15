@@ -1,9 +1,6 @@
 package pop_ohjelma.graafinenkayttoliittyma;
 
-/**
- *
- * @author iangervu
- */
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -16,6 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import pop_ohjelma.matematiikka.Petoelainsaaliselain;
+
+/**
+ *Peto- saaliseläin graafinen valikko.
+ * @author iangervu
+ */
 
 public class PetoSaalis implements Runnable, ActionListener {
 
@@ -41,6 +43,9 @@ public class PetoSaalis implements Runnable, ActionListener {
 
     }
 
+    /**
+     * Luodaan komponentin käyttöliittymälle.
+     */
     private void luoKomponentit(Container container) {
         GridLayout layout = new GridLayout(12, 2);
         container.setLayout(layout);
@@ -119,6 +124,9 @@ public class PetoSaalis implements Runnable, ActionListener {
 
     }
 
+    /**
+     * Käynnistetään käyttöliittymä.
+     */
     @Override
     public void run() {
         frame = new JFrame("Otsikko");
@@ -132,11 +140,16 @@ public class PetoSaalis implements Runnable, ActionListener {
         frame.setVisible(true);
     }
 
+    /**
+     * Kuuntelija napeille.
+     *
+     * @param e nappia painettu
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == Nappi) {
-             if (Testaakentat() == false) {
+            if (Testaakentat() == false) {
                 infokentta.setText("Tarkista syöte!");
             } else {
                 String[] nimet = new String[2];
@@ -167,7 +180,7 @@ public class PetoSaalis implements Runnable, ActionListener {
                 infokentta.setText(Double.parseDouble(dkentta.getText()) / Double.parseDouble(ckentta.getText()) + ", " + Double.parseDouble(akentta.getText()) / Double.parseDouble(bkentta.getText()));
             }
         } else if (e.getSource() == Nappi2) {
-             if (Testaakentat() == false) {
+            if (Testaakentat() == false) {
                 infokentta.setText("Tarkista syöte!");
             } else {
                 Petoelainsaaliselain laskin = new Petoelainsaaliselain();

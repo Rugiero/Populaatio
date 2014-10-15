@@ -6,12 +6,9 @@ import dk.ange.octave.type.OctaveDouble;
 import java.util.ArrayList;
 
 /**
- * N= Populaation koko I= Sairastuneita alussa B = tarttumisintesiteetti a =
- * tod.näk parantua/ aikayksikkö T = aikataulukko TuloksetI = taulukko I:lle
- * lasketuista tuloksista TuloksetS = vastaava S:lle
- *
- * Esimerkkiarvot: N=50, I = 1, B=0.003, a = 0.1.
- *
+ * Luokka laskee taudin kehityksen populaatiossa SIS tai SIR mallien mukaisesti.
+ * Käytetään numeerista Runge-Kuttan menetelmää octaven 'lsode' scriptissä.
+ * @author iangervu
  */
 public class Influenssapopulaatiossa {
 
@@ -28,14 +25,15 @@ public class Influenssapopulaatiossa {
     /**
      * Lasketaan taudin kehitys populaatiossa differentiaaliyhtälöstä.
      * Approksimoimme diff.yhtälöparia dS/dt = -BSI +aI, dI/dt = -BSI - aI nk.
-     * Runge-Kutan menetelmällä octavessa lsode- nimisellä scriptillä
+     * Runge-Kutan menetelmällä octavessa lsode- nimisellä scriptillä.
      *
      *
-     * @param N - populaation koko
-     * @param I - sairastuneita alussa
-     * @param B - tarttumisintesiteetti
-     * @param a - tod.näk tervehty' per aikayksikkö
-     * @return
+     * @param N populaation koko
+     * @param I sairastuneita alussa
+     * @param B tarttumisintesiteetti
+     * @param a tod.näk tervehty' per aikayksikkö
+     * @param t1 aika-arvo mihin lasketaan
+     * @return ArrayList taulukoita
      */
     public ArrayList<double[]> laskeSIS(double N, double I, double B, double a, double t1) {
 
@@ -87,16 +85,17 @@ public class Influenssapopulaatiossa {
      * Metodissa laskemme taudin kehityksen kun sairastuneet saavat
      * sairastettuaan pysyvän immuniteetin.Approksimoimme diff.yhtälöparia dS/dt
      * = -BSI, dI/dt = -BSI - aI nk. Runge-Kutan menetelmällä octavessa lsode-
-     * nimisellä scriptillä
+     * nimisellä scriptillä.
      *
      *
-     * Sairaudelle alttiiden määrä alussa:
      *
-     * @param N - Populaation koko
-     * @param I - Sairastuneita alussa
-     * @param B - Tarttumisintesiteetti
-     * @param a - Tod.näk. tervehtyä per aikayksikkö.
-     * @return
+     *
+     * @param N Populaation koko
+     * @param I Sairastuneita alussa
+     * @param B Tarttumisintesiteetti
+     * @param a Tod.näk. tervehtyä per aikayksikkö.
+     * @param t1 aika-arvo mihin lasketaan
+     * @return ArrayList taulukoita
      */
     public ArrayList<double[]> laskeSIR(double N, double I, double B, double a, double t1) {
         this.N = N;
@@ -147,7 +146,7 @@ public class Influenssapopulaatiossa {
      * osoitettavissa että se on laskettavissa kaavasta v = N - (a / B). Tapaus
      * B=0 käsitellään erikseen.
      *
-     * @return raja-arvo
+     * @return Tulos on eksakti riippumatta valitusta t1
      */
     public double TulostaRajaArvoSIS() {
 
@@ -177,22 +176,17 @@ public class Influenssapopulaatiossa {
 
     }
 
-//    public double PalautaR() {
-//        if (this.a == 0) {
-//            return Double.MAX_VALUE;
-//        }
-//        
-//        return (this.B / this.a) * this.N;
-//    }
     /**
-     * Laskemme S:n raja-arvon immuniteettimallissa. Tässä mallissa sairaus ei
-     * pysy populaatiossa, sillä kaikki sairastaneet saavat lopulta
-     * immuniteetin. Lasketaan siis taudin sairastaneiden kokonaismäärä ennen
-     * kuin epidemia katoaa. Taudin sairastaneet lopussa on sama kuin
+     * Laskee sairastuneiden määrän kokonaisuudessaan ennen kuin tauti katoaa
+     * populaatiosta SIR-mallissa. Tässä mallissa sairaus ei pysy populaatiossa,
+     * sillä kaikki sairastaneet saavat lopulta immuniteetin. Lasketaan siis
+     * taudin sairastaneiden kokonaismäärä ennen kuin epidemia 'katoaa'
+     * populaatiossa. Taudin sairastaneet lopussa on sama kuin
      * immuniteettiluokassa olevat, eli N-S
      *
      *
-     * @return -palauttaa double- muotoisen raja-arvon
+     * @return double- muotoinen raja-arvo, laskettu viimeisestä lasketusta
+     * arvosta t1, tulos ei ole siis eksakti
      */
     public double TulostaRajaArvoSIR() {
 
@@ -203,7 +197,7 @@ public class Influenssapopulaatiossa {
     /**
      * Palautetaan I:n suurin arvo
      *
-     * @return palauttaa double muotoisen arvon
+     * @return palauttaa double muotoisena sairastuneiden maksimimäärän
      */
     public double PalautaSairaitaMax() {
         double suurin = 0;
@@ -217,15 +211,17 @@ public class Influenssapopulaatiossa {
     }
 
     /**
-     * Palauttaa arvon R
-     * @param B
-     * @param a
-     * @param N
-     * @return R
+     * Palauttaa arvon mikä vastaa kuinka monta yksi sairastunut keskimäärin
+     * sairastuttaa.
+     *
+     * @param B tarttumisintesiteetti
+     * @param a tod.näk parantua/aikayksikkö
+     * @param N populaation koko
+     * @return double muotoinen arvo
      */
     public double PalautaR(double B, double a, double N) {
-       
-        return (B/a)*N;
- 
+
+        return (B / a) * N;
+
     }
 }

@@ -1,12 +1,12 @@
 package pop_ohjelma.matematiikka;
 
+import static java.lang.Double.NaN;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import pop_ohjelma.matematiikka.Influenssapopulaatiossa;
 import static org.junit.Assert.*;
 
 public class InfluenssapopulaatiossaTest {
@@ -146,10 +146,20 @@ public class InfluenssapopulaatiossaTest {
         assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(5000, 4999, 0.5, 0.5, 200);
-        assertEquals(4999, laskin.PalautaSairaitaMax(), 0.1);
+        assertEquals(4999, laskin.TulostaRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(0, 0, 0, 0, 0);
-        assertEquals(0, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+
+        laskin = new Influenssapopulaatiossa();
+        laskin.laskeSIS(50, 4, 5, 0, 50);
+        assertEquals(50.0, laskin.TulostaRajaArvoSIS(), 0.1);
+        laskin = new Influenssapopulaatiossa();
+        laskin.laskeSIS(50, 4, 0.0003, 0.05, 200);
+        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+        laskin = new Influenssapopulaatiossa();
+        laskin.laskeSIS(250, 1, 0.0003, 0.5, 200);
+        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
 
     }
 
@@ -171,7 +181,7 @@ public class InfluenssapopulaatiossaTest {
         assertEquals(239.256, laskin.PalautaSairaitaMax(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(50, 1, 0.99, 0, 200);
-        assertEquals(50, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(50.000000000, laskin.PalautaSairaitaMax(), 0.1);
 
     }
 
@@ -195,6 +205,31 @@ public class InfluenssapopulaatiossaTest {
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(0, 0, 0, 0, 0);
         assertEquals(0, laskin.TulostaRajaArvoSIR(), 0.1);
+        laskin = new Influenssapopulaatiossa();
+        laskin.laskeSIR(500, 1, 0.001, 0.1, 200);
+        assertEquals(496.5186501380911, laskin.TulostaRajaArvoSIR(), 0.1);
+        
+        laskin = new Influenssapopulaatiossa();
+        laskin.laskeSIR(250, 1, 0.0003, 0.5, 200);
+        assertEquals(1.175, laskin.TulostaRajaArvoSIR(), 0.1);
+
+    }
+
+    @Test
+    public void TestataanR() {
+        Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+
+        assertEquals(5000.0, laskin.PalautaR(50, 5, 500), 0.1);
+
+        assertEquals(NaN, laskin.PalautaR(0, 0, 0), 0.1);
+
+        assertEquals(5.699999999999999, laskin.PalautaR(0.01, 0.1, 57), 0.1);
+
+        assertEquals(0.01, laskin.PalautaR(1, 0.1, 0.001), 0.1);
+
+        assertEquals(0.0, laskin.PalautaR(1, 1, 0), 0.1);
+
+        assertEquals(0, laskin.PalautaR(0, 1, 50), 0.1);
 
     }
 

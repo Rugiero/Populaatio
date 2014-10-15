@@ -25,7 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-/**
+/**Päävalikko.
  *
  * @author iangervu
  */
@@ -37,6 +37,9 @@ public class PaaValikko extends JPanel implements Runnable {
         run();
     }
 
+    /**
+     * Ajaa päävalikon.
+     */
     @Override
     public void run() {
         frame = new JFrame("Populaatio");
@@ -80,12 +83,19 @@ public class PaaValikko extends JPanel implements Runnable {
         //Lisätään komennot:
         b.addActionListener(new ActionListener() {
             @Override
+            /**
+             * Luodaan uusi influenssapopulaatiossa käyttöliittymä. Piilotetaan
+             * Paavalikko
+             */
             public void actionPerformed(ActionEvent e) {
                 new Influenssapopulaatiossagraf();
                 frame.setVisible(false);
             }
         });
         c.addActionListener(new ActionListener() {
+            /**
+             * Luodaan uusi PetoSaalis käyttöliittymä. Piilotetaan Paavalikko
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 new PetoSaalis();
@@ -93,9 +103,11 @@ public class PaaValikko extends JPanel implements Runnable {
             }
         });
         d.addActionListener(new ActionListener() {
+            /**
+             * Luodaan uusi Help- frame
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 JFrame frame1 = new JFrame("Populaatio");
                 int leveys = 600;
                 int korkeus = 700;
@@ -112,6 +124,9 @@ public class PaaValikko extends JPanel implements Runnable {
         });
 
         e.addActionListener(new ActionListener() {
+            /**
+             * Suljetaan ohjelma.
+             */
             @Override
             public void actionPerformed(ActionEvent e
             ) {

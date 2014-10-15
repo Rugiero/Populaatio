@@ -17,6 +17,7 @@ import pop_ohjelma.matematiikka.Influenssapopulaatiossa;
 
 /**
  * Graafinen liittymä influenssa populaatiossa tilanteeseen.
+ * @author iangervu
  */
 public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
 
@@ -113,7 +114,7 @@ public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
     }
 
     /**
-     * Ajaa graafisen liittymän
+     * Ajaa graafisen liittymän.
      */
     @Override
     public void run() {
@@ -129,23 +130,22 @@ public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
 
     }
 
-    /**
-     * Testaa yksittäisen kentän.
-     */
     private boolean DesimaalinSyotto(String stringi) {
         SyotteidenTestaus testi = new SyotteidenTestaus();
         return (testi.DesimaalinSyotto(stringi));
     }
 
-    /**
-     * Testaa kaikki kentät.
-     */
     private boolean Testaakentat() {
 
         return (DesimaalinSyotto(Nkentta.getText()) && DesimaalinSyotto(Ikentta.getText()) && DesimaalinSyotto(Bkentta.getText()) && DesimaalinSyotto(akentta.getText()) && DesimaalinSyotto(t1kentta.getText()));
 
     }
 
+    /**
+     * Nappien kuuntelija.
+     *
+     * @param e nappia painettu
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String[] nimet = new String[2];
@@ -196,9 +196,9 @@ public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
                     infokentta.setText("inf");
                     return;
                 }
-                 Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
+                Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
 
-                infokentta.setText( laskin.PalautaR(Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(Nkentta.getText())) + "");
+                infokentta.setText(laskin.PalautaR(Double.parseDouble(Bkentta.getText()), Double.parseDouble(akentta.getText()), Double.parseDouble(Nkentta.getText())) + "");
 
             }
         } else if (e.getSource() == Nappi2) {

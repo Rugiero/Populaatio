@@ -1,10 +1,3 @@
-/**
- * Luokalla piirretää käyrä muotoa y=x(t) ArrayListassa olevien taulukoiden
- * datasta. Luokalle odotetaan parametriksi ArrayList joka sisältää vähintään
- * kaksi taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi. String[] taulukon
- * oletetaan sisältävän käyrien nimet järjestyksessä.
- *
- */
 package pop_ohjelma.graafinenkayttoliittyma;
 
 import java.awt.BorderLayout;
@@ -19,6 +12,15 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+/**
+ * Luokalla piirretää käyrä muotoa y=x(t) ArrayListassa olevien taulukoiden
+ * datasta. Luokalle odotetaan parametriksi ArrayList joka sisältää vähintään
+ * kaksi taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi. String[] taulukon
+ * oletetaan sisältävän käyrien nimet järjestyksessä.
+ * @author iangervu
+ *
+ *
+ */
 public class PiirraKayra extends JFrame {
 
     private String otsikko;
@@ -27,6 +29,16 @@ public class PiirraKayra extends JFrame {
     private ArrayList<double[]> tulokset;
     private String[] nimet;
 
+    /**
+     * Konstruktoriin annetaan otsikko, akselien nimet, käyrien nimet ja
+     * piirrettävät arvot taulukkoina listattuna ArrayListaan.
+     *
+     * @param otsikko Käyrän 'otsikko'
+     * @param x x-akselin nimi
+     * @param y y-akselin nimi
+     * @param tulokset tulokset listattuna
+     * @param nimet käyrien nimet
+     */
     public PiirraKayra(String otsikko, String x, String y, ArrayList<double[]> tulokset, String[] nimet) {
         super("Populaatio");
         this.tulokset = tulokset;
@@ -37,6 +49,9 @@ public class PiirraKayra extends JFrame {
 
     }
 
+    /**
+     * Piirretään käyrä annetusta Arraylistasta.
+     */
     public void Piirretaankayra() {
 
         JPanel chartPanel = createChartPanel();
@@ -48,7 +63,7 @@ public class PiirraKayra extends JFrame {
 
     }
 
-    public JPanel createChartPanel() {
+    private JPanel createChartPanel() {
         boolean showLegend = true;
         boolean createURL = true;
         boolean createTooltip = true;

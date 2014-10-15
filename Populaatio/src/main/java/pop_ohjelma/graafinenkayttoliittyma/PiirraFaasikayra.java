@@ -1,12 +1,5 @@
 package pop_ohjelma.graafinenkayttoliittyma;
 
-/*
- * Luokalla piirretään faasidiagrammi, eli graafi missä aika on redusoitu pois. Luokalle odotetaan parametriksi ArrayList joka sisältää kolme
- * taulukkoa, joista ensimmäinen jätetään (vastaa a aikaa t) huomioimatta.
- * 
- */
-
-
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -20,8 +13,11 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 /**
- *
+ * Luokalla piirretään faasidiagrammi, eli graafi missä aika on redusoitu pois.
+ * Luokalle odotetaan parametriksi ArrayList joka sisältää kolme taulukkoa,
+ * joista ensimmäinen jätetään (vastaa a aikaa t) huomioimatta.
  * @author iangervu
+ *
  */
 public class PiirraFaasikayra extends JFrame {
 
@@ -30,6 +26,15 @@ public class PiirraFaasikayra extends JFrame {
     private String y;
     private ArrayList<double[]> tulokset;
 
+    /**
+     * Konstruktoriin annetaan otsikko, akselien nimet ja piirrettävät arvot
+     * taulukkoina listattuna ArrayListaan.
+     *
+     * @param otsikko Käyrän 'otsikko'
+     * @param x x-akselin nimi
+     * @param y y-akselin nimi
+     * @param tulokset tulokset listattuna
+     */
     public PiirraFaasikayra(String otsikko, String x, String y, ArrayList<double[]> tulokset) {
         super("Populaatio");
         this.tulokset = tulokset;
@@ -39,6 +44,9 @@ public class PiirraFaasikayra extends JFrame {
 
     }
 
+    /**
+     * Piirretään faasikäyrä annetusta ArrayListista.
+     */
     public void PiirretaankayraFaasi() {
 
         JPanel chartPanel = createChartPanelFaasi();
@@ -50,9 +58,6 @@ public class PiirraFaasikayra extends JFrame {
 
     }
 
-    /**
-     * Metodilla luodaan faasidiagrammi (x,y) annetuista taulukoista.
-     */
     private XYDataset createDatasetFaasi() {
         boolean autoSort = false;
 
@@ -68,7 +73,7 @@ public class PiirraFaasikayra extends JFrame {
 
     }
 
-    public JPanel createChartPanelFaasi() {
+    private JPanel createChartPanelFaasi() {
         boolean showLegend = true;
         boolean createURL = true;
         boolean createTooltip = true;
