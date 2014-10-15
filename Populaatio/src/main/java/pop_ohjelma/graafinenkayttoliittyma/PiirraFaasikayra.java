@@ -16,6 +16,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  * Luokalla piirretään faasidiagrammi, eli graafi missä aika on redusoitu pois.
  * Luokalle odotetaan parametriksi ArrayList joka sisältää kolme taulukkoa,
  * joista ensimmäinen jätetään (vastaa a aikaa t) huomioimatta.
+ *
  * @author iangervu
  *
  */
@@ -28,7 +29,8 @@ public class PiirraFaasikayra extends JFrame {
 
     /**
      * Konstruktoriin annetaan otsikko, akselien nimet ja piirrettävät arvot
-     * taulukkoina listattuna ArrayListaan.
+     * taulukkoina listattuna ArrayListaan. ArrayListan ensimmäinen taulukko
+     * tulkitaan ajaksi eli se jätetään huomioimatta.
      *
      * @param otsikko Käyrän 'otsikko'
      * @param x x-akselin nimi

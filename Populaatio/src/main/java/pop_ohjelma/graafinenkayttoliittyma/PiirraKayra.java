@@ -17,6 +17,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  * datasta. Luokalle odotetaan parametriksi ArrayList joka sisältää vähintään
  * kaksi taulukkoa. Ensimmäinen taulukko tulkitaan ajaksi. String[] taulukon
  * oletetaan sisältävän käyrien nimet järjestyksessä.
+ *
  * @author iangervu
  *
  *
@@ -31,7 +32,8 @@ public class PiirraKayra extends JFrame {
 
     /**
      * Konstruktoriin annetaan otsikko, akselien nimet, käyrien nimet ja
-     * piirrettävät arvot taulukkoina listattuna ArrayListaan.
+     * piirrettävät arvot taulukkoina listattuna ArrayListaan. Listan
+     * ensimmäinen taulukko tulkitaan ajaksi.
      *
      * @param otsikko Käyrän 'otsikko'
      * @param x x-akselin nimi
