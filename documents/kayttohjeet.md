@@ -34,7 +34,7 @@ Valinnat:
 Arvoiksi voi valita minkä tahansa reaaliluvun tasan tai yli nolla. Biologista tulkintaa tosin ei tietenkään löydy jos esimerkiksi I >N. Arvot ovat tässä yksiköttömiä. 
 Infektoitumisvoima F = B*I on määritelmän mukaan alttiin yksilön todennäköisyys tulla tartutetuksi aikayksikköa kohti. Tämä vastaa kemiallisen kinetiikan massavaikutuksen lakia.
 
-Esimerkkiavoja:  N=50 I=1 B=0.015 a=0.1
+Esimerkkiarvoja:  N=50 I=1 B=0.015 a=0.1
 
 
 <h3>Lotkan ja Volterran peto-saalismalli</h3>
