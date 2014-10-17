@@ -7,9 +7,9 @@ Ohjelma käyttää matematiikassa apuna octavea, joten ennen kuin ajat ohjelman 
 
 <h2>Mallit:</h2>
 
-<h3>SIS</h3> – Laskee taudin kehityksen annetuista alkuarvoista. Populaation jäsenet kuuluvat joko luokkaan 'sairastuneet' (I) tai 'sairaudelle alttiit' (S).  Jäsenet siirtyvät siis luokissa S → I → S → I jne.
+<h3>SIS</h3> Laskee taudin kehityksen annetuista alkuarvoista. Populaation jäsenet kuuluvat joko luokkaan 'sairastuneet' (I) tai 'sairaudelle alttiit' (S).  Jäsenet siirtyvät siis luokissa S → I → S → I jne.
 
-<h3>SIR</h3> – Laskee taudin kehityksen annetuista alkuarvoista kun populaation jäsenet saavat taudin sairastettuaan pysyvän immuniteetin, ja siirtyvät siis sairastuneiden luokasta (I) immuniteetin saaneiden luokkaan  S → I → R. Lisätietoja SIR ja SIS- malleista englanniksi A [link](http://en.wikipedia.org/wiki/Epidemic_model)
+<h3>SIR</h3> Laskee taudin kehityksen annetuista alkuarvoista kun populaation jäsenet saavat taudin sairastettuaan pysyvän immuniteetin, ja siirtyvät siis sairastuneiden luokasta (I) immuniteetin saaneiden luokkaan  S → I → R. Lisätietoja SIR ja SIS- malleista englanniksi A [link](http://en.wikipedia.org/wiki/Epidemic_model)
 
 
 <ul>
@@ -24,7 +24,7 @@ Alkuarvot:
 <ul>
 Valinnat:
 
-<li>R – Laskee kuinka monta henkilöä keskimäärin yksi sairastunut sairastuttaa.</li>
+<li>R Laskee kuinka monta henkilöä keskimäärin yksi sairastunut sairastuttaa.</li>
 <li>Näytä kehitys – Piirtää diagrammin lasketuista arvoista ajan funktiona.</li>
 <li>Laske raja-arvo – SIS- mallissa antaa sairastuneiden määrän kun aika menee äärettömään. SIR- mallissa laskee sairastuneiden määrän kokonaisuudessaan kun aika menee äärettömään. Huom: SIR- mallin raja-arvo ei ole eksakti vaan voi riippua valitsemastasi ajasta.</li>
 <li>Laske sairastuneita enimmillään – Laskee sairastuneiden suurimman 'piikin'. Voi riippua valitsemastasi ajasta.</li>
