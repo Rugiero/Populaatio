@@ -9,9 +9,8 @@ Ohjelma käyttää matematiikassa apuna octavea, joten ennen kuin ajat ohjelman 
 
 <h3>SIS</h3> – Laskee taudin kehityksen annetuista alkuarvoista. Populaation jäsenet kuuluvat joko luokkaan 'sairastuneet' (I) tai 'sairaudelle alttiit' (S).  Jäsenet siirtyvät siis luokissa S → I → S → I jne.
 
-<h3>SIR</h3> – Laskee taudin kehityksen annetuista alkuarvoista kun populaation jäsenet saavat taudin sairastettuaan pysyvän immuniteetin, ja siirtyvät siis sairastuneiden luokasta (I) immuniteetin saaneiden luokkaan  S → I → R. Lisätietoja SIR ja SIS- malleista englanniksi 
+<h3>SIR</h3> – Laskee taudin kehityksen annetuista alkuarvoista kun populaation jäsenet saavat taudin sairastettuaan pysyvän immuniteetin, ja siirtyvät siis sairastuneiden luokasta (I) immuniteetin saaneiden luokkaan  S → I → R. Lisätietoja SIR ja SIS- malleista englanniksi <http://en.wikipedia.org/wiki/Epidemic_model>
 
-http://en.wikipedia.org/wiki/Epidemic_model
 
 <ul>
 Alkuarvot:
