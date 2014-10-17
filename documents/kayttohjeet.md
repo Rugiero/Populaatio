@@ -66,5 +66,4 @@ Arvoiksi voi jälleen valita minkä tahansa reaaliluvun tasan tai yli nolla. Arv
 Arvoilla F = 0 saaliiden määrä kasvaa eksponentiaalisesti. Arvolla R =0 pedot kuolevat sukupuuttoon. Sukupuuttokuolema ei ole tässä teoriassa muuten mahdollinen.
 
 Esimerkkiarvoja:
-
-Peto- saalis  F=3.5 R=1.8 a=0.3 b=0.1 c=0.1 d=0.2
+ F=3.5 R=1.8 a=0.3 b=0.1 c=0.1 d=0.2
