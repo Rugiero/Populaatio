@@ -30,8 +30,8 @@ Valinnat:
 
 <li>R Laskee kuinka monta henkilöä keskimäärin yksi sairastunut sairastuttaa.</li>
 <li>Näytä kehitys – Piirtää diagrammin lasketuista arvoista ajan funktiona.</li>
-<li>Laske raja-arvo – SIS- mallissa antaa sairastuneiden määrän kun aika menee äärettömään. SIR- mallissa laskee sairastuneiden määrän kokonaisuudessaan kun aika menee äärettömään. Huom: SIR- mallin raja-arvo ei ole eksakti vaan voi riippua valitsemastasi ajasta.</li>
-<li>Laske sairastuneita enimmillään – Laskee sairastuneiden suurimman 'piikin'. Voi riippua valitsemastasi ajasta.</li>
+<li>Laske raja-arvo – SIS- mallissa antaa sairastuneiden määrän kun aika menee äärettömään. SIR- mallissa laskee sairastuneiden määrän kokonaisuudessaan kun aika menee äärettömään. Huom: SIR- mallin raja-arvo ei ole eksakti vaan voi vaihdella riippuen lasketuista arvoista (valitusta t:stä).</li>
+<li>Laske sairastuneita enimmillään – Laskee sairastuneiden suurimman 'piikin' lasketuista arvoista.</li>
 <li>Näytä faasidiagrammi – Piirtää faasidiagrammin (S,I) lasketuista arvoista.</li>
 </ul>
 
