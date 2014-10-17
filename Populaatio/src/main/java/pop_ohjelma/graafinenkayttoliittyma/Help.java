@@ -34,7 +34,7 @@ public class Help extends JPanel {
         g.fillRect(0, 0, 600,700);
         g.setColor(Color.CYAN);
         g.setFont(loppufontti);
-        g.drawString("Lue ReadMe :]", 100, 150);
+        g.drawString("Katso käyttöohjeet :]", 100, 150);
 
     }
 

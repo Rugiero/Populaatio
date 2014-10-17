@@ -6,18 +6,11 @@
 package pop_ohjelma.graafinenkayttoliittyma;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Desktop;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,7 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-/**Päävalikko.
+/**
+ * Päävalikko.
  *
  * @author iangervu
  */
@@ -83,29 +77,22 @@ public class PaaValikko extends JPanel implements Runnable {
         //Lisätään komennot:
         b.addActionListener(new ActionListener() {
             @Override
-            /**
-             * Luodaan uusi influenssapopulaatiossa käyttöliittymä. Piilotetaan
-             * Paavalikko
-             */
+
             public void actionPerformed(ActionEvent e) {
                 new Influenssapopulaatiossagraf();
                 frame.setVisible(false);
             }
         });
         c.addActionListener(new ActionListener() {
-            /**
-             * Luodaan uusi PetoSaalis käyttöliittymä. Piilotetaan Paavalikko
-             */
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PetoSaalis();
+                new PetoSaalisgraph();
                 frame.setVisible(false);
             }
         });
         d.addActionListener(new ActionListener() {
-            /**
-             * Luodaan uusi Help- frame
-             */
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame1 = new JFrame("Populaatio");

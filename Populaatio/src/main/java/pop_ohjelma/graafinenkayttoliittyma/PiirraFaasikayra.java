@@ -51,7 +51,7 @@ public class PiirraFaasikayra extends JFrame {
      */
     public void PiirretaankayraFaasi() {
 
-        JPanel chartPanel = createChartPanelFaasi();
+        JPanel chartPanel = luoFaasi();
         add(chartPanel, BorderLayout.CENTER);
 
         setSize(640, 480);
@@ -60,7 +60,7 @@ public class PiirraFaasikayra extends JFrame {
 
     }
 
-    private XYDataset createDatasetFaasi() {
+    private XYDataset LuoDataSet() {
         boolean autoSort = false;
 
         XYSeriesCollection dataset = new XYSeriesCollection();
@@ -75,7 +75,7 @@ public class PiirraFaasikayra extends JFrame {
 
     }
 
-    private JPanel createChartPanelFaasi() {
+    private JPanel luoFaasi() {
         boolean showLegend = true;
         boolean createURL = true;
         boolean createTooltip = true;
@@ -83,7 +83,7 @@ public class PiirraFaasikayra extends JFrame {
         String xAxisLabel = x;
         String yAxisLabel = y;
 
-        XYDataset dataset = createDatasetFaasi();
+        XYDataset dataset = LuoDataSet();
 
         JFreeChart chart = ChartFactory.createXYLineChart(chartTitle,
                 xAxisLabel, yAxisLabel, dataset,

@@ -84,10 +84,22 @@
                                     <mainClass>pop_ohjelma.populaatio.populaatio.App</mainClass>
                                 </transformer>
                             </transformers>
-                        </configuration>
+                            <finalName>${project.artifactId}-${project.version}-uber</finalName>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>         
                     </execution>
                 </executions>
-            </plugin>  
+            </plugin>
+
         </plugins>
     </build>
 </project>

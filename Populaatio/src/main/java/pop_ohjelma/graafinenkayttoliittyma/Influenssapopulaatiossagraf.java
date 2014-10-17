@@ -17,6 +17,7 @@ import pop_ohjelma.matematiikka.Influenssapopulaatiossa;
 
 /**
  * Graafinen liittymä influenssa populaatiossa tilanteeseen.
+ *
  * @author iangervu
  */
 public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
@@ -51,13 +52,13 @@ public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
         GridLayout layout = new GridLayout(11, 2);
         container.setLayout(layout);
 
-        JLabel N = new JLabel("Populaation koko ");
+        JLabel N = new JLabel("N ");
         Nkentta = new JTextField();
-        JLabel I = new JLabel("Sairastuneita aluksi ");
+        JLabel I = new JLabel("I ");
         Ikentta = new JTextField();
-        JLabel B = new JLabel("Tarttumisintesiteetti ");
+        JLabel B = new JLabel("B ");
         Bkentta = new JTextField();
-        JLabel a = new JLabel("Parantumistodennakoisyys/ aikayksikko ");
+        JLabel a = new JLabel("a ");
         akentta = new JTextField();
         JLabel t1 = new JLabel("Aika");
         t1kentta = new JTextField();
@@ -214,7 +215,7 @@ public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
                             return;
                         }
 
-                        infokentta.setText("Pysyvästi sairastuneita: " + laskin.TulostaRajaArvoSIS());
+                        infokentta.setText("Pysyvästi sairastuneita: " + laskin.LaskeRajaArvoSIS());
                     }
                 }
             }
@@ -225,7 +226,7 @@ public class Influenssapopulaatiossagraf implements Runnable, ActionListener {
                     infokentta.setText("Tapahtui virhe :( Arvosi ovat luultavasti liian suuria.");
                     return;
                 }
-                infokentta.setText("Epidemian koko: " + laskin.TulostaRajaArvoSIR());
+                infokentta.setText("Epidemian koko: " + laskin.LaskeRajaArvoSIR());
 
             }
         } else if (e.getSource() == Nappi3) {

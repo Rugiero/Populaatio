@@ -148,7 +148,7 @@ public class Influenssapopulaatiossa {
      *
      * @return Tulos on eksakti riippumatta valitusta t1
      */
-    public double TulostaRajaArvoSIS() {
+    public double LaskeRajaArvoSIS() {
 
         if (B == 0) {
             if (a == 0) {
@@ -188,7 +188,7 @@ public class Influenssapopulaatiossa {
      * @return double- muotoinen raja-arvo, laskettu viimeisestä lasketusta
      * arvosta t1, tulos ei ole siis eksakti
      */
-    public double TulostaRajaArvoSIR() {
+    public double LaskeRajaArvoSIR() {
 
         return N - tuloksetS[tuloksetS.length - 1];
 

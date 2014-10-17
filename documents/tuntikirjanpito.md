@@ -26,7 +26,15 @@ Aloitin graafisen kayttöliittymän tekemisen
 6.10 5h
 Graafinen käyttöliittymä toimimaan päällisin puolin.
 
-9.10
+9.10 3h
 Graafisen käyttöliittymän ominaisuudet toimivaksi.
 
+4.10 5h
+Testejä
 
+5.10 5h
+Säätöä. Pit-testaus kuntoon.
+
+17.10 6h
+
+Viimeistelyt. Käyttöohje. Sekvenssikaaviot ja luokkakaaviot ajan tasalle.

@@ -21,3 +21,12 @@ Anna populaatioiden parametrit, joihin kuuluu ainakin:
 Pys‰yt‰ ohjelma
 
 
+
+
+
+Rakennekuvaus:
+
+Main- luokka k‰ynnist‰‰ p‰‰valikon. P‰‰valikosta voi valita SIR/SIS, peto-saalisel‰in tilanteen, help tai poistu. SIR/SIS ja petosaalis k‰ynnist‰‰ omat valikkonsa. Valikoihin voi asettaa haluamansa arvot ja laskea haluamansa tulokset.
+"Piirr‰ k‰yr‰" laskee ensin tulokset matematiikkaluokalla, mink‰ j‰lkeen se syˆtt‰‰ tulokset PiirraKayra- luokalle. T‰m‰ piirt‰‰ JFreeChart- kirjastoa hyv‰ksi k‰ytt‰en tuloksista k‰yr‰n. "Piirr‰ faasi" vastaavasti piirt‰‰ k‰yr‰n josta aika on redusoitu pois. Muut painikkeet k‰ytt‰v‰t niin ik‰‰n matematiikka- luokkaa hyv‰ksi. Syˆtteiden tulee olla numeroita nollasta ylˆsp‰in, muuten ohjelma ei suostu laskemaan arvoja.
+
+

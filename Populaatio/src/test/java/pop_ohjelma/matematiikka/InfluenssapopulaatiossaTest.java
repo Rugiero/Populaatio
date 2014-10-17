@@ -137,29 +137,29 @@ public class InfluenssapopulaatiossaTest {
     public void TestataanRajaArvoaSIS() {
         Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(50, 5, 0.007, 0.1, 200);
-        assertEquals(35.714, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(35.714, laskin.LaskeRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(1, 0, 0.01, 0.001, 200);
-        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(1, 0, 0.99, 0.99, 200);
-        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(5000, 4999, 0.5, 0.5, 200);
-        assertEquals(4999, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(4999, laskin.LaskeRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(0, 0, 0, 0, 0);
-        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIS(), 0.1);
 
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(50, 4, 5, 0, 50);
-        assertEquals(50.0, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(50.0, laskin.LaskeRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(50, 4, 0.0003, 0.05, 200);
-        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIS(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIS(250, 1, 0.0003, 0.5, 200);
-        assertEquals(0, laskin.TulostaRajaArvoSIS(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIS(), 0.1);
 
     }
 
@@ -189,29 +189,29 @@ public class InfluenssapopulaatiossaTest {
     public void TestataanRajaArvoaSIR() {
         Influenssapopulaatiossa laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(50, 5, 0.007, 0.1, 200);
-        assertEquals(48.4895, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(48.4895, laskin.LaskeRajaArvoSIR(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(1, 0, 0.01, 0.001, 200);
-        assertEquals(0, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIR(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(1, 0, 0.99, 0.99, 200);
-        assertEquals(0, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIR(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(50, 1, 0, 0.99, 200);
-        assertEquals(1, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(1, laskin.LaskeRajaArvoSIR(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(500, 1, 0.001, 0.1, 200);
-        assertEquals(496.5, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(496.5, laskin.LaskeRajaArvoSIR(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(0, 0, 0, 0, 0);
-        assertEquals(0, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(0, laskin.LaskeRajaArvoSIR(), 0.1);
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(500, 1, 0.001, 0.1, 200);
-        assertEquals(496.5186501380911, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(496.5186501380911, laskin.LaskeRajaArvoSIR(), 0.1);
         
         laskin = new Influenssapopulaatiossa();
         laskin.laskeSIR(250, 1, 0.0003, 0.5, 200);
-        assertEquals(1.175, laskin.TulostaRajaArvoSIR(), 0.1);
+        assertEquals(1.175, laskin.LaskeRajaArvoSIR(), 0.1);
 
     }
 
