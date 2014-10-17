@@ -21,8 +21,9 @@ Alkuarvot:
 
 <li>N – Populaation koko.</li>
 <li>I – Sairastuneita aluksi.</li>
-<li>a – Parantumistodennäköisyys aikayksikköä kohden.</li>
 <li>B – Tarttumisintesiteetti.</li>
+<li>a – Parantumistodennäköisyys aikayksikköä kohden.</li>
+<li>Aika - Aika mihin asti lasketaan.</li>
 </ul>
 
 <ul>
@@ -52,8 +53,9 @@ Alkuarvot:
 <li>R – Saaliiden tiheys alussa.</li>
 <li>a – Saaliiden lisääntymistahti.</li>
 <li>b – Petojen tehokkuus suhteessa saaliiden määrään.</li>
-<li>c – Petojen lisääntymistahti suhteessa saaliiden määrään.</li>
-<li>d – Petojen kuolleisuus.</li>
+<li>c – Petojen kuolleisuus.</li>
+<li>d – Petojen lisääntymistahti suhteessa saaliiden määrään.</li>
+<li>Aika - Aika mihin asti lasketaan.</li>
 </ul>
 
 <ul>
