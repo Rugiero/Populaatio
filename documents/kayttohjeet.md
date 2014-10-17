@@ -48,8 +48,8 @@ Laskee petoeläinten ja saalieläinten kantojen kehityksen suljetussa populaatio
 <ul>
 Alkuarvot:
 
-<li>F – Petojen määrä alussa.</li>
-<li>R – Saaliiden määrä alussa.</li>
+<li>F – Petojen tiheys alussa.</li>
+<li>R – Saaliiden tiheys alussa.</li>
 <li>a – Saaliiden lisääntymistahti.</li>
 <li>b – Petojen tehokkuus suhteessa saaliiden määrään.</li>
 <li>c – Petojen lisääntymistahti suhteessa saaliiden määrään.</li>
