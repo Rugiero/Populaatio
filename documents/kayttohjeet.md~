@@ -1,12 +1,15 @@
+
+<h1>Populaatio</h1>
+
 Populaatio- ohjelma laskee populaatioiden kehitystä annetuista alkuarvoista suljetussa systeemissä. Ohjelma approksimoi numeerisesti differentiaaliyhtälöite Runge-Kutan menetelmällä octavessa. Valittavana on influenssan kehitys tai peto- saaliskantojen kehitys.
 
 Ohjelma käyttää matematiikassa apuna octavea, joten ennen kuin ajat ohjelman varmista että sinulla on octave asennettuna. Käyrien piirtoon käytetään apuna JFreeGarph- nimistä kirjastoa, mutta se on sisällytetty pakettiin. Katso ReadMe.
 
-Mallit:
+<h2>Mallit:</h2>
 
-SIS – Laskee taudin kehityksen annetuista alkuarvoista. Populaation jäsenet kuuluvat joko luokkaan 'sairastuneet' (I) tai 'sairaudelle alttiit' (S).  Jäsenet siirtyvät siis luokissa S → I → S → I jne.
+<h3>SIS</h3> – Laskee taudin kehityksen annetuista alkuarvoista. Populaation jäsenet kuuluvat joko luokkaan 'sairastuneet' (I) tai 'sairaudelle alttiit' (S).  Jäsenet siirtyvät siis luokissa S → I → S → I jne.
 
-SIR – Laskee taudin kehityksen annetuista alkuarvoista kun populaation jäsenet saavat taudin sairastettuaan pysyvän immuniteetin, ja siirtyvät siis sairastuneiden luokasta (I) immuniteetin saaneiden luokkaan  S → I → R.
+<h3>SIR</h3> – Laskee taudin kehityksen annetuista alkuarvoista kun populaation jäsenet saavat taudin sairastettuaan pysyvän immuniteetin, ja siirtyvät siis sairastuneiden luokasta (I) immuniteetin saaneiden luokkaan  S → I → R.
 
 Alkuarvot:
 N – Populaation koko.
@@ -26,10 +29,13 @@ Infektoitumisvoima F = B*I on määritelmän mukaan alttiin yksilön todennäkö
 
 Esimerkkiavoja:  N=50 I=1 B=0.015 a=0.1
 
-Lisätietoja SIR ja SIS- malleista englanniksi http://en.wikipedia.org/wiki/Epidemic_model
+Lisätietoja SIR ja SIS- malleista englanniksi 
+<http://en.wikipedia.org/wiki/Epidemic_model>
 
 
-Lotkan ja Volterran peto-saalismalli – Laskee petoeläinten ja saalieläinten kantojen kehityksen suljetussa populaatiossa. Oletuksena saaliilla on ravintoa mielivaltaisen paljon.
+<h3>Lotkan ja Volterran peto-saalismalli</h3>
+Laskee petoeläinten ja saalieläinten kantojen kehityksen suljetussa populaatiossa. Oletuksena saaliilla on ravintoa mielivaltaisen paljon. Lisätietoja 
+<http://fi.wikipedia.org/wiki/Lotkan%E2%80%93Volterran_yht%C3%A4l%C3%B6>
 
 Alkuarvot:
 F – Petojen määrä alussa.
