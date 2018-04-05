@@ -19,4 +19,4 @@ Lisätietoja <https://www.gnu.org/software/octave/download.html>
 
 Lisätietoja <https://kenai.com/projects/javaoctave/pages/Home>
 
-Käyttöohjeet löytyy erillisesta tiedostosta. Toimiva .jar tiedosto löytyy PopulaatioZippi.zip:stä. Pura se Pics- kansioineen johonkin. 
+Käyttöohjeet löytyy erillisesta tiedostosta. Toimiva .jar tiedosto löytyy PopulaatioZippi.zip:stä. Pura se Pics- kansioineen johonkin. Ubuntulla aja >java -jar pop_ohjelma-1.0-SNAPSHOT-uber.jar.
